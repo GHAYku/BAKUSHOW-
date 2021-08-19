@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :end_users
   namespace :public do
     get 'titles/index'
     get 'titles/new'

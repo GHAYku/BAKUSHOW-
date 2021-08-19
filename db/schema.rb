@@ -10,6 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_013429) do
+ActiveRecord::Schema.define(version: 2021_08_19_030854) do
+
+  create_table "comentes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "joke_id"
+    t.integer "end_user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jokes", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "title_id"
+    t.integer "end_user_id"
+    t.string "image_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "end_user_id"
+    t.string "image_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reposts", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "joke_id"
+    t.integer "end_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "joke_id"
+    t.integer "end_user_id"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "end_user_id"
+    t.string "image_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
