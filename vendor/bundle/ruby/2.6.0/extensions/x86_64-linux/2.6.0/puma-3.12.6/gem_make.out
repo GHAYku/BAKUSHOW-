@@ -1,5 +1,9 @@
 current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/puma-3.12.6/ext/puma_http11
+<<<<<<< HEAD
 /home/ec2-user/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210821-30498-qfjxks.rb extconf.rb
+=======
+/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210821-8116-v6e4xa.rb extconf.rb
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
 checking for openssl/bio.h... yes
@@ -40,4 +44,8 @@ linking shared-object puma/puma_http11.so
 
 current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/puma-3.12.6/ext/puma_http11
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 puma_http11.so ./.gem.20210821-30498-8ahauh/puma
+=======
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20210821-8116-1af8rye/puma
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983

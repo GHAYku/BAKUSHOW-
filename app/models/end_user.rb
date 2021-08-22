@@ -3,6 +3,7 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
+<<<<<<< HEAD
          :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
          
   def self.from_omniauth(auth)
@@ -13,4 +14,7 @@ class EndUser < ApplicationRecord
   end
   
   
+=======
+         :omniauthable, omniauth_providers: [:twitter, :facebook, :google_oauth2]
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983
 end

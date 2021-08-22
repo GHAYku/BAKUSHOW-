@@ -1,5 +1,9 @@
 current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/bcrypt-3.1.16/ext/mri
+<<<<<<< HEAD
 /home/ec2-user/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210821-30498-1ele0hh.rb extconf.rb
+=======
+/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210821-8116-5arjln.rb extconf.rb
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983
 creating Makefile
 
 current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/bcrypt-3.1.16/ext/mri
@@ -23,4 +27,8 @@ linking shared-object bcrypt_ext.so
 
 current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/bcrypt-3.1.16/ext/mri
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20210821-30498-n6yd99
+=======
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20210821-8116-wz8qqx
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983

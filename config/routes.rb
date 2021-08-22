@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   devise_for :end_users, controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks' }
 
+=======
+  devise_for :end_users,
+             controllers: {omniauth_callbacks: 'end_users/omniauth_callbacks',registrations: 'endusers/registrations'
+}
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983
   namespace :public do
     get 'titles/index'
     get 'titles/new'
