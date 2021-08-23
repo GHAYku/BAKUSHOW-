@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :public do
+　 resource :relationships, only:[:create, :destroy]
+　 get 'follows' => 'relationships#follower'
+　 get 'followers' => 'relationships#followed'
+  end
+
   devise_for :end_users, controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks' }
 
   namespace :public do
