@@ -25,5 +25,4 @@ class Public::HomesControllerTest < ActionDispatch::IntegrationTest
     get public_homes_about_url
     assert_response :success
   end
-
 end

@@ -15,5 +15,4 @@ class Public::TitlesControllerTest < ActionDispatch::IntegrationTest
     get public_titles_show_url
     assert_response :success
   end
-
 end

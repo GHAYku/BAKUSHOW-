@@ -20,5 +20,4 @@ class Public::JokesControllerTest < ActionDispatch::IntegrationTest
     get public_jokes_show_url
     assert_response :success
   end
-
 end

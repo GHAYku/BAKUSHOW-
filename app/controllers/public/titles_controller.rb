@@ -12,6 +12,5 @@ class Public::TitlesController < ApplicationController
   end
 
   def confirmation
-　end
-
+  end
 end
