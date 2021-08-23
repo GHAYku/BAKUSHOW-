@@ -1,0 +1,24 @@
+current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+<<<<<<< HEAD
+/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210821-30498-1pqaimu.rb extconf.rb
+=======
+/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210821-8116-9p58lt.rb extconf.rb
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/ec2-user/environment/BAKUSHOW！！/vendor/bundle/ruby/2.6.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" install
+<<<<<<< HEAD
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20210821-30498-zls8ea/racc
+=======
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20210821-8116-5r4lrr/racc
+>>>>>>> ef8f51c3eef3fed6684adb36e566fe9b9bc6f983

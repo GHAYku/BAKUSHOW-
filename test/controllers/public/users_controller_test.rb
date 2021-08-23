@@ -20,5 +20,4 @@ class Public::UsersControllerTest < ActionDispatch::IntegrationTest
     get public_users_favorite_url
     assert_response :success
   end
-
 end

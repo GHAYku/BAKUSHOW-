@@ -7,10 +7,10 @@ class Public::TitlesController < ApplicationController
 
   def show
   end
-  
+
   def create
   end
-  
+
   def confirmation
-    
+  end
 end
