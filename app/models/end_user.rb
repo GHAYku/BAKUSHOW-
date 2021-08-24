@@ -11,6 +11,13 @@ class EndUser < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+  
+  has_many :reposts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :titles, dependent: :destroy
+  has_many :jokes, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :comentes, dependent: :destroy
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
