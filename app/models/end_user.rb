@@ -1,6 +1,5 @@
 class EndUser < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i(facebook twitter google_oauth2)
@@ -11,7 +10,7 @@ class EndUser < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
-  
+
   has_many :reposts, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :titles, dependent: :destroy

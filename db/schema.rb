@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_090041) do
+ActiveRecord::Schema.define(version: 2021_08_25_102748) do
+
   create_table "comentes", force: :cascade do |t|
     t.integer "post_id"
     t.integer "joke_id"
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_090041) do
     t.string "name"
     t.text "body"
     t.string "image_id"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
@@ -95,4 +96,5 @@ ActiveRecord::Schema.define(version: 2021_08_22_090041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end

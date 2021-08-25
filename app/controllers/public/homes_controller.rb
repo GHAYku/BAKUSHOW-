@@ -3,11 +3,11 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-   @feeds = Post.where(end_user_id:[current_user.id, * current_user.follower_ids]).order(created_at: :desc)
-
+   @posts = Post.where(end_user_id:[current_user.id, * current_user.follower_ids]).order(created_at: :desc)
   end
 
   def new
+   @posts = Post.order(created_at: :desc)
   end
 
   def popular

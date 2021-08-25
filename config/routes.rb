@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   devise_for :end_users, controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks' }
 
   namespace :public do
-　 resources :relationships, only:[:create, :destroy] do
-　  collection do
-　    get 'follows' => 'relationships#follower'
-　    get 'followers' => 'relationships#followed'
+    resources :relationships, only:[:create, :destroy] do
+     collection do
+      get 'follows' => 'relationships#follower'
+      get 'followers' => 'relationships#followed'
      end
     end
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
    end
 
 
-    root 'homes/top'
+    root 'homes#top'
     get 'homes/home'
     get 'homes/new'
     get 'homes/popular'
