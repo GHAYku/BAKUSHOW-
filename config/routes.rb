@@ -10,7 +10,7 @@ Rails.application.routes.draw do
      end
     end
 
-   resources :titles, only:[:index, :show, :new, :create] do
+   resources :titles, only:[:index, :show, :new, :create, :destroy] do
     collection do
      get 'confirmation'
     end

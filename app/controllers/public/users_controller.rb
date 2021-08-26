@@ -26,7 +26,8 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
-
+  
+  private
   def end_user_params
    params.require(:end_user).permit(:name, :body, :image_id, :email, :is_active)
   end
