@@ -1,2 +1,15 @@
-<h1>Public::Jokes#show</h1>
-<p>Find me in app/views/public/jokes/show.html.erb</p>
+ <div>
+  <label>投稿画像</label>
+  <%= attachment_image_tag @joke, :image, format: 'jpeg', fallback: "no_image.jpg", size: "160x160" %>
+ </div>
+ <div>
+  <label>投稿内容</label>
+  <%= @joke.body%>
+ </div>
+ <div>
+  <label>ジャンル</label>
+  <%= @joke.genre.name%>
+ </div>
+  <%= link_to edit_public_joke_path(@joke.id) do%>
+   <p>編集する</p>
+  <% end%>

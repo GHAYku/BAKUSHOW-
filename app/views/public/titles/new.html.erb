@@ -1,2 +1,15 @@
-<h1>Public::Titles#new</h1>
-<p>Find me in app/views/public/titles/new.html.erb</p>
+<%= form_with model: @title, url: public_titles_path, local:true do |f| %>
+ <div>
+  <label>お題画像</label>
+  <%= f.attachment_field :image%>
+ </div>
+ <div>
+  <label>お題説明</label>
+  <%= f.text_field :body, placeholder: "お題説明"%>
+ </div>
+ <div>
+  <label>ジャンル</label>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
+ </div>
+ <%= f.submit "お題を投稿する", class: "btn btn-success offset-lg-2" %>
+<% end %>

@@ -69,3 +69,6 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'config'
 gem "omniauth-rails_csrf_protection"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'pry-rails'

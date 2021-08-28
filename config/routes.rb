@@ -10,7 +10,7 @@ Rails.application.routes.draw do
      end
     end
 
-   resources :titles, only:[:index, :show, :new, :create, :destroy] do
+   resources :titles, only:[:index, :show, :new, :create] do
     collection do
      get 'confirmation'
     end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
    end
 
-   resources :jokes
+   resources :jokes,expect:[:new]
    resources :posts
 
    resources :users, only:[:edit, :update, :show] do

@@ -9,6 +9,8 @@ class Public::TitlesController < ApplicationController
 
   def show
    @title = Title.find(params[:id])
+   @jokes = @title.jokes.order(created_at: :desc)
+   @joke = Joke.new
   end
 
   def create
@@ -25,16 +27,8 @@ class Public::TitlesController < ApplicationController
   def confirmation
   end
 
-  def destroy
-   title = Title.find(params[:id])
-    if title.destroy
-      flash[:notice]="このお題を削除しました"
-      redirect_to public_titles_path
-    end
-  end
-  
   private
   def title_params
-   params.require(:title).permit(:genre_id, :body, :image_id)
+   params.require(:title).permit(:genre_id, :body, :image)
   end
 end

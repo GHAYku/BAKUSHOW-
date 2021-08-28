@@ -2,16 +2,16 @@ class Public::PostsController < ApplicationController
 
   def index
    @user = current_end_user
-   @posts = @user.post.order(created_at: :desc)
+   @posts = @user.posts.order(created_at: :desc)
    case params[:another_user]
    when 'seatch'
      @user = EndUser.find(params[:id])
-     @posts = @user.post.order(created_at: :desc)
+     @posts = @user.posts.order(created_at: :desc)
    end
   end
 
   def edit
-   @post = current_end_user.post.find([params[:id]])
+   @post = current_end_user.posts.find(params[:id])
   end
 
   def new
@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-   @post = Post.find([params[:id]])
+   @post = Post.find(params[:id])
   end
 
   def create
@@ -34,7 +34,7 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-   @post = current_end_user.post.find([params[:id]])
+   @post = current_end_user.posts.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "この投稿内容を編集しました"
       redirect_to public_posts_path
@@ -44,15 +44,15 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-   @post = current_end_user.post.find([params[:id]])
+   @post = current_end_user.posts.find(params[:id])
    if @post.destroy
      flash[:notice]="この投稿を削除しました"
-     redirect_to public_titles_path
+     redirect_to public_posts_path
    end
   end
 
   private
   def post_params
-   params.require(:post).permit(:genre_id, :body, :image_id)
+   params.require(:post).permit(:genre_id, :body, :image)
   end
 end

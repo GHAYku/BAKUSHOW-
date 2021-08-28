@@ -11,6 +11,8 @@ class EndUser < ApplicationRecord
     end
   end
 
+  attachment :image
+
   has_many :reposts, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :titles, dependent: :destroy

@@ -1,2 +1,40 @@
-<h1>Public::Titles#show</h1>
-<p>Find me in app/views/public/titles/show.html.erb</p>
+ <div>
+  <label>お題画像</label>
+  <%= attachment_image_tag @title, :image, format: 'jpeg', fallback: "no_image.jpg", size: "160x160" %>
+ </div>
+ <div>
+  <label>お題説明</label>
+  <%= @title.body%>
+ </div>
+ <div>
+  <label>ジャンル</label>
+  <%= @title.body%>
+ </div>
+
+ <% @jokes.each do |joke| %>
+  <div>
+  <%= link_to public_joke_path(joke.id) do%>
+   <%= attachment_image_tag joke, :image %>
+  <% end%>
+   <p>ユーザーネーム：<%= joke.end_user.name %></p>
+   <p><%= joke.body %></p>
+   <p>投稿日時：<%= joke.created_at.strftime('%Y/%m/%d') %></p>
+  </div>
+<% end %>
+
+<%= form_with model: @joke, url: public_jokes_path, local:true do |f| %>
+ <div>
+  <label>投稿画像</label>
+  <%= f.attachment_field :image%>
+ </div>
+ <div>
+  <label>投稿内容</label>
+  <%= f.text_field :body, placeholder: "投稿内容"%>
+ </div>
+ <div>
+  <label>ジャンル</label>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
+ </div>
+ <%= f.hidden_field :title_id, :value => @title.id%>
+ <%= f.submit "投稿する"%>
+<% end %>

@@ -3,7 +3,7 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-   @posts = Post.where(end_user_id:[current_user.id, * current_user.follower_ids]).order(created_at: :desc)
+   @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.follower_ids]).order(created_at: :desc)
   end
 
   def new

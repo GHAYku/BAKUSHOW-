@@ -1,2 +1,17 @@
-<h1>Public::Jokes#edit</h1>
-<p>Find me in app/views/public/jokes/edit.html.erb</p>
+<%= form_with model: @joke, url: public_joke_path(@joke.id), local:true do |f| %>
+ <div>
+  <label>画像</label>
+  <%= f.attachment_field :image%>
+ </div>
+ <div>
+  <label>ボケ</label>
+  <%= f.text_field :body, placeholder: "ボケ"%>
+ </div>
+ <div>
+  <label>ジャンル</label>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
+ </div>
+ <%= f.submit "編集する"%>
+ <%= link_to "削除する", public_joke_path(@joke.id), method: :DELETE%>
+<% end %>
+
