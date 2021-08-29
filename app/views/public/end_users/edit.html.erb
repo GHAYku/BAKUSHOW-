@@ -1,2 +1,22 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<%= form_with model: @end_user, url: public_end_user_path(@end_user.id), local:true do |f| %>
+ <div>
+  <label>プロフィール画像</label>
+  <%= f.attachment_field :image%>
+ </div>
+ <div>
+  <label>ニックネーム</label>
+  <%= f.text_field :name, placeholder: "名前"%>
+ </div>
+ <div>
+ <div>
+  <label>プロフィール</label>
+  <%= f.text_field :body, placeholder: "自己紹介"%>
+ </div>
+ <div>
+  <label>メールアドレス</label>
+  <%= f.email_field :email, placeholder: "メール"%>
+ </div>
+ <%= f.submit "編集する"%>
+ <%= link_to "退会する", withdrawal_public_end_users_path, method: :PATCH, data: { confirm: "本当に退会してもよろしいですか？" }%>
+<% end %>
+

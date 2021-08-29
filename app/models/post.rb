@@ -5,4 +5,6 @@ class Post < ApplicationRecord
  has_many :reposts, dependent: :destroy
  has_many :reviews, dependent: :destroy
  has_many :comentes, dependent: :destroy
+
+ validates :body, presence: true
 end

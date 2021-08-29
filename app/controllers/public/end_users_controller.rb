@@ -14,7 +14,7 @@ class Public::EndUsersController < ApplicationController
    @end_user = current_end_user
     if @end_user.update(end_user_params)
       flash[:notice] = "#{@end_user.name}さんの会員情報を編集しました"
-      redirect_to edit_public_user_path
+      redirect_to edit_public_end_user_path
     else
       render :edit
     end
