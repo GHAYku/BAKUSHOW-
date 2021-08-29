@@ -17,7 +17,10 @@ Rails.application.routes.draw do
    end
 
    resources :jokes,expect:[:new]
-   resources :posts
+   resources :posts do
+    resources :reposts, only: [:create, :destroy]
+    resources :comments, only: [:create]
+   end
 
    resources :end_users, only:[:edit, :update, :show] do
     collection do

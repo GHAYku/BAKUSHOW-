@@ -13,3 +13,17 @@
   <%= link_to edit_public_post_path(@post.id) do%>
    <p>編集する</p>
   <% end%>
+ <div>
+  <p>コメント一覧</p>
+  <% @comentes.each do |comente| %>
+    <div>
+     <%= comente.body %>
+    </div>
+  <% end %>
+  <% if end_user_signed_in? %>
+    <%= form_with(model: @comente, url: public_post_comments_path(@post.id), local: true) do |f| %>
+      <%= f.text_field :body%>
+     <%= f.submit "コメントをする"%>
+    <% end %>
+  <% end %>
+ </div>
