@@ -1,5 +1,6 @@
-class Public::UsersController < ApplicationController
+class Public::EndUsersController < ApplicationController
   def show
+   @end_user = EndUser.find(params[:id])
   end
 
   def edit

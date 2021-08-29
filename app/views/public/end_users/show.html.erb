@@ -1,0 +1,13 @@
+
+ <div>
+  <label>プロフィール画像</label>
+  <%= attachment_image_tag @end_user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "160x160" %>
+  <%= render "public/relationships/follow_button", end_user: @end_user %>
+ <div>
+  <label>ニックネーム</label>
+  <%= @end_user.name%>
+ </div>
+ <div>
+  <label>自己紹介</label>
+  <%= @end_user.body%>
+ </div>

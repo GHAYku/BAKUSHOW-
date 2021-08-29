@@ -3,12 +3,6 @@ Rails.application.routes.draw do
   devise_for :end_users, controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks' }
 
   namespace :public do
-    resources :relationships, only:[:create, :destroy] do
-     collection do
-      get 'follows' => 'relationships#follower'
-      get 'followers' => 'relationships#followed'
-     end
-    end
 
    resources :titles, only:[:index, :show, :new, :create] do
     collection do
@@ -25,10 +19,13 @@ Rails.application.routes.draw do
    resources :jokes,expect:[:new]
    resources :posts
 
-   resources :users, only:[:edit, :update, :show] do
+   resources :end_users, only:[:edit, :update, :show] do
     collection do
      get 'favorite'
     end
+    resource :relationships, only: [:create, :destroy]
+     get 'followings' => 'relationships#followings', as: 'followings'
+     get 'followers' => 'relationships#followers', as: 'followers'
    end
 
 
