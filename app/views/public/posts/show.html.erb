@@ -15,15 +15,37 @@
   <% end%>
  <div>
   <p>コメント一覧</p>
-  <% @comentes.each do |comente| %>
+  <% @comments.each do |comment| %>
     <div>
-     <%= comente.body %>
+     <%= comment.comment %>
     </div>
+    <div class="comment-rate" data-score="<%= comment.rate %>"></div>
   <% end %>
   <% if end_user_signed_in? %>
-    <%= form_with(model: @comente, url: public_post_comments_path(@post.id), local: true) do |f| %>
-      <%= f.text_field :body%>
-     <%= f.submit "コメントをする"%>
+    <%= form_with(model: @comment, url: public_post_comments_path(@post.id), local: true) do |f| %>
+      <%= f.text_field :comment%>
+       <div id="rate_stars">
+        <label>評価</label>
+       </div>
+      <div class="actions">
+       <%= f.submit "コメントをする"%>
+      </div>
     <% end %>
   <% end %>
- </div>
+<script>
+  $('#rate_stars').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'comment[rate]'
+  });
+</script>
+<script>
+  $('.comment-rate').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

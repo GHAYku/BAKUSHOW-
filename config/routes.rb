@@ -19,7 +19,7 @@ Rails.application.routes.draw do
    resources :jokes,expect:[:new]
    resources :posts do
     resources :reposts, only: [:create, :destroy]
-    resources :comments, only: [:create]
+    resources :comments, only:[:create,:destroy]
    end
 
    resources :end_users, only:[:edit, :update, :show] do
