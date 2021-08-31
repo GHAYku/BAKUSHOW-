@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
       redirect_to request.referer
     else
       flash[:success] = "コメントできませんでした"
-      redirect_to request.referer
+      render :show
     end
   end
 
@@ -25,6 +25,6 @@ class Public::CommentsController < ApplicationController
 
   private
   def comment_params
-   params.require(:comment).permit(:comment, :rate)
+   params.require(:comment).permit(:comment)
   end
 end

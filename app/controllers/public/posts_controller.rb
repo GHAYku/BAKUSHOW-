@@ -22,6 +22,9 @@ class Public::PostsController < ApplicationController
    @post = Post.find(params[:id])
    @comments = @post.comments
    @comment = Comment.new
+   @review = Review.new
+   @reviews = @post.reviews
+   #@review_count = Review.where(post_id: params[:post_id]).where(end_user_id: current_end_user.id).count 
   end
 
   def create
@@ -29,7 +32,7 @@ class Public::PostsController < ApplicationController
    @post.end_user_id = current_end_user.id
    if @post.save
      flash[:notice] = "投稿しました！"
-     redirect_to public_posts_path
+     redirect_to request.referer
    else
      render :new
    end
@@ -55,6 +58,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-   params.require(:post).permit(:genre_id, :body, :image)
+   params.require(:post).permit(:title_id, :genre_id, :body, :image)
   end
 end

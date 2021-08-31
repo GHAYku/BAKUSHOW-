@@ -1,4 +1,10 @@
 <% @posts.each do |post| %>
+ <% if post.title_id.present? %>
+  <div>
+   <label>お題</label>
+   <%= post.title.body%>
+  </div>
+ <% end%>
 <div>
   <%= attachment_image_tag post, :image %>
   <p>ユーザーネーム：<%= post.end_user.name %></p>

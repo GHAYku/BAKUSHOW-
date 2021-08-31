@@ -9,8 +9,8 @@ class Public::TitlesController < ApplicationController
 
   def show
    @title = Title.find(params[:id])
-   @jokes = @title.jokes.order(created_at: :desc)
-   @joke = Joke.new
+   @posts = @title.posts.order(created_at: :desc)
+   @post = Post.new
   end
 
   def create

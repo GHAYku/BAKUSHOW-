@@ -18,13 +18,15 @@ Rails.application.routes.draw do
 
    resources :jokes,expect:[:new]
    resources :posts do
-    resources :reposts, only: [:create, :destroy]
-    resources :comments, only:[:create,:destroy]
+    resource :reposts, only: [:create, :destroy]
+    resources :comments, only:[:create,:destroy,:update]
+    resources :reviews, only:[:create,:update,:edit]
    end
 
    resources :end_users, only:[:edit, :update, :show] do
     collection do
      get 'favorite'
+     patch 'withdrawal'
     end
     resource :relationships, only: [:create, :destroy]
      get 'followings' => 'relationships#followings', as: 'followings'

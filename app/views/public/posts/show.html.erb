@@ -1,3 +1,9 @@
+ <% if @post.title_id.present? %>
+  <div>
+   <label>お題</label>
+   <%= @post.title.body%>
+  </div>
+ <% end%>
  <div>
   <label>投稿画像</label>
   <%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "160x160" %>
@@ -19,14 +25,19 @@
     <div>
      <%= comment.comment %>
     </div>
-    <div class="comment-rate" data-score="<%= comment.rate %>"></div>
+  <% end %>
+  <% @reviews.each do |review| %>
+   <div class="post-rate" data-score="<%= review.rate %>"></div>
   <% end %>
   <% if end_user_signed_in? %>
-    <%= form_with(model: @comment, url: public_post_comments_path(@post.id), local: true) do |f| %>
-      <%= f.text_field :comment%>
+    <%= form_with(model: @review, url: public_post_reviews_path(@post.id), local: true) do |f| %>
        <div id="rate_stars">
         <label>評価</label>
        </div>
+     <%= f.submit "評価をする"%>
+    <% end %>
+    <%= form_with(model: @comment, url: public_post_comments_path(@post.id), local: true) do |f| %>
+      <%= f.text_field :comment%>
       <div class="actions">
        <%= f.submit "コメントをする"%>
       </div>
@@ -37,11 +48,9 @@
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    scoreName: 'comment[rate]'
+    scoreName: 'review[rate]'
   });
-</script>
-<script>
-  $('.comment-rate').raty({
+  $('.post-rate').raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');

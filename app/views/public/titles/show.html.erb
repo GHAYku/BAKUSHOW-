@@ -11,18 +11,18 @@
   <%= @title.body%>
  </div>
 
- <% @jokes.each do |joke| %>
+ <% @posts.each do |post| %>
   <div>
-  <%= link_to public_joke_path(joke.id) do%>
-   <%= attachment_image_tag joke, :image %>
+  <%= link_to public_post_path(post.id) do%>
+   <%= attachment_image_tag post, :image %>
   <% end%>
-   <p>ユーザーネーム：<%= joke.end_user.name %></p>
-   <p><%= joke.body %></p>
-   <p>投稿日時：<%= joke.created_at.strftime('%Y/%m/%d') %></p>
+   <p>ユーザーネーム：<%= post.end_user.name %></p>
+   <p><%= post.body %></p>
+   <p>投稿日時：<%= post.created_at.strftime('%Y/%m/%d') %></p>
   </div>
 <% end %>
 
-<%= form_with model: @joke, url: public_jokes_path, local:true do |f| %>
+<%= form_with model: @post, url: public_posts_path, local:true do |f| %>
  <div>
   <label>投稿画像</label>
   <%= f.attachment_field :image%>

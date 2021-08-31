@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_000227) do
   create_table "comments", force: :cascade do |t|
     t.integer "post_id"
     t.integer "end_user_id"
-    t.float "rate", null: false
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_000227) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "genre_id"
+    t.integer "title_id"
     t.integer "end_user_id"
     t.string "image_id"
     t.text "body"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_000227) do
     t.integer "post_id"
     t.integer "joke_id"
     t.integer "end_user_id"
-    t.float "score"
+    t.float "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
