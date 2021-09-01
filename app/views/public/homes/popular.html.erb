@@ -1,2 +1,5 @@
-<h1>Public::Homes#popular</h1>
-<p>Find me in app/views/public/homes/popular.html.erb</p>
+  <% @posts.each do |post| %>
+    <div>
+     <%= link_to post.body, public_post_path(post.id)%>
+    </div>
+  <% end %>

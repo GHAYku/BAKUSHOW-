@@ -10,11 +10,10 @@ Rails.application.routes.draw do
     end
    end
 
-   resource :searchs, only:[:new] do
-    collection do
-     get 'search'
-    end
-   end
+
+     get 'searchs/search'
+     get 'searchs/post_search'
+     get 'searchs/title_search'
 
    resources :jokes,expect:[:new]
    resources :posts do

@@ -1,2 +1,27 @@
-<h1>Public::Searchs#search</h1>
-<p>Find me in app/views/public/searchs/search.html.erb</p>
+<h1>検索機能の実装</h1>
+<%= form_with(url: public_searchs_post_search_path, method: :get, local: true)do |form| %>
+  <%= form.text_field :body %>
+  <%= form.submit :search %>
+<% end %>
+
+<h1>お題検索機能の実装</h1>
+<%= form_with(url: public_searchs_title_search_path, method: :get, local: true)do |form| %>
+  <%= form.text_field :body %>
+  <%= form.submit :search %>
+<% end %>
+
+ <% @genres.each do |genre| %>
+ <tr>
+  <td>
+     <%= link_to genre.name ,public_searchs_post_search_path(order: 'seatch',id: genre.id) %>
+  </td>
+ </tr>
+ <% end %>
+
+ <% @genres.each do |genre| %>
+ <tr>
+  <td>
+     <%= link_to genre.name ,public_searchs_title_search_path(order: 'seatch',id: genre.id) %>
+  </td>
+ </tr>
+ <% end %>

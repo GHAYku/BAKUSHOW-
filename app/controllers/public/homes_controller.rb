@@ -11,6 +11,7 @@ class Public::HomesController < ApplicationController
   end
 
   def popular
+   @posts = Post.find(Review.group(:post_id).order('count(rate) desc').limit(3).pluck(:post_id))
   end
 
   def about
