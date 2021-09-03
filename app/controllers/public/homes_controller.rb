@@ -1,5 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
+   @titles = Title.order(created_at: :desc)
   end
 
   def home
@@ -11,7 +12,7 @@ class Public::HomesController < ApplicationController
   end
 
   def popular
-   @posts = Post.find(Review.group(:post_id).order('count(rate) desc').limit(3).pluck(:post_id))
+   @posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
   end
 
   def about

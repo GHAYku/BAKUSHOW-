@@ -10,18 +10,76 @@
   </head>
 
   <body>
-    <% if end_user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-      </li>
+  <% if end_user_signed_in? %>
+  <header>
+   <div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+     <label for="menu-btn-check" class="menu-btn"><span></span></label>
+      <div class="menu-content">
+       <ul>
+        <li>
+         <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+        </li>
+        <li>
+         <%= link_to "新規会員登録",new_end_user_registration_path%>
+        </li>
+        <li>
+         <%= link_to "ログイン",new_end_user_session_path%>
+        </li>
+        <li>
+         <%= link_to "Twitterでログイン", end_user_twitter_omniauth_authorize_path, method: :post%>
+        </li>
+        <li>
+         <%= link_to "Googleでログイン", end_user_google_oauth2_omniauth_authorize_path, method: :post%>
+        </li>
+        <li>
+         <%= link_to "Fecebookでログイン", end_user_facebook_omniauth_authorize_path, method: :post%>
+        </li>
+       </ul>
+      </div>
+      <div class="logo-area">
+       <a href="/">
+        <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
+       </a>
+      </div>
+   </div>
+  </header>   
     <% else %>
-      <li>
-        <%= link_to "新規登録", new_end_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_end_user_session_path %>
-      </li>
+  <header>
+   <div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+     <label for="menu-btn-check" class="menu-btn"><span></span></label>
+      <div class="menu-content">
+       <ul>
+        <li>
+         <%= link_to "新規会員登録",new_end_user_registration_path%>
+        </li>
+        <li>
+         <%= link_to "ログイン",new_end_user_session_path%>
+        </li>
+        <li>
+         <%= link_to "Twitterでログイン", end_user_twitter_omniauth_authorize_path, method: :post%>
+        </li>
+        <li>
+         <%= link_to "Googleでログイン", end_user_google_oauth2_omniauth_authorize_path, method: :post%>
+        </li>
+        <li>
+         <%= link_to "Fecebookでログイン", end_user_facebook_omniauth_authorize_path, method: :post%>
+        </li>
+       </ul>
+      </div>
+      <div class="logo-area">
+       <a href="/">
+        <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
+       </a>
+      </div>
+   </div>
+  </header>
+
+
     <% end %>
     <%= yield %>
   </body>
 </html>
+
+  

@@ -1,2 +1,14 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+ <div class="top_image">
+  <a href="/">
+  </a>
+ </div>
+ <% @titles.each do |titles| %>
+  <div class="top_title">
+       <%= link_to public_title_path(titles.id) do %>
+        <%=attachment_image_tag titles, :image, :fill, 200, 200, fallback: "no_image.jpg", size: "250x250" %>
+       <% end%>
+      </div>
+      <h5 class="text pt-5 text-center"><%= titles.body %></h5>
+   <% end %>
+ </div>
