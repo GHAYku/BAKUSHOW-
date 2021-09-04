@@ -1,17 +1,199 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.top_image{
- padding: 50px;
+
+
+.top{
  width: 100%;
  display: flex;
  justify-content: center;
- background-image: url(images/top_image.jpg);
- background-size: auto;
 }
 
-.top_title{
+.top_contenr {
+ padding: 60px 0;
+ background: #FFF6D1;
+ height: auto;
  width: 100%;
+}
+
+.container {
+ max-width: 1000px;
+ margin: 0 auto;
  display: flex;
- justify-content: center;
+ justify-content: space-between;
+ flex-wrap: wrap;
+}
+
+.top_about{
+ background: #FFD100;
+ padding: 30px 25px;
+ border: outset 8px #FFD100;
+ border-radius: 10px;
+ display: block;
+ width: 450px;
+ box-sizing: border-box;
+ box-shadow: 6px 6px 6px;
+}
+
+.log{
+ text-align: center;
+ margin-bottom: 30px;
+ margin-left: 45px;
+}
+
+.top_title {
+ text-align: center;
+ color: #252625;
+ margin-bottom: 20px;
+ margin-left: 10px;
+ font-family: kaisotai;
+ font-size: 40px;
+}
+
+.top_list{
+font-family: "Sawarabi Mincho";
+color: #252625;
+margin-bottom: 10px;
+text-align: center;
+margin-left: 10px;
+font-weight: bold;
+}
+
+
+.other_login h1 {
+ text-align: center;
+ padding-bottom: 10px;
+ margin-bottom: 10px;
+ border-bottom: solid 2px #353435;
+ font-family: kaisotai;
+ font-size: 30px;
+}
+
+.btn-BAKUSHOW {
+ color: #000000;
+ border-radius: 7px;
+ display: inline-block;
+ height: 50px;
+ width: 380px;
+ text-align: center;
+ font-size: 25px;
+ line-height: 50px;
+ background: #FFD100;
+ overflow: hidden;
+}
+
+.btn-BAKUSHOW span {
+ display: inline-block;
+ transition: .5s;
+}
+
+.btn-BAKUSHOW:hover span {
+ -webkit-transform: rotateX(360deg);
+ transform: rotateX(360deg);
+}
+
+.btn-twitter {
+ color: #FFF;
+ border-radius: 7px;
+ display: inline-block;
+ height: 50px;
+ width: 380px;
+ text-align: center;
+ font-size: 25px;
+ line-height: 50px;
+ background: #1da1f3;
+ overflow: hidden;
+}
+
+.fa-twitter {
+ text-shadow: 2px 2px 0px #4287d6;
+ font-size: 30px;
+}
+
+.btn-twitter span {
+ display: inline-block;
+ transition: .5s;
+}
+
+.btn-twitter:hover span {
+ -webkit-transform: rotateX(360deg);
+ transform: rotateX(360deg);
+}
+
+.btn-facebook {
+ color: #FFF;
+ border-radius: 7px;
+ display: inline-block;
+ height: 50px;
+ width: 380px;
+ text-align: center;
+ font-size: 25px;
+ line-height: 50px;
+ background: #4966a0;
+ overflow: hidden;
+}
+
+.fa-facebook {
+ text-shadow: 2px 2px 1px #224282;
+ font-size: 30px;
+}
+
+.btn-facebook span {
+ display: inline-block;
+ transition: .5s;
+}
+
+.btn-facebook:hover span {
+ -webkit-transform: rotateX(360deg);
+ transform: rotateX(360deg);
+}
+
+.btn-google {
+  color: #FFF;
+  border-radius: 7px;
+  display: inline-block;
+  height: 50px;
+  width: 380px;
+  text-align: center;
+  font-size: 25px;
+  line-height: 50px;
+  background: #AD362C;
+  overflow: hidden;
+}
+
+.fa-google-plus {
+ text-shadow: 2px 2px 1px #000000;
+ font-size: 30px;
+}
+
+.btn-google span {
+ display: inline-block;
+ transition: .5s;
+}
+
+.btn-google:hover span {
+ -webkit-transform: rotateX(360deg);
+ transform: rotateX(360deg);
+}
+
+.top_login {
+ background-color: #FFF;
+ padding: 30px 25px;
+ border: outset 8px #FFF;
+ border-radius: 10px;
+ display: block;
+ width: 450px;
+ box-sizing: border-box;
+ box-shadow: 6px 6px 6px;
+}
+
+.site_scription {
+ width: 100%;
+ margin-top: 50px;
+ text-align: center;
+ background: #fff;
+ padding: 20px;
+ box-sizing: border-box;
+ border-radius: 10px;
+ font-weight: bold;
 }

@@ -17,126 +17,51 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
   text-decoration: none;
 }
 
-header {
-background-color: #333333;
+@font-face {
+  font-family: "kaisotai";
+  src: font-url("Kaisotai_Next_UP_B.woff2") format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.container {
+.wf-sawarabimincho { font-family: "Sawarabi Mincho"; }
+.wf-hannari { font-family: "Hannari"; }
+
+header {
+background-color: #000000;
+}
+
+header .container {
  max-width: 1200px;
  margin: 0 auto;
+ height: 90px;
  box-sizing: border-box;
  padding-top: 9px;
- position: relative;
  display: flex;
- justify-content: center;
- flex-wrap: wrap;
+ justify-content: space-between;
+ flex-wrap: nowrap;
 }
 
-.logo-area {
- padding-top: 10px;
- padding-left: 10px;
-}
+.btns {
+ margin-top: 15px;
+ margin-left: 20px;
+ padding: 10px 10px 10px 10px;
 
-.menu-btn {
- position: fixed;
- top: 15px;
- right: 15px;
- display: flex;
- height: 60px;
- width: 60px;
- justify-content: center;
- align-items: center;
- z-index: 90;
-}
-.menu-btn span,
-.menu-btn span:before,
-.menu-btn span:after {
- content: '';
+ background-color: #000000;
+ font-family: kaisotai;
  display: block;
- height: 3px;
- width: 25px;
- border-radius: 3px;
- background-color: #ffffff;
- position: absolute;
- transition: all 300ms 0s ease;
-}
-.menu-btn span:before {
- bottom: 8px;
-}
-.menu-btn span:after {
- top: 8px;
-}
-
-#menu-btn-check {
- display: none;
-}
-
-#menu-btn-check:checked ~ .menu-btn span {
-background-color: rgba(255, 255, 255, 0);
-transition: all 300ms 0s ease;
-}
-
-#menu-btn-check:checked ~ .menu-btn span::before {
- bottom: 0;
- transform: rotate(45deg);
- background-color: #ccc;
- transition: all 300ms 0s ease;
-}
-
-#menu-btn-check:checked ~ .menu-btn span::after {
- top: 0;
- transform: rotate(-45deg);
- background-color: #ccc;
- transition: all 300ms 0s ease;
-}
-
-.menu-content {
- width: 100%;
- height: 50%;
- position: fixed;
- top: 0;
- top: -100%;
- z-index: 80;
- background-color: #ffffff; opacity: .9;
- color: #222;
- transition: all 500ms 0s ease;
-}
-
-#menu-btn-check:checked ~ .menu-content {
- top: 0;
-}
-
-.menu-content ul {
- padding: 70px 10px 0;
-}
-.menu-content ul li {
- border-bottom: solid 1px #ccc;
- list-style: none;
-}
-.menu-content ul li a {
- display: block;
- width: 100%;
- font-size: 15px;
- box-sizing: border-box;
+ border-radius: 5px;
  text-decoration: none;
- padding: 9px 15px 10px 0;
- position: relative;
-}
-.menu-content ul li a::before {
- content: "";
- width: 7px;
- height: 7px;
- border-top: solid 2px #ccc;
- border-right: solid 2px #ccc;
- transform: rotate(45deg);
- position: absolute;
- right: 11px;
- top: 16px;
+ transition: all 0.3s;
+ color: #ffff00;
 }
 
-.top_image{
-     background-image: url(img/top_image.jpg);
+.btns:hover {
+  background: #FDF93A;
+  color: #000000;
 }
+

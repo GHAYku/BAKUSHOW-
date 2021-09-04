@@ -1,14 +1,57 @@
-<div class="container">
- <div class="top_image">
-  <a href="/">
-  </a>
- </div>
- <% @titles.each do |titles| %>
-  <div class="top_title">
-       <%= link_to public_title_path(titles.id) do %>
-        <%=attachment_image_tag titles, :image, :fill, 200, 200, fallback: "no_image.jpg", size: "250x250" %>
-       <% end%>
-      </div>
-      <h5 class="text pt-5 text-center"><%= titles.body %></h5>
-   <% end %>
- </div>
+<main class="top_contenr">
+	<div class="container">
+		<section class="top_about">
+			<%= image_tag "BAKUSHOW!!_logo.png", size: "300x75",class: "log" %>
+			<h1 class="top_title">皆で笑いを共有しよう.</h1>
+			<ul>
+				<li class="top_list">面白いと思ったことを投稿しよう。</li>
+				<li class="top_list">大喜利にボケて更に面白くしよう。</li>
+				<li class="top_list">面白い人をフォローしよう。</li>
+				<li class="top_list">笑いを見せ合って輪を広げよう。</li>
+			</ul>
+		</section>
+		<section class="top_login">
+			<div class="other_login">
+				<h1>BAKUSHOW!!でログイン</h1>
+				<a href="#" class="btn-BAKUSHOW">
+				 <span>
+				  ログイン
+				 </span>
+				</a>
+				<h1>ソーシャルアカウントでログイン</h1>
+				<ul class="socialBtns">
+					<li class="google">
+					 <%= link_to end_user_google_oauth2_omniauth_authorize_path, method: :post do %>
+					  <a class="btn-google">
+             <i class="fab fa-google-plus"></i>
+             <span>Googleでログイン</span>
+            </a>
+           <% end%>
+          </li>
+					<li class="facebook">
+					 <a href=" /end_users/auth/facebook" class="btn-facebook">
+            <i class="fa fa-facebook"></i>
+            <span>Facebookでログイン</span>
+           </a>
+          </li>
+					<li class="twitter">
+					 <a href="#" class="btn-twitter">
+            <i class="fa fa-twitter"></i>
+            <span>Twitterでログイン</span>
+           </a>
+          </li>
+				</ul>
+			</div>
+		</section>
+  <section class="site_scription">
+   <p>
+    BAKUSHOW!!は誰でも自由にボケが投稿できる大喜利SNSです。<br>
+    まずはアカウント登録をして、面白い投稿をしているユーザーをフォローしましょう。<br>
+    タイムラインにはフォローしたユーザーの投稿が流れ<br>
+    あなたが笑った投稿は更にあなたのフォロワーのタイムラインにも流れるので<br>
+    あなたの投稿したボケがより多くの人の目に留まります。<br>
+    積極的にフォロー・投稿して笑いを繋げましょう。
+   </p>
+  </section>
+	</div>
+</main>
