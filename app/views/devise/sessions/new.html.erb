@@ -1,30 +1,24 @@
-<div class="form_container">
- <div class="form_group">
-  <h2 class="form_title">ログイン</h2>
+<main class="login">
+ <div class="form_container">
+  <div class="form_grop">
+  <h2>ログイン</h2>
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :"メールアドレス" %><br />
-     <div>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-     </divclass="field">
-    </div>
-    <div class="field">
-     <%= f.label :"パスワード" %><br />
-     <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
+	   <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form", placeholder: "メールアドレス"%>
+    <%= f.password_field :password, autocomplete: "current-password",class: "form", placeholder: "パスワード" %>
    <% if devise_mapping.rememberable? %>
     <div class="field">
      <%= f.check_box :remember_me %>
-     <%= f.label :remember_me %>
+     <%= f.label :remember_me, "ログイン情報を保存" %>
     </div>
    <% end %>
    <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン",class:"form_btn"%>
+    <p>※パスワードを忘れた方は<span><%= link_to " こちら", new_password_path(resource_name)%></span></p>
    </div>
   <% end %>
+  </div>
  </div>
-</div>
+</main>
 <%= link_to "Twitterでログイン", end_user_twitter_omniauth_authorize_path, method: :post%>
 <%= link_to "googleでログイン", end_user_google_oauth2_omniauth_authorize_path, method: :post%>
 <%= link_to "Fecebookでログイン", end_user_facebook_omniauth_authorize_path, method: :post%>
