@@ -22,6 +22,19 @@
     </ul>
    </div>
    <%= link_to "面白投稿をする", new_public_post_path, class:"post_btn"%>
+   <div class="mypage">
+    <ul>
+     <li>
+      <%= link_to "オモローした投稿",public_posts_path%>
+     </li>
+     <li>
+      <%= link_to "評価をした投稿",public_posts_path%>
+     </li>
+     <li>
+      <%= link_to "設定",edit_public_end_user_path(current_end_user.id)%>
+     </li>
+    </ul>
+   </div>
   </section>
 
 

@@ -8,7 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
+ * It is generally better to create a new file per style sracope.
  *
  *= require_tree .
  *= require_self
@@ -149,19 +149,19 @@ width: 25%;
 }
 
 .form_btn {
-  margin: 20px 20px;
-  padding: 10px 20px;
-  display: inline-block;
-  background-color: #FFF;
-  box-shadow: 0 6px 6px;
-  font-size: 114%;
-  line-height: 1;
-  position: relative;
-  cursor: pointer;
-  border-radius: 2px;
-  top: 0;
-  transition: .2s all;
-  font-family: kaisotai;
+ margin: 20px 20px;
+ padding: 10px 20px;
+ display: inline-block;
+ background-color: #FFF;
+ box-shadow: 0 6px 6px;
+ font-size: 114%;
+ line-height: 1;
+ position: relative;
+ cursor: pointer;
+ border-radius: 2px;
+ top: 0;
+ transition: .2s all;
+ font-family: kaisotai;
 }
 .form_btn:hover {
   border-radius: 2px;
