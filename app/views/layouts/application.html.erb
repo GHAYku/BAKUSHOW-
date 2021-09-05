@@ -12,25 +12,36 @@
   </head>
 
   <body>
+  <% if end_user_signed_in? %>
   <header>
    <div class="container">
-  <% if end_user_signed_in? %>
     <div class="logo-area">
      <a href="/">
       <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
      </a>
     </div>
+    <nav>
+			  <ul>
+				  <li><%= link_to "ホーム", public_homes_home_path, class:"nav-btns"%></li>
+				  <li><%= link_to "新着", public_homes_new_path, class:"nav-btns"%></li>
+				  <li><%= link_to "人気", public_homes_popular_path,class:"nav-btns"%></li>
+				  <li><%= link_to "検索", public_searchs_search_path,class:"nav-btns"%></li>
+			  </ul>
+		  </nav>
     <div class="logout">
      <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class:"btns"%>
     </div>
    </div>
   </header>
   <% else %>
+    <header>
+   <div class="container">
    <div class="logo-area">
     <a href="/">
      <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
     </a>
    </div>
+
    <div class="sin-up">
     <%= link_to "新規アカウント作成",new_end_user_registration_path, class:"btns"%>
    </div>

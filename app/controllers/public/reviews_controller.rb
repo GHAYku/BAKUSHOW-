@@ -5,11 +5,11 @@ class Public::ReviewsController < ApplicationController
     @review.end_user_id = current_end_user.id
     @review.post_id = post.id
      if @review.save!
-      flash[:success] = "オモローしました！"
+      flash[:success] = "この投稿を評価しました！"
       redirect_to request.referer
      else
-      flash[:success] = "オモローできませんでした。"
-      render :show
+      flash[:success] = "この投稿を評価できませんでした。"
+      redirect_to request.referer
      end
    end
 

@@ -5,6 +5,7 @@ class Public::HomesController < ApplicationController
 
   def home
    @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.follower_ids]).order(created_at: :desc)
+   @review = Review.new
   end
 
   def new
