@@ -1,0 +1,30 @@
+<section class="post_index">
+     <%= link_to (public_end_user_path(post.end_user.id)) do%>
+      <div class="account_date">
+       <%= attachment_image_tag post.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
+       <p class="account_name"><%= post.end_user.name %>さんの面白投稿</p>
+      </div>
+     <% end%>
+     <%= link_to (public_post_path(post.id)) do%>
+      <%= attachment_image_tag post, :image ,class: "post_index_image"%>
+       <div class="post_main">
+        <p class="post_body"><%= post.body %></p>
+     <% end%>
+         <% if end_user_signed_in? %>
+          <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
+           <div id="star-rate-<%= post.id %>"></div>
+            <script>
+             $('#star-rate-<%= post.id %>').raty({
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'review[rate]'
+             });
+            </script>
+            <%= f.submit "評価をする", class: "form_btn"%>
+          <% end %>
+         <% end%>
+         <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
+        <%= link_to "コメントする",public_post_path(post.id),class: "post_show"%>
+       </div>
+  </section>

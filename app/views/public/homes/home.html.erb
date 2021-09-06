@@ -41,7 +41,7 @@
   <div class="posts_main">
    <nav class="posts_select">
     <ul>
-     <li><%= link_to "面白投稿", public_homes_home_path, class:"select-btns"%></li>
+     <li><%= link_to "面白投稿", public_posts_path(order: "home") , class:"select-btns"%></li>
      <li><%= link_to "大喜利", public_homes_home_path, class:"select-btns"%></li>
     </ul>
    </nav>
@@ -49,10 +49,12 @@
     <% if post.title_id.present? %>
     <section class="post_titles">
      <div class="account_date_titles">
+      <%= link_to (public_end_user_path(post.end_user.id)) do%>
       <%= attachment_image_tag post.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
+      <% end %>
        <p class="account_name">
-        <%= link_to post.end_user.name,public_end_user_path(post.end_user.id)%>さんが大喜利、
-        <%= link_to post.title.body,public_title_path(post.title.id)%>にボケました。
+        <%= link_to post.end_user.name,public_end_user_path(post.end_user.id), class: "account_name_titles"%>さんが大喜利
+        (<%= link_to post.title.body,public_title_path(post.title.id), class: "account_name_titles"%>)にボケました。
        </p>
       </div>
      <%= link_to (public_post_path(post.id)) do%>
@@ -61,6 +63,7 @@
         <p class="post_body_titles"><%= post.body %></p>
       <% end%>
        <% if end_user_signed_in? %>
+       <% if post.reviews.where(end_user_id: current_end_user.id).blank? %>
         <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
          <div id="star-rate-<%= post.id %>"></div>
          <script>
@@ -70,19 +73,17 @@
            starHalf: "<%= asset_path('star-half.png') %>",
            scoreName: 'review[rate]'
            });
-          $('.post-rate').raty({
-           readOnly: true,
-           score: function() {
-           return $(this).attr('data-score');
-           },
-           path: '/assets/'
-           });
          </script>
+         <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
         <%= f.submit "評価をする", class: "form_btn_titles"%>
-      <% end%>
+       <% end%>
+      <% else%>
+      <!--質問する内容はここにコピペする-->
       <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-      <%= link_to "コメントする",public_post_path(post.id),class: "post_show_titles"%>
-     </div>
+       <% end%>
+
+         <%= link_to "コメントする",public_post_path(post.id),class: "post_show_titles"%>
+        </div>
     </section>
    <% end%>
     <% else%>
@@ -99,6 +100,7 @@
         <p class="post_body"><%= post.body %></p>
       <% end%>
        <% if end_user_signed_in? %>
+       <% if post.reviews.where(end_user_id: current_end_user.id).blank? %>
         <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
          <div id="star-rate-<%= post.id %>"></div>
          <script>
@@ -116,11 +118,18 @@
            path: '/assets/'
            });
          </script>
+         <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
         <%= f.submit "評価をする", class: "form_btn"%>
        <% end %>
-      <% end%>
+      <% else%>
+      <!--質問する内容はここにコピペする-->
       <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
+       <% end%>
+      <% end%>
       <%= link_to "コメントする",public_post_path(post.id),class: "post_show"%>
+      <% if post.end_user_id == current_end_user.id %>
+       <%= link_to "編集する",public_post_path(post.id),class: "post_show"%>
+      <% end%>
      </div>
     </section>
    <% end %>

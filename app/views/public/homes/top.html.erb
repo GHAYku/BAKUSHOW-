@@ -1,45 +1,43 @@
 <main class="top_contenr">
-	<div class="container">
-		<section class="top_about">
-			<%= image_tag "BAKUSHOW!!_logo.png", size: "300x75",class: "log" %>
-			<h1 class="top_title">皆で笑いを共有しよう.</h1>
-			<ul>
-				<li class="top_list">面白いと思ったことを投稿しよう。</li>
-				<li class="top_list">大喜利にボケて更に面白くしよう。</li>
-				<li class="top_list">面白い人をフォローしよう。</li>
-				<li class="top_list">笑いを見せ合って輪を広げよう。</li>
-			</ul>
-		</section>
-		<section class="top_login">
-			<div class="other_login">
-				<h1>BAKUSHOW!!でログイン</h1>
-				<a href="#" class="btn-BAKUSHOW">
-				 <span>
-				  ログイン
-				 </span>
-				</a>
+ <div class="container">
+  <section class="top_about">
+   <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75",class: "log" %>
+    <h1 class="top_title">皆で笑いを共有しよう.</h1>
+    <ul>
+	    <li class="top_list">面白いと思ったことを投稿しよう。</li>
+	    <li class="top_list">大喜利にボケて更に面白くしよう。</li>
+	    <li class="top_list">面白い人をフォローしよう。</li>
+	    <li class="top_list">笑いを見せ合って輪を広げよう。</li>
+	   </ul>
+  </section>
+  <section class="top_login">
+   <div class="other_login">
+    <h1>BAKUSHOW!!でログイン</h1>
+    <%= link_to(new_end_user_session_path, class: "btn-BAKUSHOW") do %>
+				  <span>
+				   ログイン
+				  </span>
+				<% end %>
 				<h1>ソーシャルアカウントでログイン</h1>
 				<ul class="socialBtns">
 					<li class="google">
-					 <%= link_to end_user_google_oauth2_omniauth_authorize_path, method: :post do %>
-					  <a class="btn-google">
-             <i class="fab fa-google-plus"></i>
-             <span>Googleでログイン</span>
-            </a>
-           <% end%>
-          </li>
+					 <%= link_to(end_user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-google") do %>
+        <i class="fab fa-google-plus"></i>
+        <span>Googleでログイン</span>
+      <% end %>
+     </li>
 					<li class="facebook">
-					 <a href=" /end_users/auth/facebook" class="btn-facebook">
-            <i class="fa fa-facebook"></i>
-            <span>Facebookでログイン</span>
-           </a>
-          </li>
+					 <%= link_to(end_user_facebook_omniauth_authorize_path, method: :post, class: "btn-facebook") do %>
+       <i class="fa fa-facebook"></i>
+       <span>Facebookでログイン</span>
+      <% end %>
+     </li>
 					<li class="twitter">
-					 <a href="#" class="btn-twitter">
-            <i class="fa fa-twitter"></i>
-            <span>Twitterでログイン</span>
-           </a>
-          </li>
+					 <%= link_to(end_user_twitter_omniauth_authorize_path, method: :post, class: "btn-twitter") do %>
+       <i class="fa fa-twitter"></i>
+       <span>Twitterでログイン</span>
+      <% end %>
+     </li>
 				</ul>
 			</div>
 		</section>

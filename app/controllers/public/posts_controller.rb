@@ -1,12 +1,16 @@
 class Public::PostsController < ApplicationController
 
   def index
-   @user = current_end_user
-   @posts = @user.posts.order(created_at: :desc)
-   case params[:another_user]
-   when 'seatch'
-     @user = EndUser.find(params[:id])
-     @posts = @user.posts.order(created_at: :desc)
+   case params[:order]
+   when "home"
+    @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.follower_ids]).order(created_at: :desc)
+    @review = Review.new
+   when "new"
+    @posts = Post.order(created_at: :desc)
+    @review = Review.new
+   when "popular"
+    @posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
+    @review = Review.new
    end
   end
 
@@ -24,7 +28,7 @@ class Public::PostsController < ApplicationController
    @comment = Comment.new
    @review = Review.new
    @reviews = @post.reviews
-   #@review_count = Review.where(post_id: params[:post_id]).where(end_user_id: current_end_user.id).count 
+   #@review_count = Review.where(post_id: params[:post_id]).where(end_user_id: current_end_user.id).count
   end
 
   def create
