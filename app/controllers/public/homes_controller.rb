@@ -4,8 +4,12 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-   @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.follower_ids]).order(created_at: :desc)
+   @post_users = Post.where(end_user_id:[current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc)
+   @reposts_post_ids = Repost.where(end_user_id:[current_end_user.following_ids]).pluck(:post_id)
+   @reposts = Post.where(id:@reposts_post_ids)
+   @posts = @post_users + @reposts.order(created_at: :desc)
    @review = Review.new
+   @repost = Repost.new
   end
 
   def new

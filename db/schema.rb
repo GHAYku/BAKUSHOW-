@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_000227) do
 
   create_table "reposts", force: :cascade do |t|
     t.integer "post_id"
-    t.integer "joke_id"
     t.integer "end_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

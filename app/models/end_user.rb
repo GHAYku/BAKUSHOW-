@@ -27,14 +27,14 @@ class EndUser < ApplicationRecord
   validates :name, presence: true
 
   def follow(end_user_id)
-    relationships.create(followed_id: end_user_id)
+   relationships.create(followed_id: end_user_id)
   end
+
   def unfollow(end_user_id)
-    relationships.find_by(followed_id: end_user_id).destroy
+   relationships.find_by(followed_id: end_user_id).destroy
   end
+
   def following?(end_user)
-    followings.include?(end_user)
+   followings.include?(end_user)
   end
-
-
 end
