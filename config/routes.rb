@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :end_users, controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks' }
 
-  namespace :public do
+ scope module: :public do
+  root 'homes#top'
+ end
 
+ namespace :public do
    resources :titles, only:[:index, :show, :new, :create] do
     collection do
      get 'confirmation'
@@ -33,7 +36,7 @@ Rails.application.routes.draw do
    end
 
 
-    root 'homes#top'
+    get 'homes/bakushow'
     get 'homes/home'
     get 'homes/new'
     get 'homes/popular'

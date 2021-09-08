@@ -328,11 +328,11 @@ section .form_btn {
  box-shadow: 0 3px 6px;
 }
 
-.form_btn_titles {
+.titles_form_btn, .edit_titles_form_btn {
  margin: 5px  5px 10px 5px;
  padding: 10px 20px;
  display: inline-block;
- background-color: #fafad2;
+ background-color: #ffffe0;
  box-shadow: 0 3px 6px;
  font-size: 114%;
  line-height: 1;
@@ -343,23 +343,45 @@ section .form_btn {
  transition: .2s all;
  font-family: kaisotai;
 }
-.form_btn_titles:hover {
+
+.edit_titles_form_btn {
+ box-shadow: 0 0 0;
+ border: none;
+}
+
+
+.titles_form_btn:hover, .edit_titles_form_btn:hover {
  border-radius: 2px;
  box-shadow: 2px 2px 6px;
  top: 0;
  transition: .2s all;
  opacity: .8;
 }
-.form_btn_titles:active {
+.titles_form_btn:active, .edit_titles_form_btn:active {
  border: none;
  box-shadow: 0 0px;
  top: 5px;
 }
 
+.edit_form_btn {
+ margin: 5px  5px 10px 5px;
+ padding: 10px 20px;
+ display: inline-block;
+ background-color: #FFF;
+ font-size: 114%;
+ line-height: 1;
+ position: relative;
+ border: 1px solid #FFF;
+ cursor: pointer;
+ top: 0;
+ transition: .2s all;
+ font-family: kaisotai;
+}
+
 .star {
  border: solid 1px #000000;
  width: 20%;
- margin: 0 auto;
+ margin: 10px auto;
 }
 
 .post_show, .post_show_titles {
