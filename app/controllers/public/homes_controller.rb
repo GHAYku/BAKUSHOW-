@@ -5,11 +5,7 @@ class Public::HomesController < ApplicationController
 
   def home
    @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc)
-   #@reposts_post_ids = Repost.where(end_user_id:[current_end_user.following_ids]).pluck(:post_id)
-   #@reposts = Post.where(id:@reposts_post_ids)
-   #@posts = @uesrs_posts + @reposts.order(created_at: :desc)
    @review = Review.new
-   @repost = Repost.new
   end
 
   def new
@@ -22,9 +18,9 @@ class Public::HomesController < ApplicationController
 
   def about
   end
-  
+
   def bakushow
-   @reviews_post_ids = Review.where(end_user_id:[current_end_user.following_ids]).pluck(:post_id)
-   @reviews = Post.where(id:@reposts_post_ids)
+   @reviews = Review.where(end_user_id:[current_end_user.following_ids]).order(created_at: :desc)
+   @review = Review.new
   end
 end

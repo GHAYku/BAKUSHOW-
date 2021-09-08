@@ -30,7 +30,7 @@
                        });
                      </script>
                    <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-                   <%= f.submit "評価", class: "form_btn_titles"%>
+                   <%= f.submit "評価", class: "edit_titles_form_btn"%>
                <% end%>
 
              <% else%>
@@ -48,7 +48,7 @@
                      });
                    </script>
                  <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-                 <%= f.submit "再評価", class: "edit_titles_form_btn"%>
+                 <%= f.submit "再評価", class: "titles_form_btn"%>
                <% end%>
              <% end%>
 
