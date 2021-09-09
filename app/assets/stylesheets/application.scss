@@ -31,15 +31,35 @@
 .wf-sawarabimincho { font-family: "Sawarabi Mincho"; }
 .wf-hannari { font-family: "Hannari"; }
 
-header {
-background-color: #000000;
+body {
+ height: 100%;
+ background-color: #fffaf0;
+ padding-top: 90px;
+}
+
+header{
+background: #000000;
+position: fixed;
+width: 100%;
+z-index: 10;
+box-sizing: border-box;
+top: 0;
+left: 0;
+}
+
+footer {
+width: 100%;
+text-align: center;
+background: #000000;
+position: absolute;
+bottom: 0;
 
 }
 
-header .container {
+header .container,footer .container {
  max-width: 1200px;
  margin: 0 auto;
- height: 90px;
+ height: 100%;
  box-sizing: border-box;
  padding-top: 9px;
  display: flex;
@@ -48,7 +68,14 @@ header .container {
  font-family: kaisotai;
 }
 
-.btns {
+footer .container{
+ width: 1200px;
+ padding-top: 0;
+ padding-bottom: 20px;
+}
+
+
+.btns, .gest-btns {
  margin-top: 15px;
  padding: 10px;
  background-color: #000000;
@@ -60,9 +87,16 @@ header .container {
  color: #ffff00;
 }
 
-.btns:hover {
-  background: #FDF93A;
-  color: #000000;
+.gest-login{
+ margin-right: auto;
+ margin-left: auto;
+ margin-bottom: 20px;
+ font-size: 30px;
+}
+
+.btns:hover, .gest-btns:hover {
+ background: #FDF93A;
+ color: #000000;
 }
 
 header nav {

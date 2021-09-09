@@ -1,3 +1,4 @@
+<div class="scroll-list jscroll">
  <% posts.each do |post| %>
    <% if post.title_id.present? %>
      <section class="post_titles">
@@ -12,7 +13,7 @@
        </div>
 
        <%= link_to (public_post_path(post.id)) do%>
-         <%= attachment_image_tag post, :image ,class: "post_index_image"%>
+         <%= attachment_image_tag post, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
            <div class="post_main">
              <p class="post_body_titles"><%= post.body %></p>
        <% end%>
@@ -30,7 +31,7 @@
                        });
                      </script>
                    <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-                   <%= f.submit "評価", class: "edit_titles_form_btn"%>
+                   <%= f.submit "評価", class: "titles_form_btn"%>
                <% end%>
 
              <% else%>
@@ -48,7 +49,7 @@
                      });
                    </script>
                  <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-                 <%= f.submit "再評価", class: "titles_form_btn"%>
+                 <%= f.submit "再評価", class: "edit_titles_form_btn"%>
                <% end%>
              <% end%>
 
@@ -71,7 +72,7 @@
         <% end%>
 
         <%= link_to (public_post_path(post.id)) do%>
-          <%= attachment_image_tag post, :image ,class: "post_index_image"%>
+          <%= attachment_image_tag post, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
             <div class="post_main">
               <p class="post_body"><%= post.body %></p>
         <% end%>
@@ -120,3 +121,5 @@
       </section>
     <% end %>
   <% end %>
+ <%= paginate @posts %>
+ </div>

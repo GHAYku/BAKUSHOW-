@@ -50,6 +50,18 @@
   </header>
     <% end %>
     <%= yield %>
+
+  <% if end_user_signed_in? %>
+  <% else%>
+   <footer>
+    <div class="container">
+     <div class="gest-login">
+      <%= link_to 'お試しでちょっと覗いてみる。', end_users_guest_sign_in_path, method: :post,class:"gest-btns" %>
+     </div>
+    </div>
+   </footer>
+  <% end%>
+
   </body>
 </html>
 

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :end_users, controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks' }
+  devise_for :end_users, controllers: {registrations: 'users/registrations',passwords: 'users/passwords'},
+                         controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks'}
+  devise_scope :end_user do
+    post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in'
+  end
 
  scope module: :public do
   root 'homes#top'
@@ -41,5 +45,7 @@ Rails.application.routes.draw do
     get 'homes/new'
     get 'homes/popular'
     get 'homes/about'
+    get 'homes/myposts'
+    get 'homes/myreviews'
   end
 end

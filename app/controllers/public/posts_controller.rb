@@ -3,13 +3,16 @@ class Public::PostsController < ApplicationController
   def index
    case params[:order]
    when "home"
-    @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.follower_ids]).order(created_at: :desc)
+    @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.follower_ids]).order(created_at: :desc).page(params[:page]).per(15)
     @review = Review.new
    when "new"
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(15)
     @review = Review.new
    when "popular"
-    @posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
+    @posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id)).page(params[:page]).per(15)
+    @review = Review.new
+   when "myposts"
+    @posts = current_end_user.posts.page(params[:page]).per(15)
     @review = Review.new
    end
   end

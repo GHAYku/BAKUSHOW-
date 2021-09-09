@@ -1,6 +1,10 @@
 class Public::TitlesController < ApplicationController
   def index
    @titles = Title.order(created_at: :desc)
+   case params[:order]
+   when "my_titles"
+    @titles = current_end_user.titles.page(params[:page]).per(15)
+   end
   end
 
   def new

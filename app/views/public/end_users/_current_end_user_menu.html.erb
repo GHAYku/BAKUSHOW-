@@ -1,36 +1,36 @@
 <section class="menu">
-  <div class="current_end_user">
-    <%= attachment_image_tag current_end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
-    <p class="current_end_user_name"><%= current_end_user.name %></p>
-   </div>
+  <div class="mypage">
+   <ul>
+    <li>
+     <%= attachment_image_tag current_end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
+     <p class="current_end_user_name"><%= current_end_user.name %></p>
+    </li>
+    <li>
+     <p>設定</p>
+     <%= link_to(edit_public_end_user_path(current_end_user.id),class: "mypage_setting") do %>
+      <%= image_tag "setting.png",class:"rotate"%>
+     <% end %>
+    </li>
+    <li>
+     フォロー<%= link_to current_end_user.followings.count,public_end_user_followings_path(current_end_user.id), class: "mypage_count"; %>
+    </li>
+    <li>
+     フォロワー<%= link_to current_end_user.followers.count,public_end_user_followers_path(current_end_user.id), class: "mypage_count"; %>
+    </li>
+   </ul>
+  </div>
    <div class="mypage">
     <ul>
      <li>
-      面白投稿<%= link_to current_end_user.posts.count,public_posts_path, class: "mypage_count"; %>
+      投稿<%= link_to current_end_user.posts.count,public_homes_myposts_path, class: "mypage_count"; %>
      </li>
      <li>
-      大喜利<%= link_to current_end_user.posts.count,public_posts_path, class: "mypage_count"; %>
+      お題<%= link_to current_end_user.titles.count,public_titles_path(order: "my_titles"), class: "mypage_count"; %>
      </li>
      <li>
-      フォロー<%= link_to current_end_user.followings.count,public_end_user_followings_path(current_end_user.id), class: "mypage_count"; %>
-     </li>
-     <li>
-      フォロワー<%= link_to current_end_user.followers.count,public_end_user_followers_path(current_end_user.id), class: "mypage_count"; %>
+      評価<%= link_to current_end_user.reviews.count,public_homes_myreviews_path, class: "mypage_count"; %>
      </li>
     </ul>
    </div>
    <%= link_to "面白投稿をする", new_public_post_path, class:"post_btn"%>
-   <div class="mypage">
-    <ul>
-     <li>
-      <%= link_to "オモローした投稿",public_posts_path%>
-     </li>
-     <li>
-      <%= link_to "評価をした投稿",public_posts_path%>
-     </li>
-     <li>
-      <%= link_to "設定",edit_public_end_user_path(current_end_user.id)%>
-     </li>
-    </ul>
-   </div>
 </section>
