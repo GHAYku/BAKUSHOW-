@@ -32,7 +32,7 @@
           <% end%>
         </li>
         <li><%= link_to "お題", public_end_users_titles_path(id: end_user.id), class:"select-btns"%></li>
-        <li><%= link_to "評価", public_end_users_reviews_index_path(id: end_user.id), class:"select-btns"%></li>
+        <li><%= link_to "投稿", public_end_user_path(end_user.id), class:"select-btns"%></li>
       </ul>
     </nav>
    </div>

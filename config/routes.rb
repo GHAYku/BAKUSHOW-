@@ -18,9 +18,9 @@ Rails.application.routes.draw do
    end
 
 
-     get 'searchs/search'
-     get 'searchs/post_search'
-     get 'searchs/title_search'
+   get 'searchs/search'
+   get 'searchs/post_search'
+   get 'searchs/title_search'
 
    resources :jokes,expect:[:new]
 
@@ -33,13 +33,14 @@ Rails.application.routes.draw do
     resources :reviews, only:[:create,:update,:edit]
    end
 
+   get 'end_users/posts_index'
+   get 'end_users/title_posts_index'
    get 'end_users/post_reviews_index'
    get 'end_users/title_reviews_index'
    get 'end_users/reviews_index'
    get 'end_users/titles'
    resources :end_users, only:[:edit, :update, :show] do
     collection do
-     get 'favorite'
      patch 'withdrawal'
     end
     resource :relationships, only: [:create, :destroy]

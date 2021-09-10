@@ -4,6 +4,18 @@ class Public::EndUsersController < ApplicationController
    @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
    @review = Review.new
   end
+  
+  def posts_index
+   @end_user = EndUser.find(params[:id])
+   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @review = Review.new
+  end
+  
+  def title_posts_index
+   @end_user = EndUser.find(params[:id])
+   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @review = Review.new
+  end
 
   def edit
    @end_user = current_end_user
@@ -31,9 +43,6 @@ class Public::EndUsersController < ApplicationController
   def titles
    @end_user = EndUser.find(params[:id])
    @titles = @end_user.titles.page(params[:page]).per(15)
-  end
-
-  def favorite
   end
 
   def update

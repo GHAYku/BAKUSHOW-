@@ -242,20 +242,19 @@ font-weight: bold;
  color: #000000;
 }
 
-.select-btns {
+.select-btns{
  background-color: #F4E511;
  text-align: center;
  display: block;
  padding: 10px;
  transition: all 0.3s;
  color: #000000;
- box-sizing: border-box;
  font-family: kaisotai;
  font-weight: bold;
  font-size: 20px;
 }
 
-.select-btns:hover,.posts_select ul li a:hover {
+.select-btns:hover,.posts_select ul li a:hover{
  background: #000000;
  color: #ffff00;
 }
@@ -289,16 +288,16 @@ font-weight: bold;
  background: #FFF;
  padding: 15px;
  margin: 30px auto;
- border: outset 8px #FFF;
+ border: outset 8px;
  border-radius: 10px;
  display: block;
  box-sizing: border-box;
- box-shadow: 2px 2px 2px;
+ box-shadow: 2px 4px 8px;
 }
 
 .post_titles {
  background: #ffffe0;
- border: outset 8px #ffffe0;
+ border: outset 8px #fafad2;
 }
 
 .post_index_image {
@@ -429,7 +428,7 @@ section .form_btn {
  margin-bottom: 20px;
  margin-left: 10px;
  box-shadow: 0 3px 6px;
- border: solid 8px #FFF;
+ border: solid 2px;
 }
 
 .mypage li{
@@ -463,6 +462,10 @@ section .form_btn {
  max-width: 300px;
  margin: 0 auto;
  margin-top: 30px;
+}
+
+.mypage_btn span {
+ border: solid 2px;
 }
 
 

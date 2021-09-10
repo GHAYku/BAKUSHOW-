@@ -1,5 +1,5 @@
 
-<% if current_end_user.id != @end_user.id %>
+<% if current_end_user.id != end_user.id %>
  <% if current_end_user.following?(end_user) %>
   <section>
    <%= link_to "✓フォロー", public_end_user_relationships_path(end_user.id), method: :delete, class:"unfollow_btn" %>
