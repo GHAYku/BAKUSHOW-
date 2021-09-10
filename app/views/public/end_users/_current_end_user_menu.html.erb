@@ -32,5 +32,15 @@
      </li>
     </ul>
    </div>
-   <%= link_to "面白投稿をする", new_public_post_path, class:"post_btn"%>
+   <section class="mypage_btn">
+    <%= link_to(new_public_post_path, class:"post_btn") do %>
+      <span><%= image_tag "icon.png", size: "40x40"%>　面白投稿をする</span>
+    <% end %>
+   </section>
+   <section class="mypage_btn">
+    <%= link_to(public_titles_path, class:"titles_post_btn") do %>
+      <span><%= image_tag "icon2.png", size: "40x40"%>　大喜利をする</span>
+    <% end %>
+   </section>
+
 </section>

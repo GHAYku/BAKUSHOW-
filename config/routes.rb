@@ -23,12 +23,20 @@ Rails.application.routes.draw do
      get 'searchs/title_search'
 
    resources :jokes,expect:[:new]
+
+   get 'posts/title_posts_index'
+   get 'posts/reviews_index'
+   get 'posts/title_reviews_index'
    resources :posts do
     resource :reposts, only: [:create, :destroy]
     resources :comments, only:[:create,:destroy,:update]
     resources :reviews, only:[:create,:update,:edit]
    end
 
+   get 'end_users/post_reviews_index'
+   get 'end_users/title_reviews_index'
+   get 'end_users/reviews_index'
+   get 'end_users/titles'
    resources :end_users, only:[:edit, :update, :show] do
     collection do
      get 'favorite'

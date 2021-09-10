@@ -4,8 +4,8 @@
   <div class="posts_main">
    <nav class="posts_select">
     <ul>
-     <li><%= link_to "面白投稿", public_posts_path(order: "home") , class:"select-btns"%></li>
-     <li><%= link_to "大喜利", public_homes_home_path, class:"select-btns"%></li>
+     <li><%= link_to "面白投稿", public_posts_reviews_index_path(order: "reviews") , class:"select-btns"%></li>
+     <li><%= link_to "大喜利", public_posts_title_reviews_index_path(order: "reviews"), class:"select-btns"%></li>
     </ul>
    </nav>
     <%= render "public/posts/reviews_index", {reviews: @reviews ,review: @review} %>

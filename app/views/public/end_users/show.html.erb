@@ -1,13 +1,50 @@
-
- <div>
-  <label>プロフィール画像</label>
-  <%= attachment_image_tag @end_user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "160x160" %>
-  <%= render "public/relationships/follow_button", end_user: @end_user %>
- <div>
-  <label>ニックネーム</label>
-  <%= @end_user.name%>
+<main class="posts">
+  <div class="posts_container">
+   <%= render "public/end_users/current_end_user_menu" %>
+  <div class="posts_main">
+　　<%= render "public/end_users/other_user", {end_user: @end_user} %>
+   <nav class="posts_select">
+    <ul>
+     <li><%= link_to "面白投稿", public_posts_path(order: "home") , class:"select-btns"%></li>
+     <li><%= link_to "大喜利", public_posts_title_posts_index_path(order: "home"), class:"select-btns"%></li>
+    </ul>
+   </nav>
+    <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
+  </div>
  </div>
- <div>
-  <label>自己紹介</label>
-  <%= @end_user.body%>
- </div>
+</main>
+<script>
+function ratySet() {
+ <%Post.all.each do |post| %>
+  $('#star-rate-<%= post.id %>').empty();
+  $('#star-rate-<%= post.id %>').raty({
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'review[rate]' });
+  $('#edit-comf-<%= post.id%>').empty();
+  $('#edit-comf-<%= post.id%>').raty({
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+   scoreName: 'review[rate]', });
+  $('#star-rate-<%= post.id %>').empty();
+  $('#star-rate-<%= post.id %>').raty({
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'review[rate]' });
+  $('#edit-comf-<%= post.id%>').empty();
+  $('#edit-comf-<%= post.id%>').raty({
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+   scoreName: 'review[rate]',});
+ <%end%>
+ }
+ $(window).on('scroll', function() {
+  setTimeout('ratySet();', 1500);
+ });
+</script>

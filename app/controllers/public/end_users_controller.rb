@@ -1,10 +1,36 @@
 class Public::EndUsersController < ApplicationController
   def show
    @end_user = EndUser.find(params[:id])
+   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @review = Review.new
   end
 
   def edit
    @end_user = current_end_user
+  end
+
+  def reviews_index
+   @end_user = EndUser.find(params[:id])
+   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @review = Review.new
+  end
+
+  def post_reviews_index
+   @end_user = EndUser.find(params[:id])
+   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @review = Review.new
+  end
+
+  def title_reviews_index
+   @end_user = EndUser.find(params[:id])
+   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @review = Review.new
+  end
+
+
+  def titles
+   @end_user = EndUser.find(params[:id])
+   @titles = @end_user.titles.page(params[:page]).per(15)
   end
 
   def favorite

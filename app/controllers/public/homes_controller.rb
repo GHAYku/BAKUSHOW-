@@ -33,5 +33,11 @@ class Public::HomesController < ApplicationController
   def bakushow
    @reviews = Review.where(end_user_id:[current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).per(15)
    @review = Review.new
+   case  params[:order]
+   when "other_user_reviews"
+    @end_user = EndUser.find(params[:id])
+    @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+    @review = Review.new
+   end
   end
 end

@@ -1,16 +1,15 @@
 <main class="posts">
   <div class="posts_container">
 　  <%= render "public/end_users/current_end_user_menu" %>
-  <div class="posts_main">
-   <nav class="posts_select">
-    <ul>
-     <li><%= link_to "面白投稿", public_posts_reviews_index_path(order: "myreviews") , class:"select-btns"%></li>
-     <li><%= link_to "大喜利", public_posts_title_reviews_index_path(order: "myreviews"), class:"select-btns"%></li>
-    </ul>
-   </nav>
-    <%= render "public/posts/reviews_index", {reviews: @reviews ,review: @review} %>
+    <div class="posts_main">
+      <nav class="post_select">
+        <ul>
+          <li class="select-btns">大喜利投稿一覧</li>
+        </ul>
+      </nav>
+     <%= render "public/posts/titles_reviews_index", {reviews: @reviews ,review: @review} %>
+    </div>
   </div>
- </div>
 </main>
 
 <script>

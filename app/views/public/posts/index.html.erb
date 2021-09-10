@@ -1,81 +1,110 @@
 <main class="posts">
- <div class="posts_container">
-  <section class="menu">
-   <div class="current_end_user">
-    <%= attachment_image_tag current_end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
-    <p class="current_end_user_name"><%= current_end_user.name %></p>
-   </div>
-   <div class="mypage">
-    <ul>
-     <li>
-      面白投稿<%= link_to current_end_user.posts.count,public_posts_path, class: "mypage_count"; %>
-     </li>
-     <li>
-      大喜利<%= link_to current_end_user.posts.count,public_posts_path, class: "mypage_count"; %>
-     </li>
-     <li>
-      フォロー<%= link_to current_end_user.followings.count,public_end_user_followings_path(current_end_user.id), class: "mypage_count"; %>
-     </li>
-     <li>
-      フォロワー<%= link_to current_end_user.followers.count,public_end_user_followers_path(current_end_user.id), class: "mypage_count"; %>
-     </li>
-    </ul>
-   </div>
-   <%= link_to "面白投稿をする", new_public_post_path, class:"post_btn"%>
-   <div class="mypage">
-    <ul>
-     <li>
-      <%= link_to "オモローした投稿",public_posts_path%>
-     </li>
-     <li>
-      <%= link_to "評価をした投稿",public_posts_path%>
-     </li>
-     <li>
-      <%= link_to "設定",edit_public_end_user_path(current_end_user.id)%>
-     </li>
-    </ul>
-   </div>
-  </section>
-
-
+  <div class="posts_container">
+　 <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
-   <nav class="posts_select">
+   <nav class="post_select">
     <ul>
-     <li><%= link_to "面白投稿", public_posts_path(order: "home") , class:"select-btns"%></li>
-     <li><%= link_to "大喜利", public_homes_home_path, class:"select-btns"%></li>
+     <li class="select-btns">面白投稿一覧</li>
     </ul>
    </nav>
-<% @posts.each do |post| %>
+<div class="scroll-list jscroll">
+ <% @posts.each do |post| %>
    <% if post.title_id.blank? %>
-    <section class="post_index">
-     <%= link_to (public_end_user_path(post.end_user.id)) do%>
-      <div class="account_date">
-       <%= attachment_image_tag post.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
-       <p class="account_name"><%= post.end_user.name %>さんの面白投稿</p>
-      </div>
-     <% end%>
-     <%= link_to (public_post_path(post.id)) do%>
-      <%= attachment_image_tag post, :image ,class: "post_index_image"%>
-       <div class="post_main">
-        <p class="post_body"><%= post.body %></p>
-     <% end%>
-         <% if end_user_signed_in? %>
-          <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
-           <div id="star-rate-<%= post.id %>"></div>
-            <script>
-             $('#star-rate-<%= post.id %>').raty({
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'review[rate]'
-             });
-            </script>
-            <%= f.submit "評価をする", class: "form_btn"%>
-          <% end %>
-         <% end%>
-         <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-        <%= link_to "コメントする",public_post_path(post.id),class: "post_show"%>
-       </div>
-    </section>
-  <% end%>
-<% end%>
+      <section class="post_index">
+        <%= link_to (public_end_user_path(post.end_user.id)) do%>
+          <div class="account_date">
+            <%= attachment_image_tag post.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
+            <p class="account_name"><%= post.end_user.name %>さんの面白投稿</p>
+          </div>
+        <% end%>
+
+        <%= link_to (public_post_path(post.id)) do%>
+          <%= attachment_image_tag post, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
+            <div class="post_main">
+              <p class="post_body"><%= post.body %></p>
+        <% end%>
+              <% if end_user_signed_in? %>
+                <% if post.reviews.where(end_user_id: current_end_user.id).blank? %>
+                  <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
+                    <div id="star-rate-<%= post.id %>"></div>
+                      <script>
+                        $('#star-rate-<%= post.id %>').empty();
+                        $('#star-rate-<%= post.id %>').raty({
+                         starOn: "<%= asset_path('star-on.png') %>",
+                         starOff: "<%= asset_path('star-off.png') %>",
+                         starHalf: "<%= asset_path('star-half.png') %>",
+                         scoreName: 'review[rate]'
+                        });
+                      </script>
+                    <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
+                    <%= f.submit "評価", class: "form_btn"%>
+                  <% end %>
+
+                <% else%>
+
+                  <%= form_with(model: post.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(post.id, post.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
+                    <div id="edit-comf-<%= post.id%>"></div>
+                      <script>
+                        $('#edit-comf-<%= post.id%>').empty();
+                        $('#edit-comf-<%= post.id%>').raty({
+                         starOff:  '<%= asset_path('star-off.png') %>',
+                         starOn : '<%= asset_path('star-on.png') %>',
+                         starHalf: '<%= asset_path('star-half.png') %>',
+                         score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+                         scoreName: 'review[rate]',
+                        });
+                      </script>
+                    <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
+                    <%= f.submit "再評価", class: "edit_form_btn"%>
+                  <% end%>
+                <% end%>
+
+                <%= link_to "コメント",public_post_path(post.id),class: "post_show"%>
+                <% if post.end_user_id == current_end_user.id %>
+                  <%= link_to "編集",public_post_path(post.id),class: "post_show"%>
+                <% end%>
+              <% end %>
+            </div>
+      </section>
+    <% end %>
+  <% end %>
+ <%= paginate @posts %>
+ </div>
+  </div>
+ </div>
+</main>
+<script>
+function ratySet() {
+ <%Post.all.each do |post| %>
+  $('#star-rate-<%= post.id %>').empty();
+  $('#star-rate-<%= post.id %>').raty({
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'review[rate]' });
+  $('#edit-comf-<%= post.id%>').empty();
+  $('#edit-comf-<%= post.id%>').raty({
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+   scoreName: 'review[rate]', });
+  $('#star-rate-<%= post.id %>').empty();
+  $('#star-rate-<%= post.id %>').raty({
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'review[rate]' });
+  $('#edit-comf-<%= post.id%>').empty();
+  $('#edit-comf-<%= post.id%>').raty({
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+   scoreName: 'review[rate]',});
+ <%end%>
+ }
+ $(window).on('scroll', function() {
+  setTimeout('ratySet();', 1500);
+ });
+</script>

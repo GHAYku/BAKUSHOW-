@@ -1,11 +1,11 @@
 <main class="posts">
   <div class="posts_container">
-　 <%= render "public/end_users/current_end_user_menu" %>
+   <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
    <nav class="posts_select">
     <ul>
      <li><%= link_to "面白投稿", public_posts_path(order: "home") , class:"select-btns"%></li>
-     <li><%= link_to "大喜利", public_homes_home_path, class:"select-btns"%></li>
+     <li><%= link_to "大喜利", public_posts_title_posts_index_path(order: "home"), class:"select-btns"%></li>
     </ul>
    </nav>
     <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
