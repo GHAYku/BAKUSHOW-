@@ -1,7 +1,14 @@
 <main class="posts">
- <div class="posts_container">
-   <%= render "public/end_users/current_end_user_menu" %>
-    <div class="posts_main">
+  <div class="posts_container">
+　 <%= render "public/end_users/current_end_user_menu" %>
+  <div class="posts_main">
+    <%= render "public/end_users/other_user", {end_user: @end_user} %>
+   <nav class="post_select">
+    <ul>
+     <li><%= link_to "投稿一覧へ", public_end_user_path(@end_user.id), class:"select-btns"%></li>
+    </ul>
+   </nav>
+
      <% if @users.exists? %>
       <% @users.each do |end_user| %>
       <div class="follow_index">
@@ -21,8 +28,12 @@
       </div>
      <% end %>
     <% else %>
-     <p>フォロワーはいません。</p>
-    <% end %>
+     <div class="about">
+     <p>
+       まだユーザーはいません。
+     </p>
+    </div>
+   <% end %>
   </div>
  </div>
 </main>

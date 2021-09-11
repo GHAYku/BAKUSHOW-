@@ -12,10 +12,10 @@
      <% end %>
     </li>
     <li>
-     フォロー<%= link_to current_end_user.followings.count,public_end_user_followings_path(current_end_user.id), class: "mypage_count"; %>
+     フォロー<%= link_to current_end_user.followings.count,public_relationships_follow_index_path(order: "followings"), class: "mypage_count"; %>
     </li>
     <li>
-     フォロワー<%= link_to current_end_user.followers.count,public_end_user_followers_path(current_end_user.id), class: "mypage_count"; %>
+     フォロワー<%= link_to current_end_user.followers.count,public_relationships_follow_index_path(order: "followers"), class: "mypage_count"; %>
     </li>
    </ul>
   </div>

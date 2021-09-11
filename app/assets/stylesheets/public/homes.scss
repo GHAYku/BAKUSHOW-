@@ -531,3 +531,20 @@ box-shadow: 0 0 4px #CAD4E2, -2px -2px 4px #FFF;
  border-radius: 10px;
 }
 
+.about {
+ display: flex;
+ flex-direction: column;
+ margin-top: 30px;
+ align-items: center;
+ background: #fff;
+ border-radius: 10px;
+ border: outset 8px;
+ box-shadow: 2px 4px 8px;
+}
+
+.about p{
+ text-align: center;
+ padding: 20px;
+ font-size: 20px;
+ font-family: kaisotai;
+}

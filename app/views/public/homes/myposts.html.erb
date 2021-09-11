@@ -1,6 +1,6 @@
 <main class="posts">
   <div class="posts_container">
-　 <%= render "public/end_users/current_end_user_menu" %>
+ <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
    <nav class="posts_select">
     <ul>
@@ -8,6 +8,19 @@
      <li><%= link_to "大喜利", public_posts_title_posts_index_path(order: "myposts"), class:"select-btns"%></li>
     </ul>
    </nav>
+   <% if @posts.blank? %>
+    <div class="about">
+     <p>
+      BAKUSHOW!!へようこそ！</br>
+      まずは面白い投稿や大喜利をしている人を</br>
+      フォローしてみましょう。</br>
+      ※詳しいご利用方法は↓をクリック！
+     </p>
+     <%= link_to (public_homes_about_path) do %>
+      <%= image_tag "about.jpeg", size: "460x350" %>
+     <% end%>
+    </div>
+   <% end %>
     <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
   </div>
  </div>

@@ -1,15 +1,14 @@
 class Public::HomesController < ApplicationController
   def top
-   @titles = Title.order(created_at: :desc)
   end
 
   def home
-   @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).per(15)
+   @posts = Post.where(end_user_id:[current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(15)
    @review = Review.new
   end
 
   def new
-   @posts = Post.order(created_at: :desc).page(params[:page]).per(15)
+   @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(15)
   end
 
   def popular
@@ -21,23 +20,17 @@ class Public::HomesController < ApplicationController
   end
 
   def myposts
-   @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(15)
    @review = Review.new
   end
 
   def myreviews
-   @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
    @review = Review.new
   end
 
   def bakushow
-   @reviews = Review.where(end_user_id:[current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).per(15)
+   @reviews = Review.where(end_user_id:[current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
    @review = Review.new
-   case  params[:order]
-   when "other_user_reviews"
-    @end_user = EndUser.find(params[:id])
-    @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
-    @review = Review.new
-   end
   end
 end

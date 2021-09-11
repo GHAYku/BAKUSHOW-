@@ -11,12 +11,7 @@ Rails.application.routes.draw do
  end
 
  namespace :public do
-   resources :titles, only:[:index, :show, :new, :create] do
-    collection do
-     get 'confirmation'
-    end
-   end
-
+   resources :titles, only:[:index, :show, :new, :create]
 
    get 'searchs/search'
    get 'searchs/post_search'
@@ -28,7 +23,6 @@ Rails.application.routes.draw do
    get 'posts/reviews_index'
    get 'posts/title_reviews_index'
    resources :posts do
-    resource :reposts, only: [:create, :destroy]
     resources :comments, only:[:create,:destroy,:update]
     resources :reviews, only:[:create,:update,:edit]
    end
@@ -39,15 +33,14 @@ Rails.application.routes.draw do
    get 'end_users/title_reviews_index'
    get 'end_users/reviews_index'
    get 'end_users/titles'
+   get 'relationships/follow_index'
    resources :end_users, only:[:edit, :update, :show] do
     collection do
      patch 'withdrawal'
     end
     resource :relationships, only: [:create, :destroy]
-     get 'followings' => 'relationships#followings', as: 'followings'
-     get 'followers' => 'relationships#followers', as: 'followers'
+     get 'other_user_follow_index' => 'relationships#other_user_follow_index'
    end
-
 
     get 'homes/bakushow'
     get 'homes/home'

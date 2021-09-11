@@ -1,19 +1,19 @@
 class Public::EndUsersController < ApplicationController
   def show
    @end_user = EndUser.find(params[:id])
-   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user, :title).per(15)
    @review = Review.new
   end
-  
+
   def posts_index
    @end_user = EndUser.find(params[:id])
-   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user).per(15)
    @review = Review.new
   end
-  
+
   def title_posts_index
    @end_user = EndUser.find(params[:id])
-   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(15)
+   @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user, :title).per(15)
    @review = Review.new
   end
 
@@ -23,19 +23,19 @@ class Public::EndUsersController < ApplicationController
 
   def reviews_index
    @end_user = EndUser.find(params[:id])
-   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).includes(:post, :end_user).per(15)
    @review = Review.new
   end
 
   def post_reviews_index
    @end_user = EndUser.find(params[:id])
-   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).includes(:post, :end_user).per(15)
    @review = Review.new
   end
 
   def title_reviews_index
    @end_user = EndUser.find(params[:id])
-   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).per(15)
+   @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).includes(:post, :end_user).per(15)
    @review = Review.new
   end
 
