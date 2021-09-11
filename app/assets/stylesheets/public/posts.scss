@@ -1,3 +1,41 @@
 // Place all the styles related to the public/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comment ,.comment_index{
+ display: flex;
+ padding: 15px;
+ margin: 20px;
+ background: #fff;
+ border-radius: 10px;
+ border: outset 2px;
+ box-shadow: 2px 4px 8px;
+ justify-content: space-around;
+}
+
+.comment_form{
+ width: 400px;
+ height: 60px;
+}
+
+.comment_action{
+ display: flex;
+ justify-content: flex-end;
+}
+
+.comment_action .form_btn{
+ margin: 0;
+}
+
+.comment_index{
+ padding: 20px;
+ flex-direction: column
+}
+
+.comment_index .account_name {
+ font-size: 20px;
+}
+
+.comment_index .account_date {
+ padding: 0 0 5px 0;
+}
+

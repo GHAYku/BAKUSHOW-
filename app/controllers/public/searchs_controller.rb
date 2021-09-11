@@ -5,27 +5,27 @@ class Public::SearchsController < ApplicationController
 
   def  post_search
    if params[:body] != ""
-    @posts =  Post.where("body LIKE(?)","%#{params[:body]}%")
+    @posts =  Post.where("body LIKE(?)","%#{params[:body]}%").order(created_at: :desc).page(params[:page]).per(15)
    else
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(15)
    end
    case params[:order]
    when 'seatch'
     @genres = Genre.find(params[:id])
-    @posts = @genres.posts.all
+    @posts = @genres.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(15)
    end
   end
 
   def  title_search
    if params[:body] != ""
-    @titles = Title.where("body LIKE(?)","%#{params[:body]}%")
+    @titles = Title.where("body LIKE(?)","%#{params[:body]}%").order(created_at: :desc).page(params[:page]).per(15)
    else
     @titles = Post.all
    end
    case params[:order]
    when 'seatch'
     @genres = Genre.find(params[:id])
-    @titles = @genres.titles.all
+    @titles = @genres.titles.all.order(created_at: :desc).page(params[:page]).eager_load(:end_user, :posts).per(15)
    end
   end
 end

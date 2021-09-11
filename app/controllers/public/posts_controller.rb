@@ -75,11 +75,9 @@ class Public::PostsController < ApplicationController
 
   def show
    @post = Post.find(params[:id])
-   @comments = @post.comments
+   @comments = @post.comments.page(params[:page]).eager_load(:end_user).per(15)
    @comment = Comment.new
    @review = Review.new
-   @reviews = @post.reviews
-   #@review_count = Review.where(post_id: params[:post_id]).where(end_user_id: current_end_user.id).count
   end
 
   def create

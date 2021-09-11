@@ -1,3 +1,35 @@
 // Place all the styles related to the public/searchs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search{
+ padding: 20px;
+ margin: 20px;
+ background: #fff;
+ border-radius: 10px;
+ border: solid 2px;
+ box-shadow: 2px 4px 8px;
+}
+.search p{
+ font-size: 22px;
+ font-weight: bold;
+ padding-bottom: 10px;
+ font-family: kaisotai;
+}
+
+.search_btn {
+ padding: 2px;
+ background: #FFF;
+ border: solid 1px #000000;
+ font-family: kaisotai;
+ cursor: pointer;
+}
+
+.search_btn:hover, .genre:hover {
+ background: #F0F0F0;
+}
+
+.genre {
+ color: #000000;
+ font-family: kaisotai;
+ margin: 5px;
+}

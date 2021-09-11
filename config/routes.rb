@@ -11,7 +11,7 @@ Rails.application.routes.draw do
  end
 
  namespace :public do
-   resources :titles, only:[:index, :show, :new, :create]
+   resources :titles, only:[:index, :show, :new, :create, :edit]
 
    get 'searchs/search'
    get 'searchs/post_search'

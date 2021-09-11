@@ -21,13 +21,13 @@
     </div>
     <nav class="posts_select">
       <ul>
-        <li class="select-btns">
-         <%= link_to (public_end_user_other_user_follow_index_path(end_user.id,order: "followings",id: end_user.id)) do %>
+        <li>
+         <%= link_to(public_end_user_other_user_follow_index_path(end_user.id,order: "followings",id: end_user.id),class: "select-btns") do %>
           フォロー <%= end_user.followings.count %>
          <% end%>
         </li>
-        <li class="select-btns">
-          <%= link_to (public_end_user_other_user_follow_index_path(end_user.id,order: "followers",id: end_user.id)) do %>
+        <li>
+          <%= link_to(public_end_user_other_user_follow_index_path(end_user.id,order: "followers",id: end_user.id),class: "select-btns") do %>
            フォロワー <%= end_user.followers.count %>
           <% end%>
         </li>

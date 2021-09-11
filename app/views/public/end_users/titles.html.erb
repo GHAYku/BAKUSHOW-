@@ -1,0 +1,47 @@
+<main class="posts">
+ <div class="posts_container">
+  <%= render "public/end_users/current_end_user_menu" %>
+  <div class="posts_main">
+   <%= render "public/end_users/other_user", {end_user: @end_user} %>
+    <nav class="post_select">
+     <ul>
+      <li><%= link_to "投稿一覧へ", public_end_user_path(@end_user.id), class:"select-btns"%></li>
+     </ul>
+    </nav>
+    <% if @titles.blank? %>
+    <div class="about">
+     <p>
+      作成されたお題はありません。
+     </p>
+    </div>
+    <% end%>
+    <div class="scroll-list jscroll">
+      <% @titles.each do |title| %>
+        <section class="post_titles">
+         <%= link_to (public_end_user_path(title.end_user.id)) do%>
+          <div class="account_date_titles">
+            <%= attachment_image_tag title.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
+            <p class="account_name"><%= title.end_user.name %>さんからのお題</p>
+          </div>
+         <% end%>
+          <%= attachment_image_tag title, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
+            <div class="post_main">
+              <p class="post_body_titles"><%= title.body %></p>
+                <% if end_user_signed_in? %>
+                  <%= link_to(public_title_path(title.id),class: "titles_form_btn") do %>
+                  ボケる
+                  <% end%>
+                    <% if title.end_user_id == current_end_user.id %>
+                     <div>
+                      <%= link_to "編集",edit_public_title_path(title.id),class: "post_show_titles"%>
+                     </div>
+                    <% end%>
+                <% end%>
+            </div>
+        </section>
+      <% end %>
+      <%= paginate @titles %>
+    </div>
+  </div>
+ </div>
+</main>

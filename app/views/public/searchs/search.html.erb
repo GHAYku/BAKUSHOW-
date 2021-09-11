@@ -1,27 +1,40 @@
-<h1>検索機能の実装</h1>
-<%= form_with(url: public_searchs_post_search_path, method: :get, local: true)do |form| %>
-  <%= form.text_field :body %>
-  <%= form.submit :search %>
-<% end %>
-
-<h1>お題検索機能の実装</h1>
-<%= form_with(url: public_searchs_title_search_path, method: :get, local: true)do |form| %>
-  <%= form.text_field :body %>
-  <%= form.submit :search %>
-<% end %>
-
- <% @genres.each do |genre| %>
- <tr>
-  <td>
-     <%= link_to genre.name ,public_searchs_post_search_path(order: 'seatch',id: genre.id) %>
-  </td>
- </tr>
- <% end %>
-
- <% @genres.each do |genre| %>
- <tr>
-  <td>
-     <%= link_to genre.name ,public_searchs_title_search_path(order: 'seatch',id: genre.id) %>
-  </td>
- </tr>
- <% end %>
+<main class="posts">
+  <div class="posts_container">
+   <%= render "public/end_users/current_end_user_menu" %>
+    <div class="posts_main">
+     <div class="search">
+      <p>投稿キーワード検索</p>
+       <%= form_with(url: public_searchs_post_search_path, method: :get, local: true)do |form| %>
+        <%= form.text_field :body, placeholder: "キーワード" %>
+        <%= form.submit :"検索" ,class:"search_btn"%>
+       <% end %>
+      </div>
+      <div class="search">
+       <p>お題キーワード検索</p>
+        <%= form_with(url: public_searchs_title_search_path, method: :get, local: true)do |form| %>
+         <%= form.text_field :body ,placeholder: "キーワード"%>
+         <%= form.submit :"検索",class:"search_btn" %>
+        <% end %>
+      </div>
+      <div class="search">
+       <p>投稿ジャンル検索</p>
+        <% @genres.each do |genre| %>
+         <tr>
+          <td>
+           <%= link_to genre.name ,public_searchs_post_search_path(order: 'seatch',id: genre.id),class: "genre" %>
+          </td>
+         </tr>
+        <% end %>
+      </div>
+      <div class="search">
+       <p>お題ジャンル検索</p>
+        <% @genres.each do |genre| %>
+         <tr>
+          <td>
+           <%= link_to genre.name ,public_searchs_title_search_path(order: 'seatch',id: genre.id),class: "genre" %>
+          </td>
+         </tr>
+        <% end %>
+     </div>
+  </div>
+</main>

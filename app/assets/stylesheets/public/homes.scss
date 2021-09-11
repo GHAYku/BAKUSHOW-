@@ -218,7 +218,7 @@ font-weight: bold;
  left: 40%;
  position: absolute;
  width: 500px;
- margin: 0 auto;
+ margin: 0 auto 100px auto;
 }
 
 .posts_select ul,.post_select ul{
@@ -547,4 +547,36 @@ box-shadow: 0 0 4px #CAD4E2, -2px -2px 4px #FFF;
  padding: 20px;
  font-size: 20px;
  font-family: kaisotai;
+}
+
+.about_title_image {
+ border-radius: 10px;
+}
+
+.about_page {
+ display: flex;
+ flex-direction: column;
+ background: #fff;
+ border-radius: 10px;
+ border: solid 2px;
+ box-shadow: 2px 4px 8px;
+ margin-bottom: 100px;
+}
+
+.about_page_title {
+ font-size: 22px;
+ font-weight: bold;
+ border-bottom: 4px dotted #ccc;
+ padding: 10px 0 0 10px;
+ font-family: kaisotai;
+}
+
+.about_page_body{
+ padding: 10px 10px 40px 10px;
+ font-family: "Sawarabi Mincho";
+}
+
+.scroll {
+ padding: 100px;
+ display: block;
 }
