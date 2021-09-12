@@ -34,6 +34,28 @@
     </div>
    </div>
   </header>
+  <% elsif admin_signed_in? %>
+  <header>
+   <div class="container">
+    <div class="logo-area">
+     <%= link_to (public_homes_home_path) do%>
+      <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
+     <% end%>
+    </div>
+    <nav>
+			  <ul>
+				  <li><%= link_to "ユーザー", admin_end_users_path, class:"nav-btns"%></li>
+				  <li><%= link_to "お題", admin_titles_path, class:"nav-btns"%></li>
+				  <li><%= link_to "投稿", admin_posts_path, class:"nav-btns"%></li>
+				  <li><%= link_to "コメント", admin_comments_path,class:"nav-btns"%></li>
+				  <li><%= link_to "ジャンル", admin_genres_path,class:"nav-btns"%></li>
+			  </ul>
+		  </nav>
+    <div class="logout">
+     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btns"%>
+    </div>
+   </div>
+  </header>
   <% else %>
     <header>
    <div class="container">
@@ -52,6 +74,7 @@
     <%= yield %>
 
   <% if end_user_signed_in? %>
+  <% elsif admin_signed_in? %>
   <% else%>
    <footer>
     <div class="container">

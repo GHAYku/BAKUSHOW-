@@ -1,0 +1,25 @@
+<main class="posts">
+  <div class="posts_container">
+      <div class="posts_main">
+        <nav class="post_select">
+         <ul>
+          <li class="select-btns">コメントの編集</li>
+         </ul>
+        </nav>
+         <section class="post_titles">
+          <%= form_with model: @comment, url: admin_comment_path(@comment.id), local:true do |f| %>
+            <div class="post_form_body">
+              <label>コメント内容</label>
+              <%= f.text_area :body, placeholder: "コメント内容", class: "post_body_form"%>
+            </div>
+            <div class="post_form_btn">
+             <%= f.submit "編集", class: "titles_form_btn"%>
+            </div>
+            <div class="post_delete">
+             <%= link_to "削除", admin_comment_path(@comment.id), method: :DELETE,class: "post_show_titles"%>
+            </div>
+          <% end %>
+        </section>
+      </div>
+  </div>
+</main>

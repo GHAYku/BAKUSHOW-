@@ -25,7 +25,7 @@
 .top_about {
  background: #FFD100;
  padding: 30px 25px;
- border: outset 8px #FFD100;
+ border: outset 8px #FFD900;
  border-radius: 10px;
  display: block;
  width: 450px;
@@ -177,7 +177,7 @@ font-weight: bold;
 .top_login {
  background-color: #FFF;
  padding: 30px 25px;
- border: outset 8px #FFF;
+ border: outset 8px;
  border-radius: 10px;
  display: block;
  width: 450px;
@@ -194,7 +194,7 @@ font-weight: bold;
  box-sizing: border-box;
  border-radius: 10px;
  font-weight: bold;
- border: outset 8px #ffffe0;
+ border: outset 8px #fafad2;
  box-shadow: 6px 6px 6px;
 }
 
@@ -442,7 +442,10 @@ section .form_btn {
  padding: 10px;
 }
 
-
+.mypage_name{
+ font-family: kaisotai;
+ color: #808080;
+}
 
 .mypage_count {
  font-family: "Sawarabi Mincho";
@@ -451,7 +454,6 @@ section .form_btn {
 
 .rotate {
  transition: transform 0.5s;
- margin-left: 158px;
 }
 .rotate:hover {
  cursor: pointer;

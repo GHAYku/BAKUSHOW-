@@ -50,7 +50,7 @@ class Public::EndUsersController < ApplicationController
 
   def titles
    @end_user = EndUser.find(params[:id])
-   @titles = @end_user.titles.page(params[:page]).per(15)
+   @titles = @end_user.titles.page(params[:page]).includes(:posts,:end_user).per(15)
   end
 
   def update
@@ -59,6 +59,7 @@ class Public::EndUsersController < ApplicationController
       flash[:notice] = "#{@end_user.name}さんの会員情報を編集しました"
       redirect_to edit_public_end_user_path
     else
+      flash[:notice] = "#{@end_user.name}さんの会員情報を編集に失敗しました"
       render :edit
     end
   end

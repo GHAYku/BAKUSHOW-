@@ -4,7 +4,7 @@
       <div class="posts_main">
         <nav class="post_select">
          <ul>
-          <li class="select-btns">お題の作成</li>
+          <li class="select-btns">お題編集</li>
          </ul>
         </nav>
          <section class="post_titles">
@@ -21,9 +21,8 @@
               <label>ジャンル</label>
               <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
             </div>
-             <%= f.hidden_field :title_id, :value => @title.id%>
             <div class="post_form_btn">
-             <%= f.submit "投稿", class: "titles_form_btn"%>
+             <%= f.submit "編集", class: "titles_form_btn"%>
             </div>
             <div class="post_delete">
              <%= link_to "削除", public_title_path(@title.id), method: :DELETE,class: "post_show_titles"%>

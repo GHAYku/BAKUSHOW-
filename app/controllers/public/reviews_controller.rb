@@ -5,25 +5,21 @@ class Public::ReviewsController < ApplicationController
     @review.end_user_id = current_end_user.id
     @review.post_id = post.id
      if @review.save!
-      flash[:success] = "この投稿を評価しました！"
+      flash[:success] = "評価しました！"
       redirect_to request.referer
      else
-      flash[:success] = "この投稿を評価できませんでした。"
+      flash[:success] = "評価できませんでした。"
       redirect_to request.referer
      end
-   end
-
-   def edit
-    @review = Review.find(params[:id])
    end
 
    def update
     @review = Review.find(params[:id])
      if @review.update(review_params)
-      flash[:success] = "オモローの編集をしました！"
+      flash[:success] = "再評価しました！"
       redirect_to request.referer
      else
-      flash[:success] = "オモローの編集ができませんでした。"
+      flash[:success] = "再評価ができませんでした。"
       redirect_to request.referer
      end
    end

@@ -8,6 +8,12 @@
           <li><%= link_to "評価一覧", public_end_users_reviews_index_path(id: @end_user.id), class:"select-btns"%></li>
         </ul>
       </nav>
+      <% if @posts.blank? %>
+       <div class="about">
+        <p>
+         投稿データはありません。
+        </p>
+      <% end%>
       <%= render "public/posts/posts_reviews_index", {reviews: @reviews ,review: @review} %>
    </div>
   </div>

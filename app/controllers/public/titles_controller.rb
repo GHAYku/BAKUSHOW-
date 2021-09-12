@@ -1,9 +1,9 @@
 class Public::TitlesController < ApplicationController
   def index
-   @titles = Title.order(created_at: :desc).page(params[:page]).per(15)
+   @titles = Title.order(created_at: :desc).page(params[:page]).eager_load(:posts,:end_user).per(15)
    case params[:order]
    when "my_titles"
-    @titles = current_end_user.titles.page(params[:page]).per(15)
+    @titles = current_end_user.titles.page(params[:page]).eager_load(:posts,:end_user).per(15)
    end
   end
 
@@ -50,6 +50,7 @@ class Public::TitlesController < ApplicationController
      redirect_to public_titles_path
    end
   end
+
   private
   def title_params
    params.require(:title).permit(:genre_id, :body, :image)

@@ -1,0 +1,33 @@
+<main class="posts">
+  <div class="posts_container">
+      <div class="posts_main">
+        <nav class="post_select">
+         <ul>
+          <li class="select-btns">お題の編集</li>
+         </ul>
+        </nav>
+         <section class="post_titles">
+          <%= form_with model: @title, url: admin_title_path(@title.id), local:true do |f| %>
+            <div class="post_form_image">
+              <label>お題画像</label>
+              <%= f.attachment_field :image%>
+            </div>
+            <div class="post_form_body">
+              <label>お題内容</label>
+              <%= f.text_area :body, placeholder: "投稿内容", class: "post_body_form"%>
+            </div>
+            <div class="post_form_body">
+              <label>ジャンル</label>
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
+            </div>
+            <div class="post_form_btn">
+             <%= f.submit "編集", class: "titles_form_btn"%>
+            </div>
+            <div class="post_delete">
+             <%= link_to "削除", admin_title_path(@title.id), method: :DELETE,class: "post_show_titles"%>
+            </div>
+          <% end %>
+        </section>
+      </div>
+  </div>
+</main>

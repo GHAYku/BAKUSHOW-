@@ -8,7 +8,12 @@
      <li><%= link_to "投稿一覧へ", public_end_user_path(@end_user.id), class:"select-btns"%></li>
     </ul>
    </nav>
-
+　 <% if @posts.blank? %>
+    <div class="about">
+     <p>
+      投稿データはありません。
+     </p>
+   <% end%>
 
 <div class="scroll-list jscroll">
  <% @posts.each do |post| %>

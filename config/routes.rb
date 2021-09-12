@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :end_users, controllers: {registrations: 'users/registrations',passwords: 'users/passwords'},
                          controllers: { omniauth_callbacks: 'end_users/omniauth_callbacks'}
   devise_scope :end_user do
@@ -16,8 +15,6 @@ Rails.application.routes.draw do
    get 'searchs/search'
    get 'searchs/post_search'
    get 'searchs/title_search'
-
-   resources :jokes,expect:[:new]
 
    get 'posts/title_posts_index'
    get 'posts/reviews_index'
@@ -49,5 +46,16 @@ Rails.application.routes.draw do
     get 'homes/about'
     get 'homes/myposts'
     get 'homes/myreviews'
+  end
+
+  devise_for :admins, path: 'admin',:controllers => {
+    :sessions => 'admins/sessions'
+  }
+  namespace :admin do
+   resources :genres, only:[:index, :edit, :update, :destroy, :create]
+   resources :comments, only:[:index, :edit, :update, :destroy]
+   resources :posts, only:[:index, :edit, :update, :destroy]
+   resources :titles, only:[:index, :edit, :update, :destroy]
+   resources :end_users, only:[:index, :edit, :update, :destroy]
   end
 end

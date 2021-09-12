@@ -1,0 +1,30 @@
+<main class="posts">
+ <div class="posts_container">
+  <div class="posts_main">
+    <h3>お題一覧</h3>
+      <table>
+       <thead>
+        <tr>
+         <th>ID</th>
+         <th>お題内容</th>
+         <th>画像</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @titles.each do |title| %>
+        <tr>
+         <td><%= title.id %></td>
+         <td>
+          <%= link_to edit_admin_title_path(title.id) do%>
+           <%= title.body %>
+          <% end %>
+         </td>
+         <td><%= attachment_image_tag title, :image ,class: "user_image", fallback: "no_image_title.jpg", size: "30x30"%></td>
+        </tr>
+       <% end %>
+      </tbody>
+     </table>
+    <%= paginate  @titles %>
+  </div>
+ </div>
+</main>

@@ -59,8 +59,6 @@
                  <%= f.submit "再評価", class: "edit_titles_form_btn"%>
                <% end%>
              <% end%>
-
-              <%= link_to "コメント",public_post_path(@post.id),class: "post_show_titles"%>
                 <% if @post.end_user_id == current_end_user.id %>
                   <%= link_to "編集",public_post_path(@post.id),class: "post_show_titles"%>
                 <% end%>
@@ -100,8 +98,6 @@
                     <%= f.submit "再評価", class: "edit_form_btn"%>
                   <% end%>
                 <% end%>
-
-                <%= link_to "コメント",public_post_path(@post.id),class: "post_show"%>
                 <% if @post.end_user_id == current_end_user.id %>
                   <%= link_to "編集",public_post_path(@post.id),class: "post_show"%>
                 <% end%>

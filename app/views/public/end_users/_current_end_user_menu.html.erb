@@ -2,14 +2,18 @@
   <div class="mypage">
    <ul>
     <li>
-     <%= attachment_image_tag current_end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
-     <p class="current_end_user_name"><%= current_end_user.name %></p>
+      <%= attachment_image_tag current_end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
+      <p class="current_end_user_name"><%= link_to current_end_user.name,public_end_user_path(current_end_user.id),class: "mypage_name"%></p>
     </li>
     <li>
      <p>設定</p>
      <%= link_to(edit_public_end_user_path(current_end_user.id),class: "mypage_setting") do %>
       <%= image_tag "setting.png",class:"rotate"%>
      <% end %>
+    </li>
+    <li>
+     <p>獲得した★</p>
+     <%= current_end_user.posts.joins(:reviews).sum(:rate).floor %>
     </li>
     <li>
      フォロー<%= link_to current_end_user.followings.count,public_relationships_follow_index_path(order: "followings"), class: "mypage_count"; %>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class EndUsers::SessionsController < Devise::SessionsController
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -25,9 +26,23 @@ class EndUsers::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+
+
+  def reject_end_user
+    @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    if @end_user
+      if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
+        flash[:alert] = "このアカウントは退会済みです。"
+        redirect_to new_end_user_session_path
+      end
+    else
+      flash[:alert] = "必須項目を入力してください"
+    end
+  end
+
   def guest_sign_in
     user = EndUser.guest
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to public_homes_home_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 end

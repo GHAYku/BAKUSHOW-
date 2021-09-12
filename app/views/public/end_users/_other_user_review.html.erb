@@ -17,6 +17,9 @@
      <% end %>
     </div>
     <div class="other_user_body">
+     獲得した★<%= end_user.posts.joins(:reviews).sum(:rate).floor %>
+    </div>
+    <div class="other_user_body">
      <%= end_user.body%>
     </div>
     <nav class="posts_select">

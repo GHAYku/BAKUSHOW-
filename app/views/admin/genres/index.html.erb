@@ -1,0 +1,35 @@
+<main class="posts">
+ <div class="posts_container">
+  <div class="posts_main">
+    <h3>ジャンル一覧</h3>
+      <table>
+       <thead>
+        <tr>
+         <th>ID</th>
+         <th>内容</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @genres.each do |gunre| %>
+        <tr>
+         <td><%= gunre.id %></td>
+         <td>
+          <%= link_to edit_admin_genre_path(gunre.id) do%>
+           <%= gunre.name %>
+          <% end %>
+         </td>
+        </tr>
+       <% end %>
+      </tbody>
+     </table>
+    <%= paginate @genres %>
+    <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+     <div class="m-5 row-8">
+      <span class="mr-5">ジャンル名</span>
+      <span><%= f.text_field :name,placeholder: "ジャンル名"%></span>
+       <%= f.submit "新規登録", class: "btn btn-success ml-5"%>
+     </div>
+    <% end %>
+  </div>
+ </div>
+</main>

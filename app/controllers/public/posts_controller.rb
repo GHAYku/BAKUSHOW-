@@ -86,9 +86,10 @@ class Public::PostsController < ApplicationController
    @post = Post.new(post_params)
    @post.end_user_id = current_end_user.id
    if @post.save
-     flash[:notice] = "投稿しました！"
-     redirect_to request.referer
+     flash[:notice] = "投稿しました"
+     redirect_to public_homes_home_path
    else
+     flash[:notice] = "投稿に失敗しました"
      render :new
    end
   end
@@ -96,9 +97,10 @@ class Public::PostsController < ApplicationController
   def update
    @post = current_end_user.posts.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "この投稿内容を編集しました"
+      flash[:notice] = "投稿内容を編集しました"
       redirect_to public_homes_home_path
     else
+      flash[:notice] = "投稿内容を編集できませんでした"
       render :edit
     end
   end
@@ -106,7 +108,7 @@ class Public::PostsController < ApplicationController
   def destroy
    @post = current_end_user.posts.find(params[:id])
    if @post.destroy
-     flash[:notice]="この投稿を削除しました"
+     flash[:notice]="投稿を削除しました"
      redirect_to public_homes_home_path
    end
   end
