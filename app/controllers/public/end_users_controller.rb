@@ -1,4 +1,12 @@
 class Public::EndUsersController < ApplicationController
+  before_action :ensure_normal_end_user, only: %i[update withdraw]
+
+  def ensure_normal_end_user
+   if current_end_user.email == 'guest@example.com'
+    redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+   end
+  end
+
   def show
    @end_user = EndUser.find(params[:id])
    @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user, :title).per(15)

@@ -20,7 +20,7 @@ class Public::SearchsController < ApplicationController
    if params[:body] != ""
     @titles = Title.where("body LIKE(?)","%#{params[:body]}%").order(created_at: :desc).page(params[:page]).per(15)
    else
-    @titles = Post.all
+    @titles = Title.all.order(created_at: :desc).page(params[:page]).eager_load(:end_user).per(15)
    end
    case params[:order]
    when 'seatch'

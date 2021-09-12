@@ -1,15 +1,32 @@
-<%= form_with model: @title, url: public_titles_path, local:true do |f| %>
- <div>
-  <label>お題画像</label>
-  <%= f.attachment_field :image%>
- </div>
- <div>
-  <label>お題説明</label>
-  <%= f.text_field :body, placeholder: "お題説明"%>
- </div>
- <div>
-  <label>ジャンル</label>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
- </div>
- <%= f.submit "お題を投稿する", class: "btn btn-success offset-lg-2" %>
-<% end %>
+<main class="posts">
+  <div class="posts_container">
+    <%= render "public/end_users/current_end_user_menu" %>
+      <div class="posts_main">
+        <nav class="post_select">
+         <ul>
+          <li class="select-btns">お題の作成</li>
+         </ul>
+        </nav>
+         <section class="post_titles">
+          <%= form_with model: @title, url: public_titles_path, local:true do |f| %>
+            <div class="post_form_image">
+              <label>お題画像</label>
+              <%= f.attachment_field :image%>
+            </div>
+            <div class="post_form_body">
+              <label>お題内容</label>
+              <%= f.text_area :body, placeholder: "投稿内容", class: "post_body_form"%>
+            </div>
+            <div class="post_form_body">
+              <label>ジャンル</label>
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"%>
+            </div>
+             <%= f.hidden_field :title_id, :value => @title.id%>
+            <div class="post_form_btn">
+             <%= f.submit "投稿", class: "titles_form_btn"%>
+            </div>
+          <% end %>
+        </section>
+      </div>
+  </div>
+</main>

@@ -67,6 +67,7 @@ class Public::PostsController < ApplicationController
 
   def edit
    @post = current_end_user.posts.find(params[:id])
+   @title = @post.title
   end
 
   def new
@@ -75,6 +76,7 @@ class Public::PostsController < ApplicationController
 
   def show
    @post = Post.find(params[:id])
+   @title = @post.title
    @comments = @post.comments.page(params[:page]).eager_load(:end_user).per(15)
    @comment = Comment.new
    @review = Review.new
@@ -95,7 +97,7 @@ class Public::PostsController < ApplicationController
    @post = current_end_user.posts.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "この投稿内容を編集しました"
-      redirect_to public_posts_path
+      redirect_to public_homes_home_path
     else
       render :edit
     end
@@ -105,7 +107,7 @@ class Public::PostsController < ApplicationController
    @post = current_end_user.posts.find(params[:id])
    if @post.destroy
      flash[:notice]="この投稿を削除しました"
-     redirect_to public_posts_path
+     redirect_to public_homes_home_path
    end
   end
 

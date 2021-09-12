@@ -2,6 +2,11 @@
   <div class="posts_container">
    <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
+   <nav class="post_select">
+    <ul>
+     <li class="select-btns">投稿検索</li>
+    </ul>
+   </nav>
    <% if @posts.blank? %>
     <div class="about">
      <p>ごめんなさい。見つかりませんでした。</p>

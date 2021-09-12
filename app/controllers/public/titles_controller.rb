@@ -13,8 +13,9 @@ class Public::TitlesController < ApplicationController
 
   def show
    @title = Title.find(params[:id])
-   @posts = @title.posts.order(created_at: :desc)
+   @posts = @title.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(15)
    @post = Post.new
+   @review = Review.new
   end
 
   def create
@@ -28,9 +29,27 @@ class Public::TitlesController < ApplicationController
     end
   end
 
-  def confirmation
+  def edit
+   @title = current_end_user.titles.find(params[:id])
   end
 
+  def update
+   @title = current_end_user.titles.find(params[:id])
+    if @title.update(title_params)
+      flash[:notice] = "このお題を編集しました"
+      redirect_to public_titles_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+   @title = current_end_user.titles.find(params[:id])
+   if @title.destroy
+     flash[:notice]="この投稿を削除しました"
+     redirect_to public_titles_path
+   end
+  end
   private
   def title_params
    params.require(:title).permit(:genre_id, :body, :image)

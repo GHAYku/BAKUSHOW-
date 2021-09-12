@@ -39,3 +39,43 @@
  padding: 0 0 5px 0;
 }
 
+.post_form_image {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ font-family: kaisotai;
+ padding: 10px;
+ margin: 10px;
+ font-size: 20px;
+}
+
+.post_form_body {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ font-family: kaisotai;
+ padding: 10px;
+ margin: 10px;
+ font-size: 20px;
+}
+
+.post_body_form {
+ width : 250px;
+ height: 50px;
+}
+
+.post_form_btn{
+ margin: 20px auto;
+ display: flex;
+ justify-content: space-around;
+}
+
+.post_delete {
+ display: flex;
+ justify-content: space-around;
+}
+
+.post_delete .post_show,.post_delete .post_show_titles {
+ width: 50px;
+ margin: 0;
+}

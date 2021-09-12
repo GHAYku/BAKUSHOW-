@@ -11,7 +11,7 @@ Rails.application.routes.draw do
  end
 
  namespace :public do
-   resources :titles, only:[:index, :show, :new, :create, :edit]
+   resources :titles
 
    get 'searchs/search'
    get 'searchs/post_search'
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
    get 'relationships/follow_index'
    resources :end_users, only:[:edit, :update, :show] do
     collection do
-     patch 'withdrawal'
+     patch 'withdraw'
     end
     resource :relationships, only: [:create, :destroy]
      get 'other_user_follow_index' => 'relationships#other_user_follow_index'
