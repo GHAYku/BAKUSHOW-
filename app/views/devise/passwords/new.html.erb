@@ -3,6 +3,7 @@
   <div class="form_grop">
    <h2>パスワードリセット</h2>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render 'layouts/flash'%>
      <%= render "devise/shared/error_messages", resource: resource %>
      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form", placeholder: "メールアドレス"%>
      <div class="actions">

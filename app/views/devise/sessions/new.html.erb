@@ -2,6 +2,7 @@
  <div class="form_container">
   <div class="form_grop">
   <h2>ログイン</h2>
+   <%= render 'layouts/flash'%>
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 	   <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form", placeholder: "メールアドレス"%>
     <%= f.password_field :password, autocomplete: "current-password",class: "form", placeholder: "パスワード" %>
