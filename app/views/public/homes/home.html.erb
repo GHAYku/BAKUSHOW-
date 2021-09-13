@@ -1,8 +1,8 @@
 <main class="posts">
-  <div class="posts_container">
-   <%= render "public/end_users/current_end_user_menu" %>
+ <div class="posts_container">
+ <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
-   <%= render 'layouts/flash'%>
+  <%= render 'layouts/flash'%>
    <nav class="posts_select">
     <ul>
      <li><%= link_to "面白投稿", public_posts_path(order: "home") , class:"select-btns"%></li>
@@ -22,7 +22,7 @@
      <% end%>
     </div>
    <% end %>
-    <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
+   <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
   </div>
  </div>
 </main>

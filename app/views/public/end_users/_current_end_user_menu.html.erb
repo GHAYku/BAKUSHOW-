@@ -23,28 +23,32 @@
     </li>
    </ul>
   </div>
-   <div class="mypage">
-    <ul>
-     <li>
-      投稿<%= link_to current_end_user.posts.count,public_homes_myposts_path, class: "mypage_count"; %>
-     </li>
-     <li>
-      お題<%= link_to current_end_user.titles.count,public_titles_path(order: "my_titles"), class: "mypage_count"; %>
-     </li>
-     <li>
-      評価<%= link_to current_end_user.reviews.count,public_homes_myreviews_path, class: "mypage_count"; %>
-     </li>
-    </ul>
-   </div>
-   <section class="mypage_btn">
-    <%= link_to(new_public_post_path, class:"post_btn") do %>
-      <span><%= image_tag "icon.png", size: "40x40"%>　面白投稿をする</span>
-    <% end %>
-   </section>
-   <section class="mypage_btn">
-    <%= link_to(public_titles_path, class:"titles_post_btn") do %>
-      <span><%= image_tag "icon2.png", size: "40x40"%>　大喜利をする</span>
-    <% end %>
-   </section>
-
+  <div class="mypage">
+   <ul>
+    <li>
+     投稿<%= link_to current_end_user.posts.count,public_homes_myposts_path, class: "mypage_count"; %>
+    </li>
+    <li>
+     お題<%= link_to current_end_user.titles.count,public_titles_path(order: "my_titles"), class: "mypage_count"; %>
+    </li>
+    <li>
+     評価<%= link_to current_end_user.reviews.count,public_homes_myreviews_path, class: "mypage_count"; %>
+    </li>
+   </ul>
+  </div>
+  <section class="mypage_btn">
+   <%= link_to(new_public_post_path, class:"post_btn") do %>
+    <span><%= image_tag "icon.png", size: "40x40"%>　面白投稿をする</span>
+   <% end %>
+  </section>
+  <section class="mypage_btn">
+   <%= link_to(public_titles_path, class:"titles_post_btn") do %>
+    <span><%= image_tag "icon2.png", size: "40x40"%>　大喜利をする</span>
+   <% end %>
+  </section>
+  <section class="mypage_btn">
+   <%= link_to(public_homes_about_path, class:"about_btn") do %>
+    <span>ご利用ガイド</span>
+   <% end %>
+  </section>
 </section>

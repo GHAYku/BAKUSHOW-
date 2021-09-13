@@ -1,24 +1,24 @@
 <main class="posts">
   <div class="posts_container">
 　  <%= render "public/end_users/current_end_user_menu" %>
-  <div class="posts_main">
-    <%= render "public/end_users/other_user_review", {end_user: @end_user} %>
-    <%= render 'layouts/flash'%>
-   <nav class="posts_select">
-    <ul>
-     <li><%= link_to "面白投稿", public_end_users_post_reviews_index_path(id: @end_user.id) , class:"select-btns"%></li>
-     <li><%= link_to "大喜利", public_end_users_title_reviews_index_path(id: @end_user.id), class:"select-btns"%></li>
-    </ul>
-   </nav>
-   <% if @posts.blank? %>
-    <div class="about">
-     <p>
-      投稿データはありません。
-     </p>
-   <% end%>
-    <%= render "public/posts/reviews_index", {reviews: @reviews ,review: @review} %>
+    <div class="posts_main">
+      <%= render "public/end_users/other_user_review", {end_user: @end_user} %>
+      <%= render 'layouts/flash'%>
+      <nav class="posts_select">
+        <ul>
+          <li><%= link_to "面白投稿", public_end_users_post_reviews_index_path(id: @end_user.id) , class:"select-btns"%></li>
+          <li><%= link_to "大喜利", public_end_users_title_reviews_index_path(id: @end_user.id), class:"select-btns"%></li>
+        </ul>
+      </nav>
+      <% if @posts.blank? %>
+        <div class="about">
+          <p>
+            投稿データはありません。
+          </p>
+      <% end%>
+      <%= render "public/posts/reviews_index", {reviews: @reviews ,review: @review} %>
+    </div>
   </div>
- </div>
 </main>
 
 <script>

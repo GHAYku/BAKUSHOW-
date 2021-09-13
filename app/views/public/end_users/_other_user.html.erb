@@ -1,41 +1,41 @@
-   <div class="other_user">
-    <div class="other_user_date">
-     <div>
-      <%= attachment_image_tag end_user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60", class:"profile_img" %>
-      <%= end_user.name%>
-     </div>
-     <% if current_end_user.id != end_user.id %>
-       <% if current_end_user.following?(end_user) %>
-         <section>
-           <%= link_to "✓フォロー", public_end_user_relationships_path(end_user.id), method: :delete, class:"unfollow_btn" %>
-         </section>
-       <% else %>
-         <section>
-           <%= link_to "フォロー", public_end_user_relationships_path(end_user.id), method: :post, class:"follow_btn" %>
-         </section>
-       <% end %>
-     <% end %>
-    </div>
-    <div class="other_user_body">
-     獲得した★<%= end_user.posts.joins(:reviews).sum(:rate).floor %>
-    </div>
-    <div class="other_user_body">
-     <%= end_user.body%>
-    </div>
-    <nav class="posts_select">
-      <ul>
-        <li>
-         <%= link_to(public_end_user_other_user_follow_index_path(end_user.id,order: "followings",id: end_user.id),class: "select-btns") do %>
-          フォロー <%= end_user.followings.count %>
-         <% end%>
-        </li>
-        <li>
-          <%= link_to(public_end_user_other_user_follow_index_path(end_user.id,order: "followers",id: end_user.id),class: "select-btns") do %>
-           フォロワー <%= end_user.followers.count %>
-          <% end%>
-        </li>
-        <li><%= link_to "お題", public_end_users_titles_path(id: end_user.id), class:"select-btns"%></li>
-        <li><%= link_to "評価", public_end_users_reviews_index_path(id: end_user.id), class:"select-btns"%></li>
-      </ul>
-    </nav>
-   </div>
+<div class="other_user">
+ <div class="other_user_date">
+  <div>
+   <%= attachment_image_tag end_user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60", class:"profile_img" %>
+   <%= end_user.name%>
+  </div>
+  <% if current_end_user.id != end_user.id %>
+   <% if current_end_user.following?(end_user) %>
+    <section>
+     <%= link_to "✓フォロー", public_end_user_relationships_path(end_user.id), method: :delete, class:"unfollow_btn" %>
+    </section>
+   <% else %>
+    <section>
+     <%= link_to "フォロー", public_end_user_relationships_path(end_user.id), method: :post, class:"follow_btn" %>
+    </section>
+   <% end %>
+  <% end %>
+ </div>
+ <div class="other_user_body">
+  獲得した★<%= end_user.posts.joins(:reviews).sum(:rate).floor %>
+ </div>
+ <div class="other_user_body">
+  <%= end_user.body%>
+ </div>
+ <nav class="posts_select">
+  <ul>
+   <li>
+    <%= link_to(public_end_user_other_user_follow_index_path(end_user.id,order: "followings",id: end_user.id),class: "select-btns") do %>
+     フォロー <%= end_user.followings.count %>
+    <% end%>
+   </li>
+   <li>
+    <%= link_to(public_end_user_other_user_follow_index_path(end_user.id,order: "followers",id: end_user.id),class: "select-btns") do %>
+     フォロワー <%= end_user.followers.count %>
+    <% end%>
+   </li>
+   <li><%= link_to "お題", public_end_users_titles_path(id: end_user.id), class:"select-btns"%></li>
+   <li><%= link_to "評価", public_end_users_reviews_index_path(id: end_user.id), class:"select-btns"%></li>
+  </ul>
+ </nav>
+</div>

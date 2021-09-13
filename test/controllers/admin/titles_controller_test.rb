@@ -15,5 +15,4 @@ class Admin::TitlesControllerTest < ActionDispatch::IntegrationTest
     get admin_titles_delete_url
     assert_response :success
   end
-
 end

@@ -471,7 +471,7 @@ section .form_btn {
 }
 
 
-.post_btn,.titles_post_btn {
+.post_btn,.titles_post_btn,.about_btn {
 display: flex;
 justify-content: center;
 align-items: center;
@@ -483,7 +483,7 @@ background: #fff;
 position: relative;
 }
 
-.post_btn span,.titles_post_btn span{
+.post_btn span,.titles_post_btn span,.about_btn span {
  display: flex;
  justify-content: center;
  align-items: center;
@@ -505,7 +505,12 @@ position: relative;
 .titles_post_btn span {
  background: #ffff00;
 }
-.post_btn:hover span,.titles_post_btn:hover span {
+
+.about_btn span {
+ background: #FFF;
+}
+
+.post_btn:hover span,.titles_post_btn:hover span,.about_btn:hover span {
 left: 0;
 top: 0;
 box-shadow: 0 0 4px #CAD4E2, -2px -2px 4px #FFF;

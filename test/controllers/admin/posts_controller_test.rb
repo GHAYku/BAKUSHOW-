@@ -15,5 +15,4 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
     get admin_posts_delete_url
     assert_response :success
   end
-
 end

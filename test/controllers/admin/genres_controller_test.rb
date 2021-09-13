@@ -20,5 +20,4 @@ class Admin::GenresControllerTest < ActionDispatch::IntegrationTest
     get admin_genres_create_url
     assert_response :success
   end
-
 end

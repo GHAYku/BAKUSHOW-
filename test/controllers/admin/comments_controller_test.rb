@@ -15,5 +15,4 @@ class Admin::CommentsControllerTest < ActionDispatch::IntegrationTest
     get admin_comments_delete_url
     assert_response :success
   end
-
 end

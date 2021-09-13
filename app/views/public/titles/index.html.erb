@@ -31,16 +31,14 @@
           <%= attachment_image_tag title, :image ,class: "post_index_image", fallback: "no_image_title.png"%>
             <div class="post_main">
               <p class="post_body_titles"><%= title.body %></p>
-                <% if end_user_signed_in? %>
-                  <%= link_to(public_title_path(title.id),class: "titles_form_btn") do %>
-                  ボケる
-                  <% end%>
-                    <% if title.end_user_id == current_end_user.id %>
-                     <div>
-                      <%= link_to "編集",edit_public_title_path(title.id),class: "post_show_titles"%>
-                     </div>
-                    <% end%>
-                <% end%>
+              <%= link_to(public_title_path(title.id),class: "titles_form_btn") do %>
+               ボケる
+              <% end%>
+              <% if title.end_user_id == current_end_user.id %>
+                <div>
+                  <%= link_to "編集",edit_public_title_path(title.id),class: "post_show_titles"%>
+                </div>
+              <% end%>
             </div>
         </section>
       <% end %>

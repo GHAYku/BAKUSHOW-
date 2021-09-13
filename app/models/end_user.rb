@@ -1,5 +1,4 @@
 class EndUser < ApplicationRecord
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i(facebook twitter google_oauth2)
@@ -13,13 +12,13 @@ class EndUser < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-    user.password = SecureRandom.urlsafe_base64
-    user.name = "ゲスト"
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
     end
   end
 
   def active_for_authentication?
-   super && (self.is_active == true)
+    super && (is_active == true)
   end
 
   attachment :image
@@ -37,14 +36,14 @@ class EndUser < ApplicationRecord
   validates :email, presence: true
 
   def follow(end_user_id)
-   relationships.create(followed_id: end_user_id)
+    relationships.create(followed_id: end_user_id)
   end
 
   def unfollow(end_user_id)
-   relationships.find_by(followed_id: end_user_id).destroy
+    relationships.find_by(followed_id: end_user_id).destroy
   end
 
   def following?(end_user)
-   followings.include?(end_user)
+    followings.include?(end_user)
   end
 end

@@ -2,20 +2,21 @@
   <div class="posts_container">
 　  <%= render "public/end_users/current_end_user_menu" %>
     <div class="posts_main">
-     <%= render "public/end_users/other_user_review", {end_user: @end_user} %>
-     <%= render 'layouts/flash'%>
-      <nav class="post_select">
-        <ul>
-          <li><%= link_to "評価一覧", public_end_users_reviews_index_path(id: @end_user.id), class:"select-btns"%></li>
-        </ul>
-      </nav>
-      <% if @posts.blank? %>
-       <div class="about">
-        <p>
-         投稿データはありません。
-        </p>
-      <% end%>
-     <%= render "public/posts/titles_reviews_index", {reviews: @reviews ,review: @review} %>
+      <%= render "public/end_users/other_user_review", {end_user: @end_user} %>
+      <%= render 'layouts/flash'%>
+        <nav class="post_select">
+          <ul>
+            <li><%= link_to "評価一覧", public_end_users_reviews_index_path(id: @end_user.id), class:"select-btns"%></li>
+          </ul>
+        </nav>
+        <% if @posts.blank? %>
+          <div class="about">
+            <p>
+              投稿データはありません。
+            </p>
+          </div>
+        <% end%>
+        <%= render "public/posts/titles_reviews_index", {reviews: @reviews ,review: @review} %>
     </div>
   </div>
 </main>

@@ -18,12 +18,10 @@
           <%= attachment_image_tag @title, :image ,class: "post_index_image", fallback: "no_image_title.png"%>
             <div class="post_main">
               <p class="post_body_titles"><%= @title.body %></p>
-                <% if end_user_signed_in? %>
-                    <% if @title.end_user_id == current_end_user.id %>
-                     <div>
-                      <%= link_to "編集",edit_public_title_path(@title.id),class: "post_show_titles"%>
-                     </div>
-                    <% end%>
+                <% if @title.end_user_id == current_end_user.id %>
+                  <div>
+                    <%= link_to "編集",edit_public_title_path(@title.id),class: "post_show_titles"%>
+                  </div>
                 <% end%>
             </div>
          </section>
@@ -47,6 +45,7 @@
             </div>
           <% end %>
         </section>
+      <div class="scroll-list jscroll">
         <% @posts.each do |post| %>
         <section class="post_titles">
           <div class="account_date_titles">
@@ -63,46 +62,44 @@
             <div class="post_main">
               <p class="post_body_titles"><%= post.body %></p>
           <% end%>
-              <% if end_user_signed_in? %>
-                <% if post.reviews.where(end_user_id: current_end_user.id).blank? %>
-                  <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
-                    <div id="star-rate-<%= post.id %>"></div>
+              <% if post.reviews.where(end_user_id: current_end_user.id).blank? %>
+                <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true) do |f| %>
+                  <div id="star-rate-<%= post.id %>"></div>
                     <script>
-                    $('#star-rate-<%= post.id %>').empty();
-                    $('#star-rate-<%= post.id %>').raty({
+                     $('#star-rate-<%= post.id %>').empty();
+                     $('#star-rate-<%= post.id %>').raty({
                      starOn: "<%= asset_path('star-on.png') %>",
                      starOff: "<%= asset_path('star-off.png') %>",
                      starHalf: "<%= asset_path('star-half.png') %>",
                      scoreName: 'review[rate]'
-                    });
+                     });
                     </script>
-                    <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-                    <%= f.submit "評価", class: "titles_form_btn"%>
-                  <% end%>
+                  <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
+                  <%= f.submit "評価", class: "titles_form_btn"%>
+                <% end%>
 
-                <% else%>
+              <% else%>
 
-                  <%= form_with(model: post.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(post.id, post.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
-                    <div id="edit-comf-<%= post.id%>"></div>
+                <%= form_with(model: post.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(post.id, post.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
+                  <div id="edit-comf-<%= post.id%>"></div>
                     <script>
-                    $('#edit-comf-<%= post.id%>').empty();
-                    $('#edit-comf-<%= post.id%>').raty({
+                     $('#edit-comf-<%= post.id%>').empty();
+                     $('#edit-comf-<%= post.id%>').raty({
                      starOff:  '<%= asset_path('star-off.png') %>',
                      starOn : '<%= asset_path('star-on.png') %>',
                      starHalf: '<%= asset_path('star-half.png') %>',
                      score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
                      scoreName: 'review[rate]',
-                    });
+                     });
                     </script>
-                    <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
-                    <%= f.submit "再評価", class: "edit_titles_form_btn"%>
-                  <% end%>
+                  <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
+                  <%= f.submit "再評価", class: "edit_titles_form_btn"%>
                 <% end%>
+              <% end%>
 
-                <%= link_to "コメント",public_post_path(post.id),class: "post_show_titles"%>
-                  <% if post.end_user_id == current_end_user.id %>
-                    <%= link_to "編集",public_post_path(post.id),class: "post_show"%>
-                  <% end%>
+              <%= link_to "コメント",public_post_path(post.id),class: "post_show_titles"%>
+                <% if post.end_user_id == current_end_user.id %>
+                  <%= link_to "編集",public_post_path(post.id),class: "post_show"%>
                 <% end%>
             </div>
         </section>
@@ -110,6 +107,7 @@
         <%= paginate @posts %>
         <a class="scroll"></a>
       </div>
+    </div>
   </div>
 </main>
 

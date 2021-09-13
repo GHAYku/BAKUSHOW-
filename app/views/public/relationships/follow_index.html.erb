@@ -1,32 +1,32 @@
 <main class="posts">
- <div class="posts_container">
-   <%= render "public/end_users/current_end_user_menu" %>
+  <div class="posts_container">
+  <%= render "public/end_users/current_end_user_menu" %>
     <div class="posts_main">
      <% if @users.exists? %>
       <% @users.each do |end_user| %>
-      <div class="follow_index">
-       <%= attachment_image_tag end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "40x40"%>
-       <%=link_to end_user.name ,public_end_user_path(end_user.id),class:"follow_name"%>
-       <% if current_end_user.id != end_user.id %>
-        <% if current_end_user.following?(end_user) %>
-         <section>
-          <%= link_to "✓フォロー", public_end_user_relationships_path(end_user.id), method: :delete, class:"unfollow_btn" %>
-         </section>
-        <% else %>
-         <section>
-          <%= link_to "フォロー", public_end_user_relationships_path(end_user.id), method: :post, class:"follow_btn" %>
-         </section>
+       <div class="follow_index">
+        <%= attachment_image_tag end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "40x40"%>
+        <%=link_to end_user.name ,public_end_user_path(end_user.id),class:"follow_name"%>
+        <% if current_end_user.id != end_user.id %>
+         <% if current_end_user.following?(end_user) %>
+          <section>
+           <%= link_to "✓フォロー", public_end_user_relationships_path(end_user.id), method: :delete, class:"unfollow_btn" %>
+          </section>
+         <% else %>
+          <section>
+           <%= link_to "フォロー", public_end_user_relationships_path(end_user.id), method: :post, class:"follow_btn" %>
+          </section>
+         <% end %>
         <% end %>
-       <% end %>
+       </div>
+      <% end %>
+     <% else %>
+      <div class="about">
+       <p>
+        まだユーザーはいません。
+       </p>
       </div>
      <% end %>
-    <% else %>
-     <div class="about">
-     <p>
-       まだユーザーはいません。
-     </p>
     </div>
-    <% end %>
   </div>
- </div>
 </main>

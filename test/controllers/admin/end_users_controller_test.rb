@@ -15,5 +15,4 @@ class Admin::EndUsersControllerTest < ActionDispatch::IntegrationTest
     get admin_end_users_delete_url
     assert_response :success
   end
-
 end
