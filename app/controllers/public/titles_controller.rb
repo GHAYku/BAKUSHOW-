@@ -1,4 +1,6 @@
 class Public::TitlesController < ApplicationController
+  before_action :authenticate_end_user!
+
   def index
    @titles = Title.order(created_at: :desc).page(params[:page]).eager_load(:posts,:end_user).per(15)
    case params[:order]
@@ -25,20 +27,25 @@ class Public::TitlesController < ApplicationController
       flash[:notice]="お題の作成を完了しました！"
       redirect_to public_titles_path
     else
+      flash[:danger]="お題の作成に失敗しました。お題内容かジャンルを確認してみてください。お題内容の入力は120文字以内です。"
       render :new
     end
   end
 
   def edit
-   @title = current_end_user.titles.find(params[:id])
+   @title = Title.find(params[:id])
+   if @title.end_user.id != current_end_user.id
+    redirect_to public_homes_home_path
+   end
   end
 
   def update
    @title = current_end_user.titles.find(params[:id])
     if @title.update(title_params)
-      flash[:notice] = "このお題を編集しました"
+      flash[:notice] = "お題を編集しました。"
       redirect_to public_titles_path
     else
+      flash[:danger] = "お題の編集に失敗しました。お題内容かジャンルを確認してみてください。お題内容の入力は120文字以内です。"
       render :edit
     end
   end
@@ -46,7 +53,7 @@ class Public::TitlesController < ApplicationController
   def destroy
    @title = current_end_user.titles.find(params[:id])
    if @title.destroy
-     flash[:notice]="この投稿を削除しました"
+     flash[:notice]="投稿を削除しました"
      redirect_to public_titles_path
    end
   end

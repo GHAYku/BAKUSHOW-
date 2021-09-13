@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+ before_action :authenticate_end_user!
 
   def index
    case params[:order]
@@ -21,6 +22,8 @@ class Public::PostsController < ApplicationController
     @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
     @review = Review.new
    end
+    @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(15)
+    @review = Review.new
   end
 
   def title_posts_index
@@ -41,6 +44,8 @@ class Public::PostsController < ApplicationController
     @reviews = Review.where(end_user_id:[current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
     @review = Review.new
    end
+    @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(15)
+    @review = Review.new
   end
 
   def reviews_index
@@ -52,6 +57,8 @@ class Public::PostsController < ApplicationController
     @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
     @review = Review.new
    end
+    @reviews = Review.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
+    @review = Review.new
   end
 
   def title_reviews_index
@@ -63,11 +70,16 @@ class Public::PostsController < ApplicationController
     @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
     @review = Review.new
    end
+    @reviews = Reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(15)
+    @review = Review.new
   end
 
   def edit
-   @post = current_end_user.posts.find(params[:id])
+   @post = Post.find(params[:id])
    @title = @post.title
+   if @post.end_user.id != current_end_user.id
+    redirect_to public_homes_home_path
+   end
   end
 
   def new
@@ -89,8 +101,8 @@ class Public::PostsController < ApplicationController
      flash[:notice] = "投稿しました"
      redirect_to public_homes_home_path
    else
-     flash[:notice] = "投稿に失敗しました"
-     render :new
+     flash[:danger] = "投稿に失敗しました。ジャンルか投稿内容を確認してください。投稿内容の入力は60文字以内です。"
+     redirect_to request.referer
    end
   end
 
@@ -100,8 +112,8 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿内容を編集しました"
       redirect_to public_homes_home_path
     else
-      flash[:notice] = "投稿内容を編集できませんでした"
-      render :edit
+      flash[:danger] = "投稿内容の編集に失敗しました。ジャンルか投稿内容を確認してください。投稿内容の入力は60文字以内です。"
+      redirect_to request.referer
     end
   end
 

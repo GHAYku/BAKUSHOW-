@@ -3,6 +3,7 @@
     <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
    <%= render "public/end_users/other_user", {end_user: @end_user} %>
+   <%= render 'layouts/flash'%>
    <nav class="post_select">
     <ul>
      <li><%= link_to "投稿一覧へ", public_end_user_path(@end_user.id), class:"select-btns"%></li>

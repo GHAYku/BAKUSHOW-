@@ -3,6 +3,7 @@
    <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
    <%= render "public/end_users/other_user", {end_user: @end_user} %>
+   <%= render 'layouts/flash'%>
    <nav class="posts_select">
     <ul>
      <li><%= link_to "面白投稿", public_end_users_posts_index_path(id: @end_user.id) , class:"select-btns"%></li>

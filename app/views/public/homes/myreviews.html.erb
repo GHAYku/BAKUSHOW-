@@ -2,6 +2,7 @@
   <div class="posts_container">
      <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
+   <%= render 'layouts/flash'%>
    <nav class="posts_select">
     <ul>
      <li><%= link_to "面白投稿", public_posts_reviews_index_path(order: "myreviews") , class:"select-btns"%></li>

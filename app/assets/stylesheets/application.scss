@@ -221,3 +221,21 @@ width: 25%;
  display: none;
 }
 
+.alert {
+ justify-content: space-evenly;
+ display: flex;
+}
+
+.alert p{
+ font-family: kaisotai;
+}
+
+.alert-notice{
+ background: #e0ebaf;
+ color: #006400;
+}
+
+.alert-danger{
+ background: #ffb6c1;
+ color:#dc143c;
+}

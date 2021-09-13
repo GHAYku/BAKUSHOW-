@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+ before_action :authenticate_end_user!
 
   def create
     current_end_user.follow(params[:end_user_id])
@@ -11,6 +12,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def follow_index
+   @users = current_end_user.followings
    case  params[:order]
    when "followings"
     @users = current_end_user.followings
@@ -21,6 +23,7 @@ class Public::RelationshipsController < ApplicationController
 
 
   def other_user_follow_index
+   @users = current_end_user.followings
    case  params[:order]
    when "followings"
     @end_user = EndUser.find(params[:id])

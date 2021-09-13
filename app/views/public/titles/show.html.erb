@@ -2,6 +2,7 @@
   <div class="posts_container">
     <%= render "public/end_users/current_end_user_menu" %>
       <div class="posts_main">
+        <%= render 'layouts/flash'%>
         <nav class="post_select">
          <ul>
           <li class="select-btns">このお題にボケる</li>
@@ -14,7 +15,7 @@
               <p class="account_name"><%= @title.end_user.name %>さんからのお題</p>
             </div>
           <% end%>
-          <%= attachment_image_tag @title, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
+          <%= attachment_image_tag @title, :image ,class: "post_index_image", fallback: "no_image_title.png"%>
             <div class="post_main">
               <p class="post_body_titles"><%= @title.body %></p>
                 <% if end_user_signed_in? %>
@@ -27,10 +28,10 @@
             </div>
          </section>
          <section class="post_titles">
-          <%= form_with model: @post, url: public_post_path, local:true do |f| %>
+          <%= form_with model: @post, url: public_posts_path, local:true do |f| %>
             <div class="post_form_image">
               <label>ボケ画像</label>
-              <%= f.attachment_field :image%>
+              <%= f.attachment_field :image, fallback: "no_image_post.png"%>
             </div>
             <div class="post_form_body">
               <label>ボケ内容</label>

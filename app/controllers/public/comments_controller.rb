@@ -1,16 +1,17 @@
 class Public::CommentsController < ApplicationController
+ 
 
   def create
     post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
     @comment.end_user_id = current_end_user.id
     @comment.post_id = post.id
-    if @comment.save!
-      flash[:success] = "コメントしました"
+    if @comment.save
+      flash[:notice] = "コメントしました"
       redirect_to request.referer
     else
-      flash[:success] = "コメントできませんでした"
-      render :show
+      flash[:danger] = "コメントできませんでした。内容を確認してください。コメントの入力は120文字以内です。"
+      redirect_to request.referer
     end
   end
 

@@ -20,7 +20,7 @@
         <% end%>
 
         <%= link_to (public_post_path(review.post.id)) do%>
-          <%= attachment_image_tag review.post, :image ,class: "post_index_image"%>
+          <%= attachment_image_tag review.post, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
             <div class="post_main">
               <p class="post_body"><%= review.post.body %></p>
         <% end%>

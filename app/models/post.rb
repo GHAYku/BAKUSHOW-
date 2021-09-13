@@ -6,5 +6,5 @@ class Post < ApplicationRecord
  has_many :reviews, dependent: :destroy
  has_many :comments, dependent: :destroy
 
- validates :body, presence: true
+ validates :body, presence: true, length: { maximum: 60 }
 end

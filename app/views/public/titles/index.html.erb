@@ -2,6 +2,7 @@
  <div class="posts_container">
   <%= render "public/end_users/current_end_user_menu" %>
   <div class="posts_main">
+   <%= render 'layouts/flash'%>
    <nav class="post_select">
     <ul>
      <li><%= link_to "お題を作成する", new_public_title_path, class:"select-btns"%></li>
@@ -27,7 +28,7 @@
             <p class="account_name"><%= title.end_user.name %>さんからのお題</p>
           </div>
          <% end%>
-          <%= attachment_image_tag title, :image ,class: "post_index_image", fallback: "no_image_post.png"%>
+          <%= attachment_image_tag title, :image ,class: "post_index_image", fallback: "no_image_title.png"%>
             <div class="post_main">
               <p class="post_body_titles"><%= title.body %></p>
                 <% if end_user_signed_in? %>

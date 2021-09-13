@@ -4,5 +4,5 @@ class Title < ApplicationRecord
  belongs_to :genre
  has_many :posts, dependent: :destroy
 
- validates :body, presence: true
+ validates :body, presence: true, length: { maximum: 120 }
 end

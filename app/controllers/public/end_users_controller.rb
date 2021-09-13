@@ -1,5 +1,7 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :ensure_normal_end_user, only: %i[update withdraw]
+
 
   def ensure_normal_end_user
    if current_end_user.email == 'guest@example.com'
@@ -50,16 +52,16 @@ class Public::EndUsersController < ApplicationController
 
   def titles
    @end_user = EndUser.find(params[:id])
-   @titles = @end_user.titles.page(params[:page]).includes(:posts,:end_user).per(15)
+   @titles = @end_user.titles.order(created_at: :desc).page(params[:page]).includes(:posts,:end_user).per(15)
   end
 
   def update
    @end_user = current_end_user
     if @end_user.update(end_user_params)
-      flash[:notice] = "#{@end_user.name}さんの会員情報を編集しました"
+      flash[:notice] = "#{@end_user.name}さんの会員情報を編集しました。"
       redirect_to edit_public_end_user_path
     else
-      flash[:notice] = "#{@end_user.name}さんの会員情報を編集に失敗しました"
+      flash[:danger] = "#{@end_user.name}さんの会員情報の編集に失敗しました。名前かメールアドレスを確認してください。名前の入力は12文字以内です。"
       render :edit
     end
   end
