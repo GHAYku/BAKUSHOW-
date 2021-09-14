@@ -4,6 +4,7 @@
     <title>BAKUSHOW</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0e09199c98.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
@@ -32,7 +33,20 @@
     <div class="logout">
      <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class:"btns"%>
     </div>
-   </div>
+    <div class="hamburger_menubox">
+		   <input id="hamburger-1" type="checkbox" class="input-hidden">
+		    <label for="hamburger-1" class="hamburger-switch hamburger-switch1">
+			     <span class="hamburger-switch-line1-before"></span>
+			     <span class="hamburger-switch-line1"></span>
+			     <span class="hamburger-switch-line1-after"></span>
+		    </label>
+		    <div class="hamburger-menuwrap">
+			     <ul class="hamburger-demo-menulist">
+			      <%= render "public/end_users/current_end_user_hamburger" %>
+			     </ul>
+		    </div>
+		    <div class="hamburger-cover"></div>
+	   </div>
   </header>
   <% elsif admin_signed_in? %>
   <header>
