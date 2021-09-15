@@ -17,12 +17,6 @@ class Public::PostsController < ApplicationController
     when "myposts"
       @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
       @review = Review.new
-    when "reviews"
-      @reviews = Review.where(end_user_id: [current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-      @review = Review.new
-    when "myreviews"
-      @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-      @review = Review.new
     end
   end
 
@@ -41,9 +35,6 @@ class Public::PostsController < ApplicationController
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(5)
     when "myposts"
       @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-      @review = Review.new
-    when "reviews"
-      @reviews = Review.where(end_user_id: [current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
       @review = Review.new
     end
   end

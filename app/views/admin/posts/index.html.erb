@@ -1,7 +1,7 @@
 <main class="posts">
  <div class="posts_container">
   <div class="posts_main">
-    <h3>お題一覧</h3>
+    <h3>投稿一覧</h3>
       <table>
        <thead>
         <tr>
@@ -19,7 +19,7 @@
            <%= post.body %>
           <% end %>
          </td>
-         <td><%= attachment_image_tag post, :image ,class: "user_image", fallback: "no_image_title.jpg", size: "30x30"%></td>
+         <td><%= attachment_image_tag post, :image ,class: "user_image", fallback: "no_image_post.png", size: "30x30"%></td>
         </tr>
        <% end %>
       </tbody>

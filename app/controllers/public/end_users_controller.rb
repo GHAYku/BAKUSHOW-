@@ -4,7 +4,7 @@ class Public::EndUsersController < ApplicationController
 
   def ensure_normal_end_user
     if current_end_user.email == 'guest@example.com'
-      redirect_to edit_public_end_user_path, alert: 'ゲストユーザーの更新・削除はできません。'
+      redirect_to edit_public_end_user_path(current_end_user.id), alert: 'ゲストユーザーの更新・退会はできません。'
     end
   end
 

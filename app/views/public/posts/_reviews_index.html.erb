@@ -94,7 +94,7 @@
         <% end%>
 
               <% if review.post.reviews.where(end_user_id: current_end_user.id).blank? %>
-                <%= form_with(model: review, url: public_post_reviews_path(review.post.id), local: true) do |f| %>
+                <%= form_with(model: review, url: public_post_reviews_path(review.post.id), local: true, method: :POST) do |f| %>
                   <div id="star-rate-<%= review.id %>"></div>
                     <script>
                       $('#star-rate-<%= review.id %>').empty();

@@ -70,6 +70,7 @@
     </div>
    </div>
   </header>
+  <%= render 'layouts/flash'%>
   <% else %>
   <header>
    <div class="container">
@@ -78,7 +79,6 @@
      <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
     </a>
    </div>
-
    <div class="sin-up">
     <%= link_to "新規アカウント作成",new_end_user_registration_path, class:"btns"%>
    </div>

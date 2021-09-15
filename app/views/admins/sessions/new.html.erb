@@ -1,9 +1,9 @@
+<%= render 'layouts/flash'%>
 <main class="login">
  <div class="form_container">
   <div class="form_grop">
   <h2>管理者ログイン</h2>
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   <%= render 'layouts/flash'%>
 	   <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form", placeholder: "メールアドレス"%>
     <%= f.password_field :password, autocomplete: "current-password",class: "form", placeholder: "パスワード" %>
    <% if devise_mapping.rememberable? %>

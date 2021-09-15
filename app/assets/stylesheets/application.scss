@@ -348,12 +348,25 @@ margin: 20px;
 .posts_main,header nav {
  left: initial;
  position: initial;
+ width: 100%;
 }
+
+header nav ul {
+width: 100%;
+
+}
+
 
 .posts_main {
  padding-top: 56px;
 }
 
+}
+
+@media screen and (max-width:400px){
+ .hamburger-switch-line1, .hamburger-switch-line1-before, .hamburger-switch-line1-after{
+ background: #991129;
+ }
 }
 
 @media screen and (min-width:930px){

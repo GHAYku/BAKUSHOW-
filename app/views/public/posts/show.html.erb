@@ -57,7 +57,7 @@
                   <% end%>
                 <% end%>
                 <% if @post.end_user_id == current_end_user.id %>
-                  <%= link_to "編集",public_post_path(@post.id),class: "post_show_titles"%>
+                  <%= link_to "編集",edit_public_post_path(@post.id),class: "post_show_titles"%>
                 <% end%>
               </div>
           </section>
@@ -94,7 +94,7 @@
                   <% end%>
                 <% end%>
                 <% if @post.end_user_id == current_end_user.id %>
-                  <%= link_to "編集",public_post_path(@post.id),class: "post_show"%>
+                  <%= link_to "編集",edit_public_post_path(@post.id),class: "post_show"%>
                 <% end%>
 
               </div>

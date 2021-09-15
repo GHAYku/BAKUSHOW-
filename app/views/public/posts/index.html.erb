@@ -1,6 +1,6 @@
 <main class="posts">
   <div class="posts_container">
-　<%= render "public/end_users/current_end_user_menu" %>
+  <%= render "public/end_users/current_end_user_menu" %>
     <div class="posts_main">
     <%= render 'layouts/flash'%>
       <nav class="post_select">
@@ -61,7 +61,7 @@
 
                   <%= link_to "コメント",public_post_path(post.id),class: "post_show"%>
                   <% if post.end_user_id == current_end_user.id %>
-                    <%= link_to "編集",public_post_path(post.id),class: "post_show"%>
+                    <%= link_to "編集",edit_public_post_path(post.id),class: "post_show"%>
                   <% end%>
 
                 </div>

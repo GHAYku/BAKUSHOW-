@@ -6,7 +6,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.end_user_id = current_end_user.id
     @review.post_id = post.id
-    if @review.save!
+    if @review.save
       flash[:notice] = "評価しました！"
       redirect_to request.referer
     else
