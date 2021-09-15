@@ -42,7 +42,7 @@
             <% end%>
 
                 <% if @post.reviews.where(end_user_id: current_end_user.id).blank? %>
-                  <%= form_with(model: @review, url: public_post_reviews_path(@post.id), local: true) do |f| %>
+                  <%= form_with(model: @review, url: public_post_reviews_path(@post.id), local: true, method: :POST) do |f| %>
                     <div id="star-rate-<%= @post.id %>"></div>
                     <p class="star">★×<%=@post.reviews.sum(:rate).floor%></p>
                     <%= f.submit "評価", class: "titles_form_btn"%>
@@ -79,7 +79,7 @@
             <% end%>
 
                 <% if @post.reviews.where(end_user_id: current_end_user.id).blank? %>
-                  <%= form_with(model: @review, url: public_post_reviews_path(@post.id), local: true) do |f| %>
+                  <%= form_with(model: @review, url: public_post_reviews_path(@post.id), local: true, method: :POST) do |f| %>
                     <div id="star-rate-<%= @post.id %>"></div>
                     <p class="star">★×<%= @post.reviews.sum(:rate).floor%></p>
                     <%= f.submit "評価", class: "form_btn"%>

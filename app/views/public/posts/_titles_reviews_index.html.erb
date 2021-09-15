@@ -26,7 +26,7 @@
         <% end%>
 
               <% if review.post.reviews.where(end_user_id: current_end_user.id).blank? %>
-                <%= form_with(model: review, url: public_post_reviews_path(review.post.id), local: true) do |f| %>
+                <%= form_with(model: review, url: public_post_reviews_path(review.post.id), local: true, method: :POST) do |f| %>
                   <div id="star-rate-<%= review.id %>"></div>
                     <script>
                       $('#star-rate-<%= review.id %>').empty();
@@ -62,7 +62,7 @@
 
               <%= link_to "コメント",public_post_path(review.post.id),class: "post_show_titles"%>
               <% if review.post.end_user_id == current_end_user.id %>
-                <%= link_to "編集",public_post_path(review.post.id),class: "post_show"%>
+                <%= link_to "編集",edit_public_post_path(review.post.id),class: "post_show_titles"%>
               <% end%>
             </div>
       </section>
