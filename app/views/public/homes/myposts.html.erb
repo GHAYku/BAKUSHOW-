@@ -15,9 +15,15 @@
       投稿はありません。</br>
       ※詳しいご利用方法は↓をクリック！
      </p>
-     <%= link_to (public_homes_about_path) do %>
-      <%= image_tag "about.jpeg", size: "460x350" %>
-     <% end%>
+     <div class="about_img">
+      <%= link_to (public_homes_about_path) do %>
+       <%= image_tag "about.jpeg", size: "368x280" %>
+      <% end%>
+     </div>
+     <div class ="about_img_mini">
+      <%= link_to "ご利用ガイド",public_homes_about_path,class: "post_show"%>
+     </div>
+    </div>
     </div>
    <% end %>
    <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>

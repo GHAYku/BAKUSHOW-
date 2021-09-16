@@ -11,6 +11,7 @@
          <th>ステータス</th>
         </tr>
        </thead>
+       <div class="scroll-list jscroll">
        <tbody>
         <% @end_users.each do |end_user| %>
         <tr>
@@ -36,7 +37,7 @@
        <% end %>
       </tbody>
      </table>
-    <%= paginate  @end_users %>
+    </div>
   </div>
  </div>
 </main>

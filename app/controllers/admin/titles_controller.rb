@@ -2,7 +2,7 @@ class Admin::TitlesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @titles = Title.all.order(created_at: :desc).page(params[:page]).per(15)
+    @titles = Title.all.order(created_at: :desc)
   end
 
   def edit

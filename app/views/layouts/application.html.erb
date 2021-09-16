@@ -16,9 +16,14 @@
   <% if end_user_signed_in? %>
   <header>
    <div class="container">
-    <div class="logo-area">
+    <div class="logo_area">
      <%= link_to (public_homes_home_path) do%>
       <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
+     <% end%>
+    </div>
+    <div class="logo_area_mini">
+     <%= link_to (public_homes_home_path) do%>
+      <%= image_tag "BAKUSHOW!!_logo.png", size: "150x37" %>
      <% end%>
     </div>
     <nav>
@@ -51,7 +56,7 @@
   <% elsif admin_signed_in? %>
   <header>
    <div class="container">
-    <div class="logo-area">
+    <div class="logo_area">
      <%= link_to (public_homes_home_path) do%>
       <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
      <% end%>
@@ -74,9 +79,14 @@
   <% else %>
   <header>
    <div class="container">
-   <div class="logo-area">
+   <div class="logo_area">
     <a href="/">
      <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
+    </a>
+   </div>
+   <div class="logo_area_mini">
+    <a href="/">
+     <%= image_tag "BAKUSHOW!!_logo.png", size: "150x37" %>
     </a>
    </div>
    <div class="sin-up">

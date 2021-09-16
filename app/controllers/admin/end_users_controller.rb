@@ -2,7 +2,7 @@ class Admin::EndUsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @end_users = EndUser.all.order(created_at: :desc).page(params[:page]).per(15)
+    @end_users = EndUser.all.order(created_at: :desc)
   end
 
   def edit

@@ -10,6 +10,7 @@
          <th>投稿</th>
         </tr>
        </thead>
+       <div class="scroll-list jscroll">
        <tbody>
         <% @comments.each do |comment| %>
         <tr>
@@ -32,7 +33,7 @@
        <% end %>
       </tbody>
      </table>
-    <%= paginate  @comments %>
+    </div>
   </div>
  </div>
 </main>
