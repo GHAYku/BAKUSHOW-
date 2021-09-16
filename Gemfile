@@ -67,6 +67,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 gem 'config'
 gem "omniauth-rails_csrf_protection"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
