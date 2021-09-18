@@ -69,7 +69,7 @@
 
                   <%= link_to "コメント",public_post_path(post.id),class: "post_show"%>
                   <% if post.end_user_id == current_end_user.id %>
-                    <%= link_to "編集",editpublic_post_path(post.id),class: "post_show"%>
+                    <%= link_to "編集",edit_public_post_path(post.id),class: "post_show"%>
                   <% end%>
                 </div>
             </section>

@@ -10,5 +10,5 @@
   end_user.save
 end
 
-admin_user = Admin.create(:email => "test@test.com",:password => "dmmdmm")
+admin_user = Admin.new(:email => "test@test.com",:password => "dmmdmm")
 admin_user.save
