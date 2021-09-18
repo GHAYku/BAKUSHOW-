@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class EndUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def facebook
-    callback_for(:facebook)
-  end
-
   def twitter
     callback_for(:twitter)
   end
@@ -25,6 +21,6 @@ class EndUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
   end
 
   def failure
-    redirect_to root
+    redirect_to root_path
   end
 end
