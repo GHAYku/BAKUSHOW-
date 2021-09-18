@@ -117,7 +117,11 @@
                   <p class="account_name"><%= comment.end_user.name %>さんのコメント</p>
                 </div>
             <% end%>
-                <p class="comment_body"><%= comment.comment %></p>
+                <p class="comment_body"><%= comment.comment %>
+                　<% if comment.end_user_id == current_end_user.id %>
+                 　<%= link_to "削除", public_post_comment_path(comment.id,post_id: comment.post.id), method: :DELETE,class: "post_show"%>
+                　<% end%>
+                </p>
               </div>
           <% end %>
           <%= paginate @comments %>
