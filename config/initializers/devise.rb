@@ -13,10 +13,6 @@ Devise.setup do |config|
                   ENV['TWITTER_API_KEY'],
                   ENV['TWITTER_API_SECRET']
 
-  config.omniauth :facebook,
-                  ENV['FACEBOOK_API_KEY'],
-                  ENV['FACEBOOK_API_SECRET']
-
   config.omniauth :google_oauth2,
                   ENV['GOOGLE_API_KEY'],
                   ENV['GOOGLE_API_SECRET']

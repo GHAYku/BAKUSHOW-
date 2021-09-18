@@ -25,6 +25,6 @@ class EndUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
   end
 
   def failure
-    redirect_to public_homes_top_path
+    redirect_to root
   end
 end
