@@ -38,7 +38,6 @@ class EndUser < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   validates :name, presence: true, length: { maximum: 12 }
-  validates :email, presence: true
 
   def follow(end_user_id)
     relationships.create(followed_id: end_user_id)
