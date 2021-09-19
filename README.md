@@ -63,9 +63,6 @@
 <https://drive.google.com/file/d/1mEGXw0BslD0ocTRji_ILJayWRfXvcDCw/view?usp=sharing>
 ##### ER図
 <https://drive.google.com/file/d/1uFFtN7nceep13piK-BU_g3DmWpSYqOfL/view?usp=sharing>
-##### 詳細設計書
-<https://docs.google.com/spreadsheets/d/1X62Tlpgm6pJhARZvaasrwQy-OJi_TIBj/edit?usp=sharing&ouid=105403019622369426443&rtpof=true&sd=true>
-
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1y-xxvBn61sI5mvhXFhaTG3BtRwA_SktxJbAVJofe2g0/edit#gid=0>
