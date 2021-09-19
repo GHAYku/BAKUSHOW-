@@ -9,11 +9,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :twitter,
-                  ENV['TWITTER_API_KEY'],
-                  ENV['TWITTER_API_SECRET']
-
-  config.omniauth :google_oauth2,
+config.omniauth :google_oauth2,
                   ENV['GOOGLE_API_KEY'],
                   ENV['GOOGLE_API_SECRET']
 

@@ -57,7 +57,7 @@ bottom: 0;
 z-index: 10;
 }
 
-header .container,footer .container {
+header .container,footer .container,header .container_logout {
  max-width: 1200px;
  margin: 0 auto;
  height: 100%;
@@ -67,6 +67,10 @@ header .container,footer .container {
  flex-wrap: nowrap;
  font-family: kaisotai;
  flex-direction: row
+}
+
+header .container_logout {
+justify-content: center;
 }
 
 footer .container{

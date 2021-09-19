@@ -78,20 +78,17 @@
   <%= render 'layouts/flash'%>
   <% else %>
   <header>
-   <div class="container">
-   <div class="logo_area">
-    <a href="/">
-     <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
-    </a>
-   </div>
-   <div class="logo_area_mini">
-    <a href="/">
-     <%= image_tag "BAKUSHOW!!_logo.png", size: "150x37" %>
-    </a>
-   </div>
-   <div class="sin-up">
-    <%= link_to "新規アカウント作成",new_end_user_registration_path, class:"btns"%>
-   </div>
+   <div class="container_logout">
+    <div class="logo_area">
+     <a href="/">
+      <%= image_tag "BAKUSHOW!!_logo.png", size: "300x75" %>
+     </a>
+    </div>
+    <div class="logo_area_mini">
+     <a href="/">
+      <%= image_tag "BAKUSHOW!!_logo.png", size: "150x37" %>
+     </a>
+    </div>
    </div>
   </header>
   <% end %>

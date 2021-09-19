@@ -22,7 +22,6 @@
  flex-wrap: wrap;
 }
 
-.home_container
 
 .top_about {
  background: #FFD100;
@@ -72,6 +71,7 @@ font-weight: bold;
  color: #000000;
  border-radius: 7px;
  display: inline-block;
+ display: flex;
  height: 50px;
  width: 380px;
  text-align: center;
@@ -79,6 +79,9 @@ font-weight: bold;
  line-height: 50px;
  background: #FFD100;
  overflow: hidden;
+ margin: 15px 0 10px 0;
+ justify-content: space-evenly;
+ align-items: center;
 }
 
 .btn-BAKUSHOW span {
@@ -91,61 +94,6 @@ font-weight: bold;
  transform: rotateX(360deg);
 }
 
-.btn-twitter {
- color: #FFF;
- border-radius: 7px;
- display: inline-block;
- height: 50px;
- width: 380px;
- text-align: center;
- font-size: 25px;
- line-height: 50px;
- background: #1da1f3;
- overflow: hidden;
-}
-
-.fa-twitter {
- text-shadow: 2px 2px 0px #4287d6;
- font-size: 30px;
-}
-
-.btn-twitter span {
- display: inline-block;
- transition: .5s;
-}
-
-.btn-twitter:hover span {
- -webkit-transform: rotateX(360deg);
- transform: rotateX(360deg);
-}
-
-.btn-facebook {
- color: #FFF;
- border-radius: 7px;
- display: inline-block;
- height: 50px;
- width: 380px;
- text-align: center;
- font-size: 25px;
- line-height: 50px;
- background: #4966a0;
- overflow: hidden;
-}
-
-.fa-facebook {
- text-shadow: 2px 2px 1px #224282;
- font-size: 30px;
-}
-
-.btn-facebook span {
- display: inline-block;
- transition: .5s;
-}
-
-.btn-facebook:hover span {
- -webkit-transform: rotateX(360deg);
- transform: rotateX(360deg);
-}
 
 .btn-google {
  color: #FFF;

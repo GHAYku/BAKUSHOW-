@@ -15,6 +15,7 @@
    <div class="actions">
     <%= f.submit "ログイン",class:"form_btn"%>
     <p>※パスワードを忘れた方は<span><%= link_to " こちら", new_password_path(resource_name)%></span></p>
+    <p>未登録の方は<span><%= link_to " こちら", new_end_user_registration_path%></span></p>
    </div>
   <% end %>
   </div>

@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class EndUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def twitter
-    callback_for(:twitter)
-  end
-
   def google_oauth2
     callback_for(:google)
   end

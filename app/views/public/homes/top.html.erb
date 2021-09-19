@@ -13,10 +13,17 @@
   </section>
   <section class="top_login">
    <div class="other_login">
-    <h1>BAKUSHOW!!でログイン</h1>
+    <h1>BAKUSHOW!!</h1>
     <%= link_to(new_end_user_session_path, class: "btn-BAKUSHOW") do %>
+      <%= image_tag "icon2", size: "45x45"%>
 				  <span>
 				   ログイン
+				  </span>
+				<% end %>
+    <%= link_to(new_end_user_registration_path, class: "btn-BAKUSHOW") do %>
+    　<%= image_tag "icon", size: "45x45"%>
+				  <span>
+				   新規アカウント作成
 				  </span>
 				<% end %>
 				<h1>ソーシャルアカウントでログイン</h1>
@@ -25,12 +32,6 @@
 					 <%= link_to(end_user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-google") do %>
         <i class="fab fa-google-plus"></i>
         <span>Googleでログイン</span>
-      <% end %>
-     </li>
-					<li class="twitter">
-					 <%= link_to(end_user_twitter_omniauth_authorize_path, method: :post, class: "btn-twitter") do %>
-       <i class="fa fa-twitter"></i>
-       <span>Twitterでログイン</span>
       <% end %>
      </li>
 				</ul>
