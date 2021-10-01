@@ -372,9 +372,6 @@ width: 100%;
 }
 
 @media screen and (max-width:400px){
-.logo_area {
- display: none;
-}
 
 .comment_form{
  width: initial;
@@ -422,14 +419,3 @@ width: 330px;
 	}
 }
 
-	@media screen and (min-width:400px){
-.logo_area_mini {
- display: none;
-}
-
-.about_img_mini {
- display: none;
-}
-
-
-}
