@@ -7,7 +7,7 @@ class Public::SearchsController < ApplicationController
 
   def post_search
     if params[:body] != ""
-      @posts = Post.where("body LIKE(?)", "%#{params[:body]}%").order(created_at: :desc).page(params[:page]).per(5)
+      @posts = Post.search(params[:body]).order(created_at: :desc).page(params[:page]).per(5)
     else
       @posts = Post.all.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
     end
@@ -20,7 +20,7 @@ class Public::SearchsController < ApplicationController
 
   def title_search
     if params[:body] != ""
-      @titles = Title.where("body LIKE(?)", "%#{params[:body]}%").order(created_at: :desc).page(params[:page]).per(5)
+      @titles = Title.tite_search(params[:body]).order(created_at: :desc).page(params[:page]).per(5)
     else
       @titles = Title.all.order(created_at: :desc).page(params[:page]).eager_load(:end_user).per(5)
     end

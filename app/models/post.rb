@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 60 }
+ def self.search(body)
+  where(["body like?", "%#{body}%"])
+ end
 end

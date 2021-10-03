@@ -5,4 +5,7 @@ class Title < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 120 }
+ def self.tite_search(body)
+  where(["body like?", "%#{body}%"])
+ end
 end
