@@ -1,0 +1,35 @@
+<script>
+function ratySet() {
+ <%Review.all.each do |review| %>
+  $('#star-rate-<%= review.id %>').empty();
+  $('#star-rate-<%= review.id %>').raty({
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'review[rate]' });
+  $('#edit-comf-<%= review.id%>').empty();
+  $('#edit-comf-<%= review.id%>').raty({
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   score: <%= review.post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+   scoreName: 'review[rate]', });
+  $('#star-rate-<%= review.id %>').empty();
+  $('#star-rate-<%= review.id %>').raty({
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   scoreName: 'review[rate]' });
+  $('#edit-comf-<%= review.id%>').empty();
+  $('#edit-comf-<%= review.id%>').raty({
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   score: <%= review.post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+   scoreName: 'review[rate]',});
+ <%end%>
+ }
+ $(window).on('scroll', function() {
+  setTimeout('ratySet();', 1500);
+ });
+</script>

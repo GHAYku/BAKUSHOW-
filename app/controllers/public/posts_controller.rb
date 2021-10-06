@@ -6,15 +6,19 @@ class Public::PostsController < ApplicationController
     @review = Review.new
     case params[:order]
     when "home"
+      @url = "home"
       @posts = Post.where(end_user_id: [current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
       @review = Review.new
     when "new"
+      @url = "new"
       @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
       @review = Review.new
     when "popular"
+      @url = "popular"
       posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(5)
     when "myposts"
+      @url = "myposts"
       @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
       @review = Review.new
     end
@@ -25,15 +29,19 @@ class Public::PostsController < ApplicationController
     @review = Review.new
     case params[:order]
     when "home"
+      @url = "home"
       @posts = Post.where(end_user_id: [current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
       @review = Review.new
     when "new"
+      @url = "new"
       @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
       @review = Review.new
     when "popular"
+      @url = "popular"
       posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(5)
     when "myposts"
+      @url = "myposts"
       @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
       @review = Review.new
     end

@@ -20,38 +20,4 @@
     </div>
   </div>
 </main>
-<script>
-function ratySet() {
- <%Post.all.each do |post| %>
-  $('#star-rate-<%= post.id %>').empty();
-  $('#star-rate-<%= post.id %>').raty({
-   starOn: "<%= asset_path('star-on.png') %>",
-   starOff: "<%= asset_path('star-off.png') %>",
-   starHalf: "<%= asset_path('star-half.png') %>",
-   scoreName: 'review[rate]' });
-  $('#edit-comf-<%= post.id%>').empty();
-  $('#edit-comf-<%= post.id%>').raty({
-   starOff:  '<%= asset_path('star-off.png') %>',
-   starOn : '<%= asset_path('star-on.png') %>',
-   starHalf: '<%= asset_path('star-half.png') %>',
-   score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
-   scoreName: 'review[rate]', });
-  $('#star-rate-<%= post.id %>').empty();
-  $('#star-rate-<%= post.id %>').raty({
-   starOn: "<%= asset_path('star-on.png') %>",
-   starOff: "<%= asset_path('star-off.png') %>",
-   starHalf: "<%= asset_path('star-half.png') %>",
-   scoreName: 'review[rate]' });
-  $('#edit-comf-<%= post.id%>').empty();
-  $('#edit-comf-<%= post.id%>').raty({
-   starOff:  '<%= asset_path('star-off.png') %>',
-   starOn : '<%= asset_path('star-on.png') %>',
-   starHalf: '<%= asset_path('star-half.png') %>',
-   score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
-   scoreName: 'review[rate]',});
- <%end%>
- }
- $(window).on('scroll', function() {
-  setTimeout('ratySet();', 1500);
- });
-</script>
+<%= render "public/posts/post_ratyset"%>
