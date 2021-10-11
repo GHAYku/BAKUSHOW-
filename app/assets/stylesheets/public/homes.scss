@@ -349,7 +349,7 @@ section .form_btn {
  color: #000000;
 }
 
-.menu {
+.menu, .right_menu{
  max-width: 330px;
  width: 24%;
  padding: 20px 15px 0 0;
@@ -362,11 +362,11 @@ section .form_btn {
  scrollbar-width: none;
 }
 
-.menu::-webkit-scrollbar {
+.menu::-webkit-scrollbar,.right_menu::-webkit-scrollbar {
  display:none;
  }
 
-.mypage{
+.mypage, .ranking{
  border-radius: 10px;
  background: #FFF;
  padding: 10px;
@@ -374,6 +374,16 @@ section .form_btn {
  margin-left: 10px;
  box-shadow: 0 3px 6px;
  border: solid 2px;
+}
+
+.right_menu{
+ height: 100%;
+ right: calc((100% - 1400px) / 2);
+}
+
+.ranking_title{
+ font-family: kaisotai;
+ font-size: 20px;
 }
 
 .mypage li{
