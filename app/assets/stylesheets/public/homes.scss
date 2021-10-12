@@ -157,14 +157,13 @@ font-weight: bold;
  margin: 0 auto;
  display: flex;
  justify-content: flex-start;
- flex-wrap: nowrap;
 }
 
 .posts_main {
  height: 100%;
- left: 40%;
+ left: 39%;
  position: absolute;
- width: 500px;
+ width: 400px;
  margin: 0 auto 100px auto;
 }
 
@@ -352,7 +351,7 @@ section .form_btn {
 .menu, .right_menu{
  max-width: 330px;
  width: 24%;
- padding: 20px 15px 0 0;
+ padding: 20px 15px 20px 15px;
  position: fixed;
  top: 90px;
  height: 100vh;
@@ -378,7 +377,8 @@ section .form_btn {
 
 .right_menu{
  height: 100%;
- right: calc((100% - 1400px) / 2);
+ right: calc((100% - 1050px) / 2);
+ width: 15%;
 }
 
 .ranking_title{

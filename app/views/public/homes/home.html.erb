@@ -26,17 +26,16 @@
       <%= link_to "ご利用ガイド",public_homes_about_path,class: "post_show"%>
      </div>
     </div>
-    </div>
+    <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
+   </div>
    <% end %>
-   <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
-  </div>
- </div>
-      <section class = "right_menu">
+   <div class = "right_menu">
     <div class="ranking">
      <div class="ranking_title">
-      BAKUSHOW‼★獲得ランキング
+      ★ランキング
      </div>
     </div>
-   </section>
+   </div>
+  </div>
 </main>
 <%= render "public/posts/post_ratyset"%>
