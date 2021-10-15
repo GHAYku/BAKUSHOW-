@@ -383,7 +383,9 @@ section .form_btn {
 
 .ranking_title{
  font-family: kaisotai;
- font-size: 20px;
+ font-size: 15px;
+ display: flex;
+ justify-content: center
 }
 
 .mypage li{
