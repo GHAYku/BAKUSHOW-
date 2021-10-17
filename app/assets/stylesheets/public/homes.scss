@@ -161,7 +161,7 @@ font-weight: bold;
 
 .posts_main {
  height: 100%;
- left: 39%;
+ left: 37%;
  position: absolute;
  width: 400px;
  margin: 0 auto 100px auto;
@@ -338,7 +338,7 @@ section .form_btn {
  font-family: kaisotai;
 }
 
-.post_show:hover,.mypage li:hover, .post_body:hover,.quote_account_date:hover {
+.post_show:hover,.mypage li:hover, .post_body:hover,.quote_account_date:hover,.ranking_index:hover {
  background: #F0F0F0;
  color: #000000;
 }
@@ -375,17 +375,31 @@ section .form_btn {
  border: solid 2px;
 }
 
-.right_menu{
- height: 100%;
- right: calc((100% - 1050px) / 2);
- width: 15%;
+.ranking{
+ padding: 10px 0px 10px 0px;
 }
 
-.ranking_title{
+.right_menu{
+ height: 100%;
+ right: calc((100% - 1000px) / 2);
+ width: 18%;
+}
+
+.ranking_title,.ranking_index{
  font-family: kaisotai;
- font-size: 15px;
+ font-size: 20px;
  display: flex;
  justify-content: center
+}
+
+.ranking_index{
+ padding: 5px 10px 10px 5px;
+ font-size: 17px;
+ justify-content: space-between;
+}
+
+.ranking_name{
+ color: #000000;
 }
 
 .mypage li{

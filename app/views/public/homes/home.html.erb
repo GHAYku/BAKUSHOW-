@@ -35,7 +35,13 @@
       <%= image_tag "king_oukan.png", size: "20x20" %>
       ランキング
      </div>
-
+     <% @end_users.each do |end_user| %>
+      <div class="ranking_index">
+       <%= attachment_image_tag end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
+       <%=link_to end_user.name ,public_end_user_path(end_user.id),class: "ranking_name"%>
+       <%= end_user.posts.joins(:reviews).sum(:rate).floor %>
+      </div>
+     <% end %>
     </div>
    </div>
   </div>
