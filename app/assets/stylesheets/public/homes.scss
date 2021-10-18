@@ -161,7 +161,7 @@ font-weight: bold;
 
 .posts_main {
  height: 100%;
- left: 37%;
+ left: 40%;
  position: absolute;
  width: 400px;
  margin: 0 auto 100px auto;
@@ -381,7 +381,7 @@ section .form_btn {
 
 .right_menu{
  height: 100%;
- right: calc((100% - 1000px) / 2);
+ right: calc((100% - 1200px) / 2);
  width: 18%;
 }
 
@@ -529,6 +529,7 @@ box-shadow: 0 0 4px #CAD4E2, -2px -2px 4px #FFF;
 
 .about_title_image {
  border-radius: 10px;
+ margin: 0 auto;
 }
 
 .about_page {

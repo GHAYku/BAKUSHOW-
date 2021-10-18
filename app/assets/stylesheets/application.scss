@@ -107,7 +107,7 @@ footer .container{
 header nav {
  position: absolute;
  top: 35px;
- left: 37%;
+ left: 40%;
 }
 
 header nav ul {
@@ -335,7 +335,19 @@ width: 25%;
 }
 
 
-@media screen and (max-width:930px) {
+@media screen and (max-width:1300px) {
+ .posts_main, header nav{
+  left: 30%;
+ }
+ .right_menu{
+  right: calc((100% - 1000px) / 2);
+  width: 25%;
+ }
+
+}
+
+
+@media screen and (max-width:1020px) {
  header .container,footer .container,.home_container {
  flex-direction: column;
  align-items: center;
@@ -356,7 +368,7 @@ margin: 20px auto;
 .posts_main,header nav {
  left: initial;
  position: initial;
- width: 100%;
+ width: 50%;
 }
 
 header nav ul {
@@ -364,12 +376,23 @@ width: 100%;
 
 }
 
-
 .posts_main {
  padding-top: 56px;
 }
 
 }
+
+@media screen and (max-width:780px) {
+.posts_main,header nav {
+ width: 100%;
+}
+
+header nav ul {
+width: 100%;
+}
+
+}
+
 
 @media screen and (max-width:400px){
 .logo_area {
@@ -416,7 +439,7 @@ width: 330px;
 }
 
 
-@media screen and (min-width:930px){
+@media screen and (min-width:1010px){
  .hamburger_menubox{
 		display: none;
 	}
