@@ -35,18 +35,49 @@
       <%= image_tag "king_oukan.png", size: "20x20" %>
       ランキング
      </div>
-     <% @end_users.each do |end_user| %>
       <div class="ranking_index">
-       <%= attachment_image_tag end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
-       <%=link_to end_user.name ,public_end_user_path(end_user.id),class: "ranking_name"%>
-       <%= end_user.posts.joins(:reviews).sum(:rate).floor %>
+       <%= image_tag "crown1.png", size: "30x30" %>
+       <div class="ranking_name">
+        <%= attachment_image_tag @end_users.first, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
+        <%=link_to @end_users.first.name ,public_end_user_path(@end_users.first.id),class: "ranking_name"%>
+       </div>
+       ★<%= @end_users.first.posts.joins(:reviews).sum(:rate).floor %>
       </div>
-     <% end %>
-    </div>
+      <div class="ranking_index">
+       <%= image_tag "crown2.png", size: "25x25" %>
+       <div class="ranking_name">
+        <%= attachment_image_tag @end_users.second, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
+        <%=link_to @end_users.second.name ,public_end_user_path(@end_users.second.id),class: "ranking_name"%>
+       </div>
+       ★<%= @end_users.second.posts.joins(:reviews).sum(:rate).floor %>
+      </div>
+      <div class="ranking_index">
+       <%= image_tag "crown3.png", size: "25x25" %>
+       <div class="ranking_name">
+        <%= attachment_image_tag @end_users.third, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
+        <%=link_to @end_users.third.name ,public_end_user_path(@end_users.third.id),class: "ranking_name"%>
+       </div>
+       ★<%= @end_users.third.posts.joins(:reviews).sum(:rate).floor %>
+      </div>
+      <div class="ranking_index">
+       4位
+       <div class="ranking_name">
+        <%= attachment_image_tag @end_users.fourth, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
+        <%=link_to @end_users.fourth.name ,public_end_user_path(@end_users.fourth.id),class: "ranking_name"%>
+       </div>
+       ★<%= @end_users.fourth.posts.joins(:reviews).sum(:rate).floor %>
+      </div>
+      <div class="ranking_index">
+       5位
+       <div class="ranking_name">
+        <%= attachment_image_tag @end_users.fifth, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
+        <%=link_to @end_users.fifth.name ,public_end_user_path(@end_users.third.id),class: "ranking_name"%>
+       </div>
+       ★<%= @end_users.fifth.posts.joins(:reviews).sum(:rate).floor %>
+      </div>
+     </div>
    <div class="random_post">
     今日のおすすめ
- 
-   </div>
    </div>
   </div>
 </main>

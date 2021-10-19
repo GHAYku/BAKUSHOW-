@@ -382,7 +382,7 @@ section .form_btn {
 .right_menu{
  height: 100%;
  right: calc((100% - 1200px) / 2);
- width: 18%;
+ width: 25%;
 }
 
 .ranking_title,.ranking_index{
@@ -396,6 +396,12 @@ section .form_btn {
  padding: 5px 10px 10px 5px;
  font-size: 17px;
  justify-content: space-between;
+ align-items: center;
+}
+
+.ranking_name{
+ display: flex;
+ align-items: center;
 }
 
 .ranking_name{
