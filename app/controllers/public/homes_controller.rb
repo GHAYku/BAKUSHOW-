@@ -7,8 +7,8 @@ class Public::HomesController < ApplicationController
   def home
     @posts = Post.where(end_user_id: [current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
     @review = Review.new
-    @end_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
-    @post = Post.order("RANDOM()").first
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.order("RANDOM()").first
   end
 
   def new
