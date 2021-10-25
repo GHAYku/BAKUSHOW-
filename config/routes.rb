@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'end_users/title_reviews_index'
     get 'end_users/reviews_index'
     get 'end_users/titles'
+    get 'end_users/ranking'
     get 'relationships/follow_index'
     resources :end_users, only: [:edit, :update, :show] do
       collection do

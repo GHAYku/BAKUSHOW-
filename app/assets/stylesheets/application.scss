@@ -190,7 +190,7 @@ width: 25%;
  padding: 10px 20px;
  display: inline-block;
  background-color: #FFF;
- box-shadow: 0 6px 6px;
+ box-shadow: 0 3px 6px;
  font-size: 114%;
  line-height: 1;
  position: relative;
@@ -334,10 +334,9 @@ width: 25%;
  padding: 20px;
 }
 
-
-@media screen and (max-width:1300px) {
+@media screen and (max-width:1500px) {
  .posts_main, header nav{
-  left: 30%;
+  left: 32%;
  }
  .right_menu{
   right: calc((100% - 1000px) / 2);
@@ -351,6 +350,10 @@ width: 25%;
  header .container,footer .container,.home_container {
  flex-direction: column;
  align-items: center;
+}
+
+.ranking{
+ margin-top: 30px;
 }
 
 .top_about,.top_login,.site_scription {
@@ -378,6 +381,10 @@ width: 100%;
 
 .posts_main {
  padding-top: 56px;
+}
+
+.right_menu {
+ display: none;
 }
 
 }

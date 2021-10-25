@@ -47,6 +47,11 @@
    <% end %>
   </section>
   <section class="mypage_btn">
+   <%= link_to(public_end_users_ranking_path, class:"ranking_btn") do %>
+    <span><%= image_tag "king_oukan.png", size: "20x20"%>　ランキング</span>
+   <% end %>
+  </section>
+  <section class="mypage_btn">
    <%= link_to(public_homes_about_path, class:"about_btn") do %>
     <span>ご利用ガイド</span>
    <% end %>

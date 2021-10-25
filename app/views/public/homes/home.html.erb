@@ -99,7 +99,7 @@
         <% if @random.reviews.where(end_user_id: current_end_user.id).blank? %>
          <%= form_with(model: @review, url: public_post_reviews_path(@random.id), local: true, method: :POST) do |f| %>
           <div id="random_star-rate-<%= @random.id %>"></div>
-          <p class="star">★×<%=@random.reviews.sum(:rate).floor%></p>
+          <p class="random_star">★×<%=@random.reviews.sum(:rate).floor%></p>
           <%= f.submit "評価", class: "titles_form_btn"%>
          <% end%>
 
@@ -107,7 +107,7 @@
 
          <%= form_with(model: @random.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(@random.id, @random.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
           <div id="random_edit-comf-<%= @random.id%>"></div>
-          <p class="star">★×<%= @random.reviews.sum(:rate).floor%></p>
+          <p class="random_star">★×<%= @random.reviews.sum(:rate).floor%></p>
           <%= f.submit "再評価", class: "edit_titles_form_btn"%>
          <% end%>
         <% end%>
@@ -132,13 +132,13 @@
            <% if @random.reviews.where(end_user_id: current_end_user.id).blank? %>
             <%= form_with(model: @review, url: public_post_reviews_path(@random.id), local: true, method: :POST) do |f| %>
              <div id="random_star-rate-<%= @random.id %>"></div>
-             <p class="star">★×<%= @random.reviews.sum(:rate).floor%></p>
+             <p class="random_star">★×<%= @random.reviews.sum(:rate).floor%></p>
              <%= f.submit "評価", class: "form_btn"%>
             <% end %>
            <% else%>
             <%= form_with(model: @random.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(@random.id, @random.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
              <div id="random_edit-comf-<%= @random.id%>"></div>
-             <p class="star">★×<%= @random.reviews.sum(:rate).floor%></p>
+             <p class="random_star">★×<%= @random.reviews.sum(:rate).floor%></p>
              <%= f.submit "再評価", class: "edit_form_btn"%>
             <% end%>
            <% end%>

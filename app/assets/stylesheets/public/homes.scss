@@ -324,10 +324,14 @@ section .form_btn {
  font-family: kaisotai;
 }
 
-.star {
+.star,.random_star {
  border: solid 1px #000000;
  width: 20%;
  margin: 5px auto;
+}
+
+.random_star{
+ font-size: 0.5em;
 }
 
 .post_show, .post_show_titles {
@@ -370,7 +374,6 @@ section .form_btn {
  background: #FFF;
  padding: 10px;
  margin-bottom: 20px;
- margin-left: 10px;
  box-shadow: 0 3px 6px;
  border: solid 2px;
 }
@@ -449,7 +452,7 @@ section .form_btn {
 }
 
 
-.post_btn,.titles_post_btn,.about_btn,.log_btn{
+.post_btn,.titles_post_btn,.about_btn,.log_btn, .ranking_btn{
 display: flex;
 justify-content: center;
 align-items: center;
@@ -460,7 +463,7 @@ background: #fff;
 position: relative;
 }
 
-.post_btn span,.titles_post_btn span,.about_btn span,.log_btn span {
+.post_btn span,.titles_post_btn span,.about_btn span,.log_btn span,.ranking_btn span {
  display: flex;
  justify-content: center;
  align-items: center;
@@ -482,14 +485,19 @@ position: relative;
  background: #ffff00;
 }
 
+.ranking_btn span{
+ background: #fff9b5;
+}
+
 .about_btn span {
  background: #DDFFDD;
 }
+
 .log_btn span {
  background: #ffc0cb;
 }
 
-.post_btn:hover span,.titles_post_btn:hover span,.about_btn:hover span,.log_btn:hover span {
+.post_btn:hover span,.titles_post_btn:hover span,.about_btn:hover span,.log_btn:hover span, .ranking_btn:hover span {
 left: 0;
 top: 0;
 box-shadow: 0 0 4px #CAD4E2, -2px -2px 4px #FFF;

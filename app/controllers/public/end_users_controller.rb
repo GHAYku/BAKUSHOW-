@@ -53,6 +53,11 @@ class Public::EndUsersController < ApplicationController
     @titles = @end_user.titles.order(created_at: :desc).page(params[:page]).includes(:posts, :end_user).per(5)
   end
 
+  def ranking
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.order("RANDOM()").first
+  end
+
   def update
     @end_user = current_end_user
     if @end_user.update(end_user_params)
