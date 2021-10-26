@@ -18,6 +18,7 @@
       <% end%>
       <%= render "public/posts/posts_index", {posts: @posts ,review: @review} %>
     </div>
+   <%= render "public/end_users/right_menu", {ranking_users: @ranking_users ,random: @random,review: @review} %>
   </div>
 </main>
 <%= render "public/posts/post_ratyset"%>

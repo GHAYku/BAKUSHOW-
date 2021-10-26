@@ -3,16 +3,13 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
-    @review = Review.new
     case params[:order]
     when "home"
       @url = "home"
       @posts = Post.where(end_user_id: [current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
-      @review = Review.new
     when "new"
       @url = "new"
       @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
-      @review = Review.new
     when "popular"
       @url = "popular"
       posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
@@ -20,22 +17,18 @@ class Public::PostsController < ApplicationController
     when "myposts"
       @url = "myposts"
       @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
-      @review = Review.new
     end
   end
 
   def title_posts_index
     @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-    @review = Review.new
     case params[:order]
     when "home"
       @url = "home"
       @posts = Post.where(end_user_id: [current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-      @review = Review.new
     when "new"
       @url = "new"
       @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-      @review = Review.new
     when "popular"
       @url = "popular"
       posts = Post.find(Review.group(:post_id).order('sum(rate) desc').pluck(:post_id))
@@ -43,33 +36,26 @@ class Public::PostsController < ApplicationController
     when "myposts"
       @url = "myposts"
       @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-      @review = Review.new
     end
   end
 
   def reviews_index
     @reviews = Review.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-    @review = Review.new
     case params[:order]
     when "reviews"
       @reviews = Review.where(end_user_id: [current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-      @review = Review.new
     when "myreviews"
       @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-      @review = Review.new
     end
   end
 
   def title_reviews_index
     @reviews = Review.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-    @review = Review.new
     case params[:order]
     when "reviews"
       @reviews = Review.where(end_user_id: [current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-      @review = Review.new
     when "myreviews"
       @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-      @review = Review.new
     end
   end
 
@@ -90,7 +76,6 @@ class Public::PostsController < ApplicationController
     @title = @post.title
     @comments = @post.comments.page(params[:page]).eager_load(:end_user).per(5)
     @comment = Comment.new
-    @review = Review.new
   end
 
   def create

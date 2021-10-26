@@ -36,12 +36,12 @@
           <%= link_to "編集",edit_public_title_path(title.id),class: "post_show_titles"%>
          </div>
         <% end%>
-
        </div>
       </section>
      <% end %>
      <%= paginate @titles %>
     </div>
   </div>
+ <%= render "public/end_users/right_menu", {ranking_users: @ranking_users ,random: @random,review: @review} %>
  </div>
 </main>

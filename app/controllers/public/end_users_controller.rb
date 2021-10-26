@@ -11,19 +11,16 @@ class Public::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user, :title).per(5)
-    @review = Review.new
   end
 
   def posts_index
     @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user).per(5)
-    @review = Review.new
   end
 
   def title_posts_index
     @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).includes(:reviews, :end_user, :title).per(5)
-    @review = Review.new
   end
 
   def edit
@@ -33,19 +30,16 @@ class Public::EndUsersController < ApplicationController
   def reviews_index
     @end_user = EndUser.find(params[:id])
     @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).includes(:post, :end_user).per(5)
-    @review = Review.new
   end
 
   def post_reviews_index
     @end_user = EndUser.find(params[:id])
     @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).includes(:post, :end_user).per(5)
-    @review = Review.new
   end
 
   def title_reviews_index
     @end_user = EndUser.find(params[:id])
     @reviews = @end_user.reviews.order(created_at: :desc).page(params[:page]).includes(:post, :end_user).per(5)
-    @review = Review.new
   end
 
   def titles
@@ -54,8 +48,6 @@ class Public::EndUsersController < ApplicationController
   end
 
   def ranking
-    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
-    @random = Post.order("RANDOM()").first
   end
 
   def update

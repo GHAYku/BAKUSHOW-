@@ -17,7 +17,6 @@ class Public::TitlesController < ApplicationController
     @title = Title.find(params[:id])
     @posts = @title.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)
     @post = Post.new
-    @review = Review.new
   end
 
   def create

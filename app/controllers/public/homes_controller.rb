@@ -1,14 +1,12 @@
 class Public::HomesController < ApplicationController
   before_action :authenticate_end_user!, except: [:top]
 
+
   def top
   end
 
   def home
     @posts = Post.where(end_user_id: [current_end_user.id, * current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-    @review = Review.new
-    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
-    @random = Post.order("RANDOM()").first
   end
 
   def new
@@ -25,16 +23,14 @@ class Public::HomesController < ApplicationController
 
   def myposts
     @posts = current_end_user.posts.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-    @review = Review.new
   end
 
   def myreviews
     @reviews = current_end_user.reviews.order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-    @review = Review.new
   end
 
   def bakushow
     @reviews = Review.where(end_user_id: [current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
-    @review = Review.new
   end
+
 end

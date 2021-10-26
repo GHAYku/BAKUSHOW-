@@ -44,7 +44,7 @@
        5位
        <div class="ranking_name">
         <%= attachment_image_tag @ranking_users.fifth, :image ,class: "user_image", fallback: "no_image.jpg", size: "25x25"%>
-        <%=link_to @ranking_users.fifth.name ,public_end_user_path(@ranking_users.third.id),class: "ranking_name"%>
+        <%=link_to @ranking_users.fifth.name ,public_end_user_path(@ranking_users.fifth.id),class: "ranking_name"%>
        </div>
        ★<%= @ranking_users.fifth.posts.joins(:reviews).sum(:rate).floor %>
       </div>
