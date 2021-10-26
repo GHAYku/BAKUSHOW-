@@ -1,9 +1,13 @@
 class Public::SearchsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_right_menu
-  
 
-  
+  def set_right_menu
+    @review = Review.new
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.all.sample
+  end
+
   def search
     @genres = Genre.all
   end

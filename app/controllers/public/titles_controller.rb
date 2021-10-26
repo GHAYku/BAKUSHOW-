@@ -2,6 +2,12 @@ class Public::TitlesController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_right_menu, except: [:destroy,:create,:update]
 
+  def set_right_menu
+    @review = Review.new
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.all.sample
+  end
+
   def index
     @titles = Title.order(created_at: :desc).page(params[:page]).eager_load(:posts, :end_user).per(5)
     case params[:order]
