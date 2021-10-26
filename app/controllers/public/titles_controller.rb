@@ -1,5 +1,6 @@
 class Public::TitlesController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_right_menu, except: [:destroy,:create,:update]
 
   def index
     @titles = Title.order(created_at: :desc).page(params[:page]).eager_load(:posts, :end_user).per(5)

@@ -1,7 +1,9 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :ensure_normal_end_user, only: %i(update withdraw)
-
+  before_action :set_right_menu, except: [:update,:withdraw,:ensure_normal_end_user]
+  
+  
   def ensure_normal_end_user
     if current_end_user.email == 'guest@example.com'
       redirect_to edit_public_end_user_path(current_end_user.id), alert: 'ゲストユーザーの更新・退会はできません。'
@@ -67,6 +69,12 @@ class Public::EndUsersController < ApplicationController
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
+  end
+  
+  def set_right_menu
+    @review = Review.new
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.order("RANDOM()").first
   end
 
   private

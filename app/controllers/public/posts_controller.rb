@@ -1,5 +1,12 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_right_menu, except: [:update,:destroy,:create]
+
+  def set_right_menu
+    @review = Review.new
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.order("RANDOM()").first
+  end
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user).per(5)

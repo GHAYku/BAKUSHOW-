@@ -1,6 +1,9 @@
 class Public::SearchsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_right_menu
+  
 
+  
   def search
     @genres = Genre.all
   end

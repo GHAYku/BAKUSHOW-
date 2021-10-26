@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   before_action :authenticate_end_user!, except: [:top]
-
+  before_action :set_right_menu, except: [:top]
 
   def top
   end
@@ -33,4 +33,10 @@ class Public::HomesController < ApplicationController
     @reviews = Review.where(end_user_id: [current_end_user.following_ids]).order(created_at: :desc).page(params[:page]).eager_load(:post, :end_user).per(5)
   end
 
+  def set_right_menu
+    @review = Review.new
+    @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
+    @random = Post.order("RANDOM()").first
+  end
+  
 end
