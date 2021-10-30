@@ -1,7 +1,7 @@
 <div class="scroll-list jscroll">
   <% posts.each do |post| %>
     <% if post.title_id.present? %>
-      <div class="post_titles">
+      <section class="post_titles">
         <div class="account_date_titles">
           <%= link_to (public_end_user_path(post.end_user.id)) do%>
             <%= attachment_image_tag post.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
@@ -42,11 +42,11 @@
             <% end%>
 
           </div>
-      </div>
+      </section>
 
     <% else%>
 
-      <div class="post_index">
+      <section class="post_index">
         <%= link_to (public_end_user_path(post.end_user.id)) do%>
           <div class="account_date">
             <%= attachment_image_tag post.end_user, :image ,class: "user_image", fallback: "no_image.jpg", size: "30x30"%>
@@ -84,7 +84,7 @@
               <% end%>
 
             </div>
-      </div>
+      </section>
     <% end %>
   <% end %>
   <%= paginate posts %>

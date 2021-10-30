@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   before_action :authenticate_end_user!, except: [:top]
-  before_action :set_right_menu, except: [:top,:new]
+  before_action :set_right_menu, except: [:top]
 
   def top
   end
@@ -11,7 +11,6 @@ class Public::HomesController < ApplicationController
 
   def new
     @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
-    @review = Review.new
   end
 
   def popular
@@ -37,7 +36,7 @@ class Public::HomesController < ApplicationController
   def set_right_menu
     @review = Review.new
     @ranking_users = EndUser.find(Post.group(:end_user_id).joins(:reviews).order('sum(rate) desc').pluck(:end_user_id))
-    @random = Post.all.sample
+    @random = Post.all.sample.first
   end
 
 end
