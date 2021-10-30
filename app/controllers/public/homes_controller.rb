@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   before_action :authenticate_end_user!, except: [:top]
-  before_action :set_right_menu, except: [:top]
+  before_action :set_right_menu, except: [:top,:new]
 
   def top
   end
