@@ -1,5 +1,5 @@
-$('#edit-comf-<%= post.id%>').empty();
-$('#edit-comf-<%= post.id%>').raty({
+("#edit-comf-<%= post.id%>").empty();
+('#edit-comf-<%= post.id%>').raty({
  starOff:  "<%= asset_path('star-on.png') %>",
  starOn : "<%= asset_path('star-on.png') %>",
  starHalf: "<%= asset_path('star-half.png') %>",

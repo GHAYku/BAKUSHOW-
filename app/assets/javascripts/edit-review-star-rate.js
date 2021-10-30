@@ -1,5 +1,5 @@
-$('#edit-comf-<%= review.id%>').empty();
-$('#edit-comf-<%= review.id%>').raty({
+('#edit-comf-<%= review.id%>').empty();
+('#edit-comf-<%= review.id%>').raty({
  starOff:  "<%= asset_path('star-off.png') %>",
  starOn : "<%= asset_path('star-on.png') %>",
  starHalf: "<%= asset_path('star-half.png') %>",
