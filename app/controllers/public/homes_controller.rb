@@ -11,6 +11,7 @@ class Public::HomesController < ApplicationController
 
   def new
     @posts = Post.order(created_at: :desc).page(params[:page]).eager_load(:reviews, :end_user, :title).per(5)
+    @review = Review.new
   end
 
   def popular
