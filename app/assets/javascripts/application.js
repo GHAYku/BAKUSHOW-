@@ -10,14 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery
 //=
 //= require jquery.raty.js
 //= require jquery.jscroll.min.js
 //= require_tree .
+
 $(window).on('scroll', function() {
   scrollHeight = $(document).height();
   scrollPosition = $(window).height() + $(window).scrollTop();
