@@ -72,7 +72,7 @@
 
                 <%= form_with(model: post.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(post.id, post.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
                   <div id="edit-comf-<%= post.id%>"></div>
-                    <script src="edit-rate"></script>
+                  <script src="edit-rate"></script>
                   <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
                   <%= f.submit "再評価", class: "edit_form_btn"%>
                 <% end%>
