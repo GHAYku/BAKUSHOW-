@@ -38,7 +38,15 @@
                   <% if post.reviews.where(end_user_id: current_end_user.id).blank? %>
                     <%= form_with(model: @review, url: public_post_reviews_path(post.id), local: true, method: :POST) do |f| %>
                       <div id="star-rate-<%= post.id %>"></div>
-                        <script src="star-rate"></script>
+                        <script>
+                          $('#star-rate-<%= post.id %>').empty();
+                          $('#star-rate-<%= post.id %>').raty({
+                           starOn: "<%= asset_path('star-on.png') %>",
+                           starOff: "<%= asset_path('star-off.png') %>",
+                           starHalf: "<%= asset_path('star-half.png') %>",
+                           scoreName: 'review[rate]'
+                          });
+                        </script>
                       <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
                       <%= f.submit "評価", class: "titles_form_btn"%>
                     <% end%>
@@ -47,7 +55,16 @@
 
                     <%= form_with(model: post.reviews.where(end_user_id: current_end_user.id), url: public_post_review_path(post.id, post.reviews.where(end_user_id: current_end_user.id).pluck(:id)), local: true, method: :PATCH) do |f| %>
                       <div id="edit-comf-<%= post.id%>"></div>
-                        <script src="edit-rate"></script>
+                        <script>
+                          $('#edit-comf-<%= post.id%>').empty();
+                          $('#edit-comf-<%= post.id%>').raty({
+                           starOff:  '<%= asset_path('star-off.png') %>',
+                           starOn : '<%= asset_path('star-on.png') %>',
+                           starHalf: '<%= asset_path('star-half.png') %>',
+                           score: <%= post.reviews.where(end_user_id: current_end_user.id).pluck(:rate) %>,
+                           scoreName: 'review[rate]',
+                          });
+                        </script>
                       <p class="star">★×<%=post.reviews.sum(:rate).floor%></p>
                       <%= f.submit "再評価", class: "edit_titles_form_btn"%>
                     <% end%>
