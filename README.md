@@ -57,10 +57,6 @@
 通勤等の隙間時間の暇つぶしに。
 心がつらいとき、元気が欲しい時に
 
-## 設計書
-
-##### 画面遷移図
-<https://drive.google.com/file/d/1mEGXw0BslD0ocTRji_ILJayWRfXvcDCw/view?usp=sharing>
 ##### ER図
 <https://drive.google.com/file/d/1uFFtN7nceep13piK-BU_g3DmWpSYqOfL/view?usp=sharing>
 
